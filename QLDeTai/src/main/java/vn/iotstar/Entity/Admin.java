@@ -3,21 +3,29 @@ package vn.iotstar.Entity;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name= "Admin")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Admin {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String name;
 	private Date dateofbirth;
 	private String email;
 	private String status;
-	public Admin(String id, String name, Date dateofbirth, String email, String status) {
+	
+	public Admin( String name, Date dateofbirth, String email, String status) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.dateofbirth = dateofbirth;
 		this.email = email;
