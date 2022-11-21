@@ -2,6 +2,7 @@ package vn.iotstar.Entity;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,62 +23,25 @@ import lombok.NoArgsConstructor;
 public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private int id;
+
+	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "dateofbirth")
 	private Date dateofbirth;
+	
+	@Column(name = "email")
 	private String email;
-	private String status;
+	
+	@Column(name = "status")
+	private boolean status;
 
-	public Admin(String name, Date dateofbirth, String email, String status) {
+	public Admin(String name, Date dateofbirth, String email, Boolean status) {
 		super();
 		this.name = name;
 		this.dateofbirth = dateofbirth;
 		this.email = email;
-		this.status = status;
-	}
-
-	public Admin() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Date getDateofbirth() {
-		return dateofbirth;
-	}
-
-	public void setDateofbirth(Date dateofbirth) {
-		this.dateofbirth = dateofbirth;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
 		this.status = status;
 	}
 

@@ -2,7 +2,6 @@ package vn.iotstar.Entity;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,22 +26,11 @@ public class Lecture {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "name")
 	private String name;
-	
-	@Column(name = "dateofbirth")
 	private Date dateofbirth;
-	
-	@Column(name = "address")
 	private String address;
-	
-	@Column(name = "email")
 	private String email;
-	
-	@Column(name ="is_truongbomon")
 	private boolean is_truongbomon;
-	
-	@Column(name = "status")
 	private boolean status;
 
 	public Lecture(String name, Date dateofbirth, String address, String email, boolean is_truongbomon,
