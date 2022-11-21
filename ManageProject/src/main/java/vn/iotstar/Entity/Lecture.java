@@ -31,6 +31,7 @@ public class Lecture {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+
 	private String name;
 	private Date dateofbirth;
 	private String address;
@@ -55,6 +56,7 @@ public class Lecture {
 
 
 	public void setId(Long id) {
+
 		this.id = id;
 	}
 

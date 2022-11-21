@@ -9,7 +9,7 @@ import vn.iotstar.Entity.Student;
 @Controller
 @RequestMapping("home")
 public class HomeController {
-	@GetMapping("/list")
+	@GetMapping()
 	public String list() {
 		return "index";
 	}
