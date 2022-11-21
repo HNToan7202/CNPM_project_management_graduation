@@ -16,27 +16,27 @@ public interface AdminService {
 
 	void deleteAll();
 
-	Admin getById(Long id);
+	Admin getById(Integer id);
 
 	void delete(Admin entity);
 
-	Admin getOne(Long id);
+	Admin getOne(Integer id);
 
-	void deleteById(Long id);
+	void deleteById(Integer id);
 
 	long count();
 
 	<S extends Admin> boolean exists(Example<S> example);
 
-	boolean existsById(Long id);
+	boolean existsById(Integer id);
 
-	Optional<Admin> findById(Long id);
+	Optional<Admin> findById(Integer id);
 
 	<S extends Admin> Page<S> findAll(Example<S> example, Pageable pageable);
 
 	<S extends Admin> S saveAndFlush(S entity);
 
-	List<Admin> findAllById(Iterable<Long> ids);
+	List<Admin> findAllById(Iterable<Integer> ids);
 
 	Page<Admin> findAll(Pageable pageable);
 
