@@ -8,13 +8,11 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Admin;
 import vn.iotstar.Repository.AdminRepository;
 import vn.iotstar.Service.AdminService;
 
-@Service
 public class AdminServiceImpl implements AdminService{
 
 	@Autowired
@@ -36,7 +34,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<Admin> findAllById(Iterable<Long> ids) {
+	public List<Admin> findAllById(Iterable<Integer> ids) {
 		return adminRepo.findAllById(ids);
 	}
 
@@ -51,12 +49,12 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Optional<Admin> findById(Long id) {
+	public Optional<Admin> findById(Integer id) {
 		return adminRepo.findById(id);
 	}
 
 	@Override
-	public boolean existsById(Long id) {
+	public boolean existsById(Integer id) {
 		return adminRepo.existsById(id);
 	}
 
@@ -71,12 +69,12 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		adminRepo.deleteById(id);
 	}
 
 	@Override
-	public Admin getOne(Long id) {
+	public Admin getOne(Integer id) {
 		return adminRepo.getOne(id);
 	}
 
@@ -86,7 +84,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Admin getById(Long id) {
+	public Admin getById(Integer id) {
 		return adminRepo.getById(id);
 	}
 
@@ -99,7 +97,6 @@ public class AdminServiceImpl implements AdminService{
 	public <S extends Admin> List<S> findAll(Example<S> example, Sort sort) {
 		return adminRepo.findAll(example, sort);
 	}
-
 	
 	
 }

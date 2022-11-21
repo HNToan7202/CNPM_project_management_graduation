@@ -8,13 +8,11 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Lecture;
 import vn.iotstar.Repository.LectureRepository;
 import vn.iotstar.Service.LectureService;
 
-@Service
 public class LectureServiceImpl implements LectureService{
 
 	@Autowired
@@ -44,6 +42,32 @@ public class LectureServiceImpl implements LectureService{
 		return lectureRepo.findAll(example, pageable);
 	}
 
+	public Optional<Lecture> findById(Integer id) {
+		return lectureRepo.findById(id);
+	}
 
+	public long count() {
+		return lectureRepo.count();
+	}
+
+	public void deleteById(Integer id) {
+		lectureRepo.deleteById(id);
+	}
+
+	public Lecture getOne(Integer id) {
+		return lectureRepo.getOne(id);
+	}
+
+	public void delete(Lecture entity) {
+		lectureRepo.delete(entity);
+	}
+
+	public Lecture getById(Integer id) {
+		return lectureRepo.getById(id);
+	}
+
+	public void deleteAll() {
+		lectureRepo.deleteAll();
+	}
 	
 }
