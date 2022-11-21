@@ -9,85 +9,76 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
-@Table(name = "Lecture")
-
-public class Lecture {
-	
+@Builder
+@Table(name = "Admin")
+public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+	private String id;
 	private String name;
 	private Date dateofbirth;
-	private String address;
 	private String email;
-	private boolean is_truongbomon;
-	private boolean status;
-	
-	
-	
-	public Lecture( String name, Date dateofbirth, String address, String email, boolean is_truongbomon,
-			boolean status) {
+	private String status;
+
+	public Admin(String name, Date dateofbirth, String email, String status) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.dateofbirth = dateofbirth;
-		this.address = address;
 		this.email = email;
-		this.is_truongbomon = is_truongbomon;
 		this.status = status;
 	}
-	
-	
-	public int getId() {
+
+	public Admin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Date getDateofbirth() {
 		return dateofbirth;
 	}
+
 	public void setDateofbirth(Date dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public boolean isIs_truongbomon() {
-		return is_truongbomon;
-	}
-	public void setIs_truongbomon(boolean is_truongbomon) {
-		this.is_truongbomon = is_truongbomon;
-	}
-	public boolean isStatus() {
+
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
-	
 
 }
