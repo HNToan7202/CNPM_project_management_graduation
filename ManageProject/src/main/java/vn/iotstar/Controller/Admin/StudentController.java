@@ -1,5 +1,6 @@
 package vn.iotstar.Controller.Admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -15,6 +16,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import vn.iotstar.Entity.Student;
 import vn.iotstar.Service.IStudentService;
@@ -35,7 +38,10 @@ public class StudentController {
 	}
 
 	@GetMapping("edit/{mssv}")
-	public String edit() {
+	public String edit(Model model) {
+		
+		Student student = studentService.findById();
+		model.addAttribute("student", student);
 		return "admin/student/addorEdit";
 	}
 
@@ -45,29 +51,19 @@ public class StudentController {
 	}
 
 	@PostMapping("saveofUpdate")
-	public String saveOrUpdate(HttpServletRequest req) {
+	public String saveOrUpdate(ModelMap model,@RequestParam("image") MultipartFile image) {
 		Student entity = new Student();
-		try {
-			BeanUtils.populate(entity, req.getParameterMap());
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(image.isEmpty())
+		{
+			model.addAttribute("message", "Vui lòng chọn file");
 		}
-		String fileName = entity.getImage()+ System.currentTimeMillis();
-		try {
-			entity.setImage(UploadUtils.processUpload("image", req, Constant.DIR + "\\student\\", fileName));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		else {
+			try {
+				String path = Context.getRealPath("/image"+image.getOriginalFilename());
+				image.transferTo(new File(path));
+				
+			}
 		}
-		// gọi hàm insert để thêm dữ liệu
-		studentService.save(entity);
 
 		return "redirect:/admin/student";
 	}
