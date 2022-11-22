@@ -2,9 +2,9 @@ package vn.iotstar.Entity;
 
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "Student")
-public class Student extends User {
+public class Student  {
 	
 	
 	@Id
@@ -33,6 +33,7 @@ public class Student extends User {
 	@Column(name = "dateofbirth")
 	private Date dateofbirth;
 
+	
 	@Column(name = "email")
 	private String email;
 
@@ -48,5 +49,8 @@ public class Student extends User {
 	@Column(name = "status")
 	private String status;
 	
-
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user_student;
+	 
 }
