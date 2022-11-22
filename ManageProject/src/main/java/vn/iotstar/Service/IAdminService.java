@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort;
 
 import vn.iotstar.Entity.Admin;
 
-public interface AdminService {
+public interface IAdminService {
 
 	<S extends Admin> List<S> findAll(Example<S> example, Sort sort);
 

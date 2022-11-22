@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Student;
 import vn.iotstar.Repository.StudentReposiotory;
-import vn.iotstar.Service.StudentService;
+import vn.iotstar.Service.IStudentService;
 
 @Service
-public class StudentServiceImpl implements StudentService {
+public class StudentServiceImpl implements IStudentService {
 
 	@Autowired
 	private StudentReposiotory studentRepo;

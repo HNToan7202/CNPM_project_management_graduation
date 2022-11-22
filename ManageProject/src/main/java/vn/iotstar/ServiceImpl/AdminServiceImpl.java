@@ -11,9 +11,9 @@ import org.springframework.data.domain.Sort;
 
 import vn.iotstar.Entity.Admin;
 import vn.iotstar.Repository.AdminRepository;
-import vn.iotstar.Service.AdminService;
+import vn.iotstar.Service.IAdminService;
 
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements IAdminService{
 
 	@Autowired
 	private AdminRepository adminRepo;
