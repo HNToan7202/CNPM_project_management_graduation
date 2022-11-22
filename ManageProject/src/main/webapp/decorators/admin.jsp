@@ -28,7 +28,6 @@
 	<%@ include file="/common/admin/header.jsp"%>
 
 	<!-- body -->
-	<h1>Hello</h1>
 	<sitemesh:write property='body'></sitemesh:write>
 	<!-- body -->
 
