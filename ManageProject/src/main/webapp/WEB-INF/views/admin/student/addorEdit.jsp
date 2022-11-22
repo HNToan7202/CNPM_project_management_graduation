@@ -31,13 +31,13 @@
 												<br />
 												<div class="form-group" >
 													<label for="UserID">Mã số sinh viên:</label> <input type="text"
-														name="studentId" value="${student.mssv}"
-														id="studentId" class="form-control" />
+														name="mssv" value="${student.mssv}"
+														id="mssv" class="form-control" />
 												</div>
 												<div class="form-group">
 													<label for="categoryName">Họ và tên:</label> <input
-														type="text" class="form-control" name="studentName"
-														id="studentName" value="${student.name}" />
+														type="text" class="form-control" name="name"
+														id="name" value="${student.name}" />
 												</div>
 												<div class="form-group">
 													<label for="categoryCode">Ngày sinh:</label> <input
