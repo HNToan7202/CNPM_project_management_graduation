@@ -2,9 +2,12 @@ package vn.iotstar.Entity;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +21,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "Student")
-public class Student {
+public class Student extends User {
+	
+	
 	@Id
 	private Long mssv;
 
@@ -42,5 +47,6 @@ public class Student {
 
 	@Column(name = "status")
 	private String status;
+	
 
 }
