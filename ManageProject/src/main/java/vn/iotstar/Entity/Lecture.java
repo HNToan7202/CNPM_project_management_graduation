@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,15 +23,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "Lecture")
-
 public class Lecture {
-	
-	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
 
 	private String name;
 	private Date dateofbirth;
@@ -38,7 +34,12 @@ public class Lecture {
 	private String email;
 	private boolean is_truongbomon;
 	private boolean status;
-
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user_lecture;
+    
+    
 	public Lecture(String name, Date dateofbirth, String address, String email, boolean is_truongbomon,
 			boolean status) {
 		super();
@@ -53,7 +54,6 @@ public class Lecture {
 	public void setId(long id) {
 		this.id = id;
 	}
-
 
 	public void setId(Long id) {
 
@@ -107,6 +107,5 @@ public class Lecture {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
 
 }

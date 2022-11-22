@@ -8,4 +8,5 @@ import vn.iotstar.Entity.Student;
 @Repository
 public interface StudentReposiotory extends JpaRepository<Student, Long>{
 
+	
 }
