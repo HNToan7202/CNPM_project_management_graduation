@@ -11,9 +11,9 @@ import org.springframework.data.domain.Sort;
 
 import vn.iotstar.Entity.Lecture;
 import vn.iotstar.Repository.LectureRepository;
-import vn.iotstar.Service.LectureService;
+import vn.iotstar.Service.ILectureService;
 
-public class LectureServiceImpl implements LectureService{
+public class LectureServiceImpl implements ILectureService{
 
 	@Autowired
 	private LectureRepository lectureRepo;

@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 import vn.iotstar.Entity.Student;
 
-public interface StudentService {
+public interface IStudentService {
 
 	void deleteAll();
 
