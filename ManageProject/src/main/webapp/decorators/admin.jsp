@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-<c:url value="/template/" var="URL"></c:url>
+<c:url value="/templates/" var="URL"></c:url>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

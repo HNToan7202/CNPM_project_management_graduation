@@ -1,3 +1,4 @@
+
 package vn.iotstar.Entity;
 
 import java.util.ArrayList;
@@ -85,5 +86,4 @@ public class User {
 	}
     
 	
-
 }

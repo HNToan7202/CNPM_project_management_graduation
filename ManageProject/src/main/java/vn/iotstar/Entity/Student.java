@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 public class Student  {
 	
 	
+
 	@Id
 	private Long mssv;
 
@@ -33,6 +34,10 @@ public class Student  {
 	@Column(name = "dateofbirth")
 	private Date dateofbirth;
 
+
+	@Column(name = "image")
+	private String image;
+
 	
 	@Column(name = "email")
 	private String email;
@@ -41,13 +46,31 @@ public class Student  {
 	private String deparment;
 
 	@Column(name = "id_project")
-	private boolean id_project;
+	private Long id_project;
 
 	@Column(name = "id_leader")
-	private boolean id_leader;
+	private Long id_leader;
 
 	@Column(name = "status")
 	private String status;
+
+	public Student(Long mssv, String name, Date dateofbirth, String image, String email, String deparment,
+			Long id_project, Long id_leader, String status) {
+		super();
+		this.mssv = mssv;
+		this.name = name;
+		this.dateofbirth = dateofbirth;
+		this.image = image;
+		this.email = email;
+		this.deparment = deparment;
+		this.id_project = id_project;
+		this.id_leader = id_leader;
+		this.status = status;
+	}
+
+	public Student() {
+		super();
+	}
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
