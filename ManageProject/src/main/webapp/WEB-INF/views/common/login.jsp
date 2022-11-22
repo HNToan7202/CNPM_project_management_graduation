@@ -2,12 +2,10 @@
     pageEncoding="ISO-8859-1"%>
     <!DOCTYPE html>
     <html>
-
     <head>
         <meta charset="ISO-8859-1">
         <title>Login</title>
     </head>
-
     <body>
         <section class="vh-100">
             <div class="container py-5 h-100">
@@ -57,5 +55,4 @@
             </div>
         </section>
     </body>
-
     </html>
