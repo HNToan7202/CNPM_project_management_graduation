@@ -1,0 +1,26 @@
+19/11/2022
+
+
+20/11/2022
+
+
+21/11/2022
+Khó khăn:
+Tạo layout bằng sitemesh :Huy
+Tạo trang login : Thành
+Thêm entity đề tài, user :Toàn
+22/11/2022
+Khó khăn: 
+Tạo trang admin : Thành
+Tạo trang truy cập sau khi đăng nhập cho student : Huy
+Tạo trang xem danh sách sinh viên: Huy
+Thêm sinh viên vào danh sách: Huy
+Tạo trang truy cập sau khi đăng nhập cho Giảng viên :Toàn
+23/11/2022
+Khó khăn ngày trước : Chưa thấy
+Tạo thêm Entity, Model, Repository, Service cho class thông báo : bao gồm( id, name, descrption, manytomany Admin, Lecture ): Huy
+Thêm trang hiển thị danh sách sinh viên : Thành
+Thêm trang hiển thị danh sách giảng viên : Thành 
+Thêm trang hiểu thị danh sách đề tài : Toàn
+Thêm trang hiển thị các thông báo : Huy
+

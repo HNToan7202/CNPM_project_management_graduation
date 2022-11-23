@@ -1,30 +1,43 @@
 package vn.iotstar.Controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletContext;
 
-import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 
-import vn.iotstar.Utils.Constant;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@Controller
+public class DownloadImageController {
 
-@SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/image") // ?fname=abc.png
-public class DownloadImageController extends HttpServlet {
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String fileName = req.getParameter("fname");
-		File file = new File(Constant.DIR + "/" + fileName);
-		resp.setContentType("image/jpeg");
-		if (file.exists()) {
-			IOUtils.copy(new FileInputStream(file), resp.getOutputStream());
+	@Autowired
+	ServletContext application;
+	
+	@RequestMapping(value = "images/{photo}", method = RequestMethod.GET)
+	@ResponseBody()
+	public ResponseEntity<ByteArrayResource> getImage(@PathVariable("photo") String photo) {
+		if (!photo.equals("") || photo != null) {
+			try {
+				Path filename = Paths.get("src/main/webapp/resources/images", photo);
+				byte[] buffer = Files.readAllBytes(filename);
+				ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);
+				return ResponseEntity.ok().contentLength(buffer.length)
+						.contentType(MediaType.parseMediaType("image/png")).body(byteArrayResource);
+			} catch (Exception e) {
+
+			}
 		}
+		return ResponseEntity.badRequest().build();
+
 	}
 }

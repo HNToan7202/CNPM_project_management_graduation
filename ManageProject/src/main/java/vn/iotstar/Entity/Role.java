@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -54,6 +53,8 @@ public class Role {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+
 	}
 
 }
+
