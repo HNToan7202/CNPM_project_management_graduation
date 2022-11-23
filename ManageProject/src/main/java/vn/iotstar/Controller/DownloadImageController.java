@@ -1,40 +1,43 @@
 package vn.iotstar.Controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletContext;
 
-import org.apache.commons.io.IOUtils;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import vn.iotstar.Utils.Constant;
+@Controller
+public class DownloadImageController {
 
-@SuppressWarnings("serial")
-@RequestMapping("/image")
-public class DownloadImageController extends HttpServlet {
-
-	@GetMapping()
-	public void List(HttpServletRequest req, HttpServletResponse resp) {
-
-		String fileName = req.getParameter("fname");
-		File file = new File(Constant.DIR + "/" + fileName);
-		resp.setContentType("image/jpeg");
-		if (file.exists()) {
+	@Autowired
+	ServletContext application;
+	
+	@RequestMapping(value = "images/{photo}", method = RequestMethod.GET)
+	@ResponseBody()
+	public ResponseEntity<ByteArrayResource> getImage(@PathVariable("photo") String photo) {
+		if (!photo.equals("") || photo != null) {
 			try {
-				IOUtils.copy(new FileInputStream(file), resp.getOutputStream());
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Path filename = Paths.get("src/main/webapp/resources/images", photo);
+				byte[] buffer = Files.readAllBytes(filename);
+				ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);
+				return ResponseEntity.ok().contentLength(buffer.length)
+						.contentType(MediaType.parseMediaType("image/png")).body(byteArrayResource);
+			} catch (Exception e) {
+
 			}
 		}
+		return ResponseEntity.badRequest().build();
+
 	}
 }

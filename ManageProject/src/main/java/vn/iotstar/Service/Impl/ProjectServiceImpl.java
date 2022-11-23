@@ -1,4 +1,4 @@
-package vn.iotstar.ServiceImpl;
+package vn.iotstar.Service.Impl;
 
 import java.util.List;
 import java.util.Optional;
