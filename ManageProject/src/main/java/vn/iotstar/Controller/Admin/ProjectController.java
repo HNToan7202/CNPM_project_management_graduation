@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import vn.iotstar.Entity.Project;
-import vn.iotstar.ServiceImpl.ProjectServiceImpl;
+import vn.iotstar.Service.Impl.ProjectServiceImpl;
 
 @Controller
 @RequestMapping("/admin/project")

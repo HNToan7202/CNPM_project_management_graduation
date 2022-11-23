@@ -84,6 +84,7 @@
 </div> --%>
 
 <div>
+	<h2>${student.isEdit ? 'Edit Student' : 'Add New Student' }</h2>
 	<form:form action="/admin/student/saveofUpdate" method="POST"
 		modelAttribute="student" enctype="multipart/form-data">
 	
