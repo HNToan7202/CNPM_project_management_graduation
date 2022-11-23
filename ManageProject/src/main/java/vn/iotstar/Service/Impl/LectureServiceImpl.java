@@ -1,4 +1,4 @@
-package vn.iotstar.ServiceImpl;
+package vn.iotstar.Service.Impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,15 +8,16 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Lecture;
 import vn.iotstar.Repository.LectureRepository;
-import vn.iotstar.Service.LectureService;
-
-public class LectureServiceImpl implements LectureService{
+import vn.iotstar.Service.ILectureService;
+@Service
+public class LectureServiceImpl implements ILectureService{
 
 	@Autowired
-	private LectureRepository lectureRepo;
+	LectureRepository lectureRepo;
 
 	public <S extends Lecture> S save(S entity) {
 		return lectureRepo.save(entity);
@@ -54,6 +55,7 @@ public class LectureServiceImpl implements LectureService{
 		lectureRepo.deleteById(id);
 	}
 
+	@SuppressWarnings("deprecation")
 	public Lecture getOne(Integer id) {
 		return lectureRepo.getOne(id);
 	}
@@ -62,6 +64,7 @@ public class LectureServiceImpl implements LectureService{
 		lectureRepo.delete(entity);
 	}
 
+	@SuppressWarnings("deprecation")
 	public Lecture getById(Integer id) {
 		return lectureRepo.getById(id);
 	}

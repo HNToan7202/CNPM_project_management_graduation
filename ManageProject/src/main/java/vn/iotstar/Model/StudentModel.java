@@ -2,28 +2,27 @@ package vn.iotstar.Model;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentModel {
-	
-
 	private Long mssv;
-
 	private String name;
-
 	private Date dateofbirth;
-
 	private String image;
-
 	private String email;
-
 	private String deparment;
-
 	private Long id_project;
-
 	private Long id_leader;
-
 	private String status;
-	
-	private String user_id;
+	private MultipartFile imageFile;
+	private Boolean isEdit = false;
 
 	public Long getMssv() {
 		return mssv;
@@ -97,14 +96,21 @@ public class StudentModel {
 		this.status = status;
 	}
 
-	public String getUser_id() {
-		return user_id;
+
+	public MultipartFile getImageFile() {
+		return imageFile;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
 	}
-	
-	
+
+	public Boolean getIsEdit() {
+		return isEdit;
+	}
+
+	public void setIsEdit(Boolean isEdit) {
+		this.isEdit = isEdit;
+	}
 
 }

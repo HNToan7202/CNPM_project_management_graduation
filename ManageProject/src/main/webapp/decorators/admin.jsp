@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-<c:url value="/templates/" var="URL"></c:url>
+<c:url value="/resources/css/" var="URL"></c:url>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,14 +21,14 @@
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600"
 	rel="stylesheet" type="text/css">
 
-<link href="${URL}css/style.css" rel="stylesheet" type="text/css">
+<link href="${URL}styles.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 	<%@ include file="/common/admin/header.jsp"%>
 
 	<!-- body -->
-	<dec:body />
+	<sitemesh:write property='body'></sitemesh:write>
 	<!-- body -->
 
 	<!--=== Footer v4 ===-->

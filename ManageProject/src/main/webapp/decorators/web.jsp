@@ -21,18 +21,18 @@
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600"
 	rel="stylesheet" type="text/css">
 
-<link href="${URL}css/style.css" rel="stylesheet" type="text/css">
+<link href="${URL}css/styles.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-	<%@ include file="/common/user/header.jsp"%>
+	<%@ include file="/common/web/header.jsp"%>
 
 	<!-- body -->
 	<dec:body />
 	<!-- body -->
 
 	<!--=== Footer v4 ===-->
-	<jsp:include page="/common/user/footer.jsp"></jsp:include>
+	<jsp:include page="/common/web/footer.jsp"></jsp:include>
 	<!--=== End Footer v4 ===-->
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"

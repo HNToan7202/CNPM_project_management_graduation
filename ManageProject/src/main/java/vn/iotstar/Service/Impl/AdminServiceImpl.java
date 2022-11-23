@@ -1,4 +1,4 @@
-package vn.iotstar.ServiceImpl;
+package vn.iotstar.Service.Impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,15 +8,16 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Admin;
 import vn.iotstar.Repository.AdminRepository;
-import vn.iotstar.Service.AdminService;
-
-public class AdminServiceImpl implements AdminService{
+import vn.iotstar.Service.IAdminService;
+@Service
+public class AdminServiceImpl implements IAdminService{
 
 	@Autowired
-	private AdminRepository adminRepo;
+	AdminRepository adminRepo;
 
 	@Override
 	public <S extends Admin> S save(S entity) {

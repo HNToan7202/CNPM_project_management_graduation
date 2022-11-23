@@ -19,7 +19,7 @@ public class UploadUtils {
 			return "";
 		}
 		if (storeFolder == null)
-			storeFolder = "D:\\Uploads";
+			storeFolder = "D:\\Download\\Spring\\Sprint-1\\ManageProject\\src\\main\\webapp\\resources\\images";
 
 		if (storeFilename == null)
 			storeFilename = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();

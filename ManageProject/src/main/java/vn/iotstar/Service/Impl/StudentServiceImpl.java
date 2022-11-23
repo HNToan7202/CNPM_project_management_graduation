@@ -1,7 +1,9 @@
-package vn.iotstar.ServiceImpl;
+package vn.iotstar.Service.Impl;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -9,15 +11,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import vn.iotstar.Entity.Student;
 import vn.iotstar.Repository.StudentReposiotory;
-import vn.iotstar.Service.StudentService;
+import vn.iotstar.Service.IStudentService;
 
 @Service
-public class StudentServiceImpl implements StudentService {
+@RequiredArgsConstructor
+@Transactional
+@Slf4j
+public class StudentServiceImpl implements IStudentService {
 
 	@Autowired
-	private StudentReposiotory studentRepo;
+	StudentReposiotory studentRepo;
 
 	@Override
 	public <S extends Student> S save(S entity) {

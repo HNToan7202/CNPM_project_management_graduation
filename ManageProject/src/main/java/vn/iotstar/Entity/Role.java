@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
-@Table(name ="role")
+@Table(name = "role")
 public class Role {
 	@Id
 	private long code;
-	
+
 	@Column
 	private String name;
-	
+
 	@ManyToMany(mappedBy = "roles")
 	List<User> users = new ArrayList<>();
 
@@ -53,7 +53,8 @@ public class Role {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}	
-	
-	
+
+	}
+
 }
+
