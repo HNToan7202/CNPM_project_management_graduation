@@ -1,0 +1,14 @@
+20/11/2022
+
+
+21/11/2022
+Tạo layout bằng sitemesh :Huy
+Tạo trang login : Thành
+Thêm entity đề tài, user :Toàn
+22/11/2022
+Tạo trang admin : Thành
+Tạo trang truy cập sau khi đăng nhập cho student CRUD sinh viên: Huy
+Tạo trang truy cập sau khi đăng nhập cho Giảng viên :Toàn
+23/11/2022
+CRUD giảng viên
+CRUD đề tài
