@@ -27,13 +27,9 @@ public class Project {
 	private String id;
 	
 	private String name;
-	
 	private String desciption;
-	
 	private boolean is_active;
 	
-	private Long id_lecture;
-	private boolean status;
 	
     @ManyToOne(fetch = FetchType.LAZY)
     private Lecture lectures;
@@ -70,12 +66,4 @@ public class Project {
 		this.is_active = is_active;
 	}
 	
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	
-
 }

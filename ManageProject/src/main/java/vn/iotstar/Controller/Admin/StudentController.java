@@ -1,7 +1,5 @@
 package vn.iotstar.Controller.Admin;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -10,10 +8,8 @@ import java.util.Optional;
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -23,12 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.iotstar.Entity.Student;
 import vn.iotstar.Model.StudentModel;
-import vn.iotstar.Service.IFacultyService;
 import vn.iotstar.Service.IStudentService;
 
 @Controller
@@ -38,8 +32,6 @@ public class StudentController {
 	@Autowired
 	IStudentService studentService;
 
-	@Autowired
-	IFacultyService facultyService;
 	@Autowired
 	ServletContext application;
 
@@ -57,17 +49,10 @@ public class StudentController {
 		StudentModel student = new StudentModel();
 		if (opt.isPresent()) {
 			Student entity = opt.get();
-			File file = new File("src/main/webapp/resources/images/" + entity.getImage());
-			FileInputStream input = new FileInputStream(file);
-			MultipartFile imageFile = new MockMultipartFile(entity.getImage(), file.getName(), "text/plain",
-					IOUtils.toByteArray(input));
-			student.setImageFile(imageFile);
-			System.out.print(imageFile.getName());
 			BeanUtils.copyProperties(entity, student);
 			student.setIsEdit(true);
 			model.addAttribute("student", student);
 			return new ModelAndView("admin/student/addOrEdit", model);
-
 		}
 		model.addAttribute("message", "Student không tồn tại");
 		return new ModelAndView("redirect:/admin/student", model);
@@ -77,13 +62,15 @@ public class StudentController {
 	@PostMapping("saveofUpdate")
 	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("student") StudentModel student,
 			BindingResult result) {
+		Student entity = new Student();
+
 		if (result.hasErrors()) {
 			model.addAttribute("message", "Có lỗi");
 			return new ModelAndView("admin/student/addOrEdit");
 		}
 		if (!student.getImageFile().isEmpty()) {
 			String path = application.getRealPath("/");
-			Student entity = new Student();
+
 			try {
 				student.setImage(student.getImageFile().getOriginalFilename());
 				String filePath = path + "/resources/images/" + student.getImage();
@@ -92,9 +79,9 @@ public class StudentController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			BeanUtils.copyProperties(student, entity);
-			studentService.save(entity);
 		}
+		BeanUtils.copyProperties(student, entity);
+		studentService.save(entity);
 		return new ModelAndView("redirect:/admin/student", model);
 	}
 
@@ -115,8 +102,4 @@ public class StudentController {
 		studentService.deleteById(MSSV);
 		return new ModelAndView("redirect:/admin/student", model);
 	}
-	/*
-	 * @ModelAttribute(name="Faculty") public List<Faculty> getAllFaculty(){ return
-	 * facultyService.findAll(); }
-	 */
 }
