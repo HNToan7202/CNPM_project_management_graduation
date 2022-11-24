@@ -1,25 +1,13 @@
-package vn.iotstar.Entity;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package vn.iotstar.Model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-@Entity
-@Builder
-@Table(name = "notification")
-public class Notification {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class NotificationModel {
 	private int id;
 
 	private String name;
@@ -27,7 +15,8 @@ public class Notification {
 	private String desciption;
 
 	private boolean status;
-
+	
+	private Boolean IsEdit=false;
 	public int getId() {
 		return id;
 	}
@@ -59,5 +48,13 @@ public class Notification {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
+	public boolean isIsEdit() {
+		return IsEdit;
+	}
+
+	public void setIsEdit(boolean isEdit) {
+		IsEdit = isEdit;
+	}
+
 }

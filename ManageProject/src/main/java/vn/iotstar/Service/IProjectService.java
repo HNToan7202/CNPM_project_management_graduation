@@ -10,11 +10,21 @@ import org.springframework.data.domain.Sort;
 
 import vn.iotstar.Entity.Project;
 
-public interface ProjectService {
+public interface IProjectService {
 
 	void deleteAll();
 
+	Project getById(String id);
+
+	void delete(Project entity);
+
 	void deleteById(String id);
+
+	long count();
+
+	<S extends Project> Page<S> findAll(Example<S> example, Pageable pageable);
+
+	List<Project> findAllById(Iterable<String> ids);
 
 	List<Project> findAll(Sort sort);
 
@@ -22,18 +32,9 @@ public interface ProjectService {
 
 	List<Project> findAll();
 
-	<S extends Project> Optional<S> findOne(Example<S> example);
-
-	void delete(Project entity);
-
-	long count();
-
 	<S extends Project> S save(S entity);
 
 	Optional<Project> findById(String id);
 
-	Page<Project> findByIdContaining(String email, Pageable pageable);
-
-	List<Project> findByIdContaining(String id);
-
+	
 }

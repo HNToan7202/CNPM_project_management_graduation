@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import vn.iotstar.Entity.Lecture;
 
 @Repository
-public interface LectureRepository extends JpaRepository<Lecture, Integer>{
+public interface LectureRepository extends JpaRepository<Lecture, Long>{
 
 }
