@@ -2,7 +2,6 @@ package vn.iotstar.Controller.Admin;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -53,28 +52,17 @@ public class StudentController {
 	}
 
 	@GetMapping("edit/{mssv}")
-	public ModelAndView edit(ModelMap model, @PathVariable("mssv") Long MSSV) {
+	public ModelAndView edit(ModelMap model, @PathVariable("mssv") Long MSSV) throws IOException {
 		Optional<Student> opt = studentService.findById(MSSV);
 		StudentModel student = new StudentModel();
 		if (opt.isPresent()) {
 			Student entity = opt.get();
-			File file = new File("src/main/webapp/resources/images/"+ entity.getImage());
-			FileInputStream input = null;
-			try {
-				input = new FileInputStream(file);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			MultipartFile imageFile = null;
-			try {
-				imageFile = new MockMultipartFile("file", file.getName(), "text/plain",
-						IOUtils.toByteArray(input));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			File file = new File("src/main/webapp/resources/images/" + entity.getImage());
+			FileInputStream input = new FileInputStream(file);
+			MultipartFile imageFile = new MockMultipartFile(entity.getImage(), file.getName(), "text/plain",
+					IOUtils.toByteArray(input));
 			student.setImageFile(imageFile);
+			System.out.print(imageFile.getName());
 			BeanUtils.copyProperties(entity, student);
 			student.setIsEdit(true);
 			model.addAttribute("student", student);
@@ -83,6 +71,7 @@ public class StudentController {
 		}
 		model.addAttribute("message", "Student không tồn tại");
 		return new ModelAndView("redirect:/admin/student", model);
+
 	}
 
 	@PostMapping("saveofUpdate")
