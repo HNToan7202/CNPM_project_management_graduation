@@ -39,5 +39,12 @@ Khó khăn ngày trước : Chưa thấy
 Thêm trang hiển thị danh sách sinh viên : Thành
 Thêm trang hiển thị danh sách giảng viên : Thành 
 Thêm trang hiểu thị danh sách đề tài : Toàn
-Thêm trang hiển thị các thông báo : Huy
+Tạo controller các chức năng thêm ,sửa,xóa cho đề tài, thông báo, giáo viên : Huy
+
 24/11/2022
+Tạo trang web thực hiện được chức năng thêm xóa sửa hoàn chỉnh : 
+ADmin : quản lý tài khoản 2 actor
+Student : Quản lý thông tin các nhân, Xem, Sửa một số attribute
+LEcture: Quản lý thông tin các nhân, Xem, Sửa một số attribute
+
+
