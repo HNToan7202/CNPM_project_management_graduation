@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>Sinh Viên</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Trang Admin <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Trang Sinh Viên <sup></sup></div>
             </a>
 
 
@@ -319,7 +321,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh sách giảng viên</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Danh sách sinh viên</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -336,7 +338,7 @@
                                             <th>Ngày sinh</th>
                                             <th>Địa chỉ</th>
                                             <th>Email</th>
-                                            <th>Là trưởng bộ môn</th>
+                                            <th>Là trưởng nhóm</th>
                                             <th>Còn hoạt động</th>
                                             <th>Quản lý</th>
                                         </tr>
@@ -348,7 +350,7 @@
                                             <th>Ngày sinh</th>
                                             <th>Địa chỉ</th>
                                             <th>Email</th>
-                                            <th>Là trưởng bộ môn</th>
+                                            <th>Là trưởng nhóm</th>
                                             <th>Còn hoạt động</th>
                                             <th>Quản lý</th>
                                         </tr>
