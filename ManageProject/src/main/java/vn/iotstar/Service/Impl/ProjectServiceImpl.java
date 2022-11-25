@@ -13,29 +13,14 @@ import org.springframework.util.StringUtils;
 
 import vn.iotstar.Entity.Project;
 import vn.iotstar.Repository.ProjectRepository;
-import vn.iotstar.Service.ProjectService;
+import vn.iotstar.Service.IProjectService;
 
 
 @Service
-public class ProjectServiceImpl implements ProjectService{
+public class ProjectServiceImpl implements IProjectService{
 	
 	@Autowired
 	ProjectRepository projectRepository;
-
-	public ProjectServiceImpl(ProjectRepository projectRepository) {
-		super();
-		this.projectRepository = projectRepository;
-	}
-
-	@Override
-	public List<Project> findByIdContaining(String id) {
-		return projectRepository.findByIdContaining(id);
-	}
-
-	@Override
-	public Page<Project> findByIdContaining(String id, Pageable pageable) {
-		return projectRepository.findByIdContaining(id, pageable);
-	}
 
 	@Override
 	public Optional<Project> findById(String id) {
@@ -44,49 +29,7 @@ public class ProjectServiceImpl implements ProjectService{
 
 	@Override
 	public <S extends Project> S save(S entity) {
-		if (entity.getId() == null) {
-
-			return projectRepository.save(entity);
-
-		} else {
-
-			Optional<Project> opt = findById(entity.getId());
-
-			if (opt.isPresent()) {
-
-				if (StringUtils.isEmpty(entity.getId())) {
-
-					entity.setId(opt.get().getId());
-
-				} else {
-
-					//lấy lại images cũ
-
-					entity.setId(entity.getId());
-
-				}
-
-			}
-
-			return projectRepository.save(entity);
-
-		}
-	}
-
-	@Override
-	public long count() {
-		return projectRepository.count();
-	}
-
-	@Override
-	public void delete(Project entity) {
-		projectRepository.delete(entity);
-		
-	}
-
-	@Override
-	public <S extends Project> Optional<S> findOne(Example<S> example) {
-		return projectRepository.findOne(example);
+		return projectRepository.save(entity);
 	}
 
 	@Override
@@ -105,17 +48,39 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 
 	@Override
+	public List<Project> findAllById(Iterable<String> ids) {
+		return projectRepository.findAllById(ids);
+	}
+
+	@Override
+	public <S extends Project> Page<S> findAll(Example<S> example, Pageable pageable) {
+		return projectRepository.findAll(example, pageable);
+	}
+
+	@Override
+	public long count() {
+		return projectRepository.count();
+	}
+
+	@Override
 	public void deleteById(String id) {
 		projectRepository.deleteById(id);
+	}
+
+	@Override
+	public void delete(Project entity) {
+		projectRepository.delete(entity);
+	}
+
+	@Override
+	public Project getById(String id) {
+		return projectRepository.getById(id);
 	}
 
 	@Override
 	public void deleteAll() {
 		projectRepository.deleteAll();
 	}
-	
-	
-	
-	
+
 	
 }

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Lecture;
@@ -19,58 +18,66 @@ public class LectureServiceImpl implements ILectureService{
 	@Autowired
 	LectureRepository lectureRepo;
 
+	@Override
 	public <S extends Lecture> S save(S entity) {
 		return lectureRepo.save(entity);
 	}
 
+	@Override
+	public <S extends Lecture> Optional<S> findOne(Example<S> example) {
+		return lectureRepo.findOne(example);
+	}
+
+	@Override
 	public List<Lecture> findAll() {
 		return lectureRepo.findAll();
 	}
 
+	@Override
 	public Page<Lecture> findAll(Pageable pageable) {
 		return lectureRepo.findAll(pageable);
 	}
 
-	public List<Lecture> findAll(Sort sort) {
-		return lectureRepo.findAll(sort);
+	@Override
+	public List<Lecture> findAllById(Iterable<Long> ids) {
+		return lectureRepo.findAllById(ids);
 	}
 
-	public <S extends Lecture> S saveAndFlush(S entity) {
-		return lectureRepo.saveAndFlush(entity);
-	}
-
+	@Override
 	public <S extends Lecture> Page<S> findAll(Example<S> example, Pageable pageable) {
 		return lectureRepo.findAll(example, pageable);
 	}
 
-	public Optional<Lecture> findById(Integer id) {
+	@Override
+	public Optional<Lecture> findById(Long id) {
 		return lectureRepo.findById(id);
 	}
 
+	@Override
 	public long count() {
 		return lectureRepo.count();
 	}
 
-	public void deleteById(Integer id) {
+	@Override
+	public void deleteById(Long id) {
 		lectureRepo.deleteById(id);
 	}
 
-	@SuppressWarnings("deprecation")
-	public Lecture getOne(Integer id) {
-		return lectureRepo.getOne(id);
-	}
-
+	@Override
 	public void delete(Lecture entity) {
 		lectureRepo.delete(entity);
 	}
 
-	@SuppressWarnings("deprecation")
-	public Lecture getById(Integer id) {
+	@Override
+	public Lecture getById(Long id) {
 		return lectureRepo.getById(id);
 	}
 
+	@Override
 	public void deleteAll() {
 		lectureRepo.deleteAll();
 	}
+
+	
 	
 }

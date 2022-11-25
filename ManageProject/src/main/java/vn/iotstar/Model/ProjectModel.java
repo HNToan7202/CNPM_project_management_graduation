@@ -1,5 +1,12 @@
 package vn.iotstar.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectModel {
 	
 private String id;
@@ -9,7 +16,7 @@ private String id;
 	private boolean is_active;
 	
 	private Long lecture_id;
-
+	private Boolean IsEdit=false;
 	public String getId() {
 		return id;
 	}
@@ -48,6 +55,14 @@ private String id;
 
 	public void setLecture_id(Long lecture_id) {
 		this.lecture_id = lecture_id;
+	}
+
+	public Boolean getIsEdit() {
+		return IsEdit;
+	}
+
+	public void setIsEdit(Boolean isEdit) {
+		IsEdit = isEdit;
 	}
 	
 	
