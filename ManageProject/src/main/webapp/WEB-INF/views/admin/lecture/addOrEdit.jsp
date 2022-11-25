@@ -5,7 +5,7 @@
 	<h2>${lecture.isEdit ? 'Edit lecture' : 'Add New lecture' }</h2>
 	<form:form action="/admin/lecture/saveofUpdate" method="POST"
 		modelAttribute="lecture" enctype="multipart/form-data">
-	
+		<form:hidden path="id" />
 	Tên giảng viên: <form:input path="name" />
 		<br />
 	Email : <form:input path="email" />
