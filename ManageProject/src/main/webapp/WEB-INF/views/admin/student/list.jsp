@@ -20,7 +20,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="item" items="${students}">
+			<c:forEach var="item" items="${students.content}">
 				<tr class="odd gradeX">
 					<td>${item.mssv}</td>
 					<td>${item.name}</td>
@@ -43,4 +43,22 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<div class="d-flex justify-content-center" style="width: 100%;">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:if test="${students.number>0}">
+					<li class="page-item"><a class="page-link"
+						href="/admin/student?p=${students.number-1}">Previous</a></li>
+				</c:if>
+				<c:forEach begin="1" end="${students.totalPages-1}" var="i">
+					<li class="page-item ${students.number==i? 'active':'' }"><a
+						class="page-link" href="/admin/student?p=${i}">${i}</a></li>
+				</c:forEach>
+				<c:if test="${students.number < (students.totalPages-1)}">
+					<li class="page-item"><a class="page-link"
+						href="/admin/student?p=${students.number + 1}">Next</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</div>
 </div>

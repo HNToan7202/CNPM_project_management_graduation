@@ -48,3 +48,5 @@ Student : Quản lý thông tin các nhân, Xem, Sửa một số attribute
 LEcture: Quản lý thông tin các nhân, Xem, Sửa một số attribute
 Thêm trang hiển thị các thông báo : Huy
 25/11/2022
+Phân trang cho Student
+Viết hàm tìm kiếm student bằng tên
