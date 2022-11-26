@@ -34,6 +34,15 @@ public interface ILectureService {
 	<S extends Lecture> Optional<S> findOne(Example<S> example);
 
 	<S extends Lecture> S save(S entity);
+	
+	List<Lecture> findByLectureNameContaining(String name);
+
+	//
+	Lecture findOneBylectureName(String name);
+
+	//Tìm kiếm và Phân trang
+
+	Page<Lecture> findBylectureNameontaining(String name,Pageable pageable);
 
 	
 }
