@@ -93,7 +93,7 @@ public class LectureController {
 
 	@GetMapping("search")
 	public String search() {
-		return "admin/lecture/search";
+		return "admin/add/GiangVien";
 	}
 
 	@GetMapping("delete/{id}")
