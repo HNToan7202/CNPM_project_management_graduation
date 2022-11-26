@@ -34,5 +34,7 @@ public interface IStudentService {
 	List<Student> findAll();
 
 	<S extends Student> S save(S entity);
-
+	
+	List<Student> findByNameContaining (String name);
+	Page<Student> findByNameContaining (String name,Pageable pageable);
 }
