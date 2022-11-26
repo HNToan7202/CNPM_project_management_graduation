@@ -78,6 +78,23 @@ public class LectureServiceImpl implements ILectureService{
 		lectureRepo.deleteAll();
 	}
 
-	
+	@Override
+	public List<Lecture> findByLectureNameContaining(String name) {
+		// TODO Auto-generated method stub
+		return lectureRepo.findByLectureNameContaining(name);
+	}
+
+	@Override
+	public Lecture findOneBylectureName(String name) {
+		// TODO Auto-generated method stub
+		return lectureRepo.findOneBylectureName(name);
+	}
+
+	@Override
+	public Page<Lecture> findBylectureNameontaining(String name, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return lectureRepo.findBylectureNameontaining(name, pageable);
+	}
+
 	
 }

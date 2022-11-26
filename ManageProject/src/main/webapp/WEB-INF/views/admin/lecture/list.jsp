@@ -9,35 +9,33 @@
 		id="sample_2">
 		<thead>
 			<tr>
-				<th>Mã số sinh viên</th>
 				<th>Họ tên</th>
 				<th>Ảnh đại diện</th>
 				<th>Ngày sinh</th>
 				<th>Email</th>
-				<th>Chuyên ngành</th>
+				<th>Địa chỉ</th>
 				<th>Trạng thái</th>
 				<th>Hành động</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="item" items="${students}">
+			<c:forEach var="item" items="${lectures}">
 				<tr class="odd gradeX">
-					<td>${item.mssv}</td>
 					<td>${item.name}</td>
 					<td><c:url value="/images/${item.image}" var="imgUrl"></c:url>
 						<img width="100px" height="100px" name="imageFile" src="${imgUrl}"></td>
 					<td>${item.dateofbirth}</td>
 					<td>${item.email}</td>
-					<td>${item.deparment}</td>
+					<td>${item.address}</td>
 					<td><c:if test="${item.status == true}">
 							<span class="label label-sm label-success"> Hoạt động </span>
 						</c:if> <c:if test="${item.status ==false}">
 							<span class="label label-sm label-warning"> Khóa</span>
 						</c:if></td>
 					<td><a
-						href="<c:url value='/admin/student/edit/${item.mssv}'/>"
+						href="<c:url value='/admin/lecture/edit/${item.id}'/>"
 						class="center">Edit</a> | <a
-						href="<c:url value='/admin/student/delete/${item.mssv}'/>"
+						href="<c:url value='/admin/lecture/delete/${item.id}'/>"
 						class="center">Delete</a></td>
 				</tr>
 			</c:forEach>

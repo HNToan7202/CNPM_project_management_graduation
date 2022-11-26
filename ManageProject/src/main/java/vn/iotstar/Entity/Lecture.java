@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Lecture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String name;
 	private Date dateofbirth;
@@ -111,6 +111,12 @@ public class Lecture {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }
