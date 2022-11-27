@@ -1,4 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
@@ -218,10 +218,10 @@
 
 </html>
 
- --%>
 
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <div>
@@ -235,4 +235,4 @@
 		<br />
 		<button>Save</button>
 	</form:form>
-</div>
+</div> --%>
