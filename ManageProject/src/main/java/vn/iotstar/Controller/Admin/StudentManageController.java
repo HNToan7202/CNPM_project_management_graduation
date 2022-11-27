@@ -35,7 +35,7 @@ import vn.iotstar.Service.IStudentService;
 
 @Controller
 @RequestMapping("/admin/student")
-public class StudentController {
+public class StudentManageController {
 
 	@Autowired
 	IStudentService studentService;

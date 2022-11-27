@@ -1,5 +1,7 @@
 package vn.iotstar.Model;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ public class NotificationModel {
 	private String name;
 
 	private String desciption;
-
+	private Date createDate;
 	private boolean status;
 	
 	private Boolean IsEdit=false;
@@ -55,6 +57,14 @@ public class NotificationModel {
 
 	public void setIsEdit(boolean isEdit) {
 		IsEdit = isEdit;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 }
