@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<main class="page-content" style="padding-left: 220px;">
+<div class="row" style="margin: 0px;">
+	<!-- Hiển thị thông báo -->
+	<%@include file="/common/info.jsp"%>
+	<!-- Kết thúc hiển thị thông báo -->
 	<table class="table table-striped table-bordered table-hover"
 		id="sample_2">
 		<thead>
@@ -13,10 +16,10 @@
 		<tbody>
 			<c:forEach var="item" items="${notifies}">
 				<tr class="odd gradeX">
-					<td><a href="student/notify/${item.id}">${item.name}</td>
+					<td>${item.name}</td>
 					<td>${item.createDate}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-</main>
+</div>

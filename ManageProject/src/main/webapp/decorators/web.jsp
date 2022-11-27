@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-<c:url value="/templates/" var="URL"></c:url>
+<c:url value="/resources/" var="URL"></c:url>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,13 +22,12 @@
 	rel="stylesheet" type="text/css">
 
 <link href="${URL}css/styles.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 	<%@ include file="/common/web/header.jsp"%>
-
+	<%@ include file="/common/web/slidebar.jsp"%>
 	<!-- body -->
-	<dec:body />
+	<sitemesh:write property='body'></sitemesh:write>
 	<!-- body -->
 
 	<!--=== Footer v4 ===-->
@@ -45,5 +44,6 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		type="text/javascript"></script>
+	<script src="resources/js/script.js" type="text/javascript"></script>
 </body>
 </html>

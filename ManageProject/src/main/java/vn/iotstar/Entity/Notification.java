@@ -1,5 +1,7 @@
 package vn.iotstar.Entity;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,19 +22,19 @@ import lombok.NoArgsConstructor;
 public class Notification {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	private String name;
-
+	private Date createDate;
 	private String desciption;
 
 	private boolean status;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -42,6 +44,14 @@ public class Notification {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 	public String getDesciption() {
@@ -59,5 +69,5 @@ public class Notification {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 }
