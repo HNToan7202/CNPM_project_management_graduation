@@ -1,5 +1,6 @@
 package vn.iotstar.Entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +22,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "Lecture")
-public class Lecture {
+public class Lecture implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

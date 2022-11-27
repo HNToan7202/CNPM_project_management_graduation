@@ -83,7 +83,7 @@
 	<!-- END EXAMPLE TABLE PORTLET-->
 </div> --%>
 
-<div>
+<div class="" style="">
 	<h2>${student.isEdit ? 'Edit Student' : 'Add New Student' }</h2>
 	<form:form action="/admin/student/saveofUpdate" method="POST"
 		modelAttribute="student" enctype="multipart/form-data">
@@ -98,7 +98,7 @@
 		<br />
 	Chuyên ngành : <form:input path="deparment" />
 		<br />
-		<form:hidden path="image"/> 
+		<form:hidden path="image" />
 		<input type="file" name="imageFile" />
 		<br />
 		<form:radiobutton path="status" value="false" />Khóa <form:radiobutton

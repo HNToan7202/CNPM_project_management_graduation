@@ -97,7 +97,7 @@ public class LectureController {
 	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name) {
 		List<Lecture> list = null;
 		if (StringUtils.hasText(name)) {
-			list = lectureSerivce.findByLectureNameContaining(name);
+			list = lectureSerivce.findByNameContaining(name);
 		} else
 			list = lectureSerivce.findAll();
 		model.addAttribute("categories", list);
