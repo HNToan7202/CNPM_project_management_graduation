@@ -29,7 +29,7 @@ import vn.iotstar.Service.ILectureService;
 
 @Controller
 @RequestMapping("/admin/lecture")
-public class LectureController {
+public class LectureManageController {
 	@Autowired
 	ILectureService lectureSerivce;
 

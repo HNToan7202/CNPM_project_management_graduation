@@ -50,3 +50,15 @@ Thêm trang hiển thị các thông báo : Huy
 25/11/2022
 Phân trang cho Student
 Viết hàm tìm kiếm student bằng tên
+
+26/11/2022
+Thêm logic cho phần login : Session 
+Chỉnh sửa hoàn chỉnh chức năng quản lý thông tin : Sinh viên,giảng viên
+
+27/11/2022
+
+28/11/2022
+khó khăn : Entity đề tài chưa xác định được rõ mối quan hệ với các entity khác
+Trang thông tin chi tiết: Sinh viên : Huy
+Trang thông tin chi tiết: Giảng viên : Toàn
+Thêm, xóa , xem thông báo dành cho admin : Thành
