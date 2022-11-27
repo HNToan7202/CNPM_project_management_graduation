@@ -1,4 +1,4 @@
-package vn.iotstar.Controller;
+package vn.iotstar.Config;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class DownloadImageController {
+public class StorageProperties {
 
 	@Autowired
 	ServletContext application;

@@ -1,5 +1,6 @@
 package vn.iotstar.Entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -15,13 +16,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Builder
 @Table(name = "Student")
-public class Student  {
+public class Student  implements Serializable{
 
 	@Id
 	private Long mssv;
@@ -52,7 +54,11 @@ public class Student  {
 	@Column(name = "status")
 	private String status;
 
-	/* private MultipartFile imageFile; */
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user_student;
+	
 	public Student(Long mssv, String name, Date dateofbirth, String image, String email, String deparment,
 			Long id_project, Long id_leader, String status) {
 		super();
@@ -142,16 +148,6 @@ public class Student  {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	/*
-	 * public MultipartFile getImageFile() { return imageFile; }
-	 * 
-	 * public void setImageFile(MultipartFile imageFile) { this.imageFile =
-	 * imageFile; }
-	 */
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user_student;
 	 
 }

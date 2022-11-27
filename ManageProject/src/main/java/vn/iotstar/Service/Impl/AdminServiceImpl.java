@@ -74,6 +74,7 @@ public class AdminServiceImpl implements IAdminService{
 		adminRepo.deleteById(id);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Admin getOne(Integer id) {
 		return adminRepo.getOne(id);
@@ -84,6 +85,7 @@ public class AdminServiceImpl implements IAdminService{
 		adminRepo.delete(entity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Admin getById(Integer id) {
 		return adminRepo.getById(id);

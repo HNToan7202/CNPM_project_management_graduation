@@ -59,6 +59,7 @@ public class NotificationServiceImpl implements INotificationService {
 		notificationRepo.deleteById(id);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Notification getOne(Long id) {
 		return notificationRepo.getOne(id);
@@ -69,6 +70,7 @@ public class NotificationServiceImpl implements INotificationService {
 		notificationRepo.delete(entity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Notification getById(Long id) {
 		return notificationRepo.getById(id);

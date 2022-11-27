@@ -1,5 +1,7 @@
 package vn.iotstar.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +15,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -20,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table(name = "Projects")
 @NamedQuery(name="Project.findAll", query="SELECT p FROM Project p")
-public class Project {
+public class Project implements Serializable{
 	
 	@Id
 	@Column(name ="id" ,columnDefinition = "nvarchar(20)")

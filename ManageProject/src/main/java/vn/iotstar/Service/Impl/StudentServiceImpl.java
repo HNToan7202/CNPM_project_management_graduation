@@ -76,6 +76,7 @@ public class StudentServiceImpl implements IStudentService {
 		studentRepo.delete(entity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Student getById(Long id) {
 		return studentRepo.getById(id);
