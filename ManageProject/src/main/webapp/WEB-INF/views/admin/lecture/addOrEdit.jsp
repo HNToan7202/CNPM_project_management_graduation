@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <div>
-	<h2>${lecture.isEdit ? 'Edit lecture' : 'Add New lecture' }</h2>
+	<h2>${item.isEdit ? 'Edit lecture' : 'Add New lecture' }</h2>
 	<form:form action="/admin/lecture/saveofUpdate" method="POST"
 		modelAttribute="lecture" enctype="multipart/form-data">
 		<form:hidden path="id" />
@@ -20,6 +20,10 @@
 		<form:radiobutton path="status" value="false" />Khóa <form:radiobutton
 			path="status" value="true" />Hoạt động 
 		<br />
+
+		<form:radiobutton path="is_truongbomon" value="false" />Lecture <form:radiobutton
+			path="status" value="true" />Head Lecture
+		<br/> 
 		<button>Save</button>
 	</form:form>
 </div>
