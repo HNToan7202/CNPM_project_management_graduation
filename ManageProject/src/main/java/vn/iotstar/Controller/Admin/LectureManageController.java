@@ -1,3 +1,4 @@
+
 package vn.iotstar.Controller.Admin;
 
 import java.io.IOException;
@@ -28,8 +29,14 @@ import vn.iotstar.Model.LectureModel;
 import vn.iotstar.Service.ILectureService;
 
 @Controller
+
 @RequestMapping("/admin/lecture")
+<<<<<<< HEAD:ManageProject/src/main/java/vn/iotstar/Controller/Admin/LectureController.java
+public class LectureController {
+
+=======
 public class LectureManageController {
+>>>>>>> d913d70e0f108de813adb916646e6fe5678de54f:ManageProject/src/main/java/vn/iotstar/Controller/Admin/LectureManageController.java
 	@Autowired
 	ILectureService lectureSerivce;
 

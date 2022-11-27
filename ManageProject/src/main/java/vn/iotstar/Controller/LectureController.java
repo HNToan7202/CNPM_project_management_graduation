@@ -111,3 +111,4 @@ public class LectureController {
 		return new ModelAndView("redirect:/admin/lecture", model);
 	}
 }
+
