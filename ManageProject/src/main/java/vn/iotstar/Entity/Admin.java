@@ -2,6 +2,7 @@ package vn.iotstar.Entity;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,10 +41,10 @@ public class Admin {
 	@Column(name = "status")
 	private boolean status;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user_admin;
-
+	
+    @OneToOne(mappedBy = "user_admin", cascade = CascadeType.ALL)
+    private User admin;
+    
 	public Admin(String name, Date dateofbirth, String email, Boolean status) {
 		super();
 		this.name = name;

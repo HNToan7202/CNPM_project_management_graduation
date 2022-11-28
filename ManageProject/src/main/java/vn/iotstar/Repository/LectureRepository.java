@@ -15,12 +15,12 @@ public interface LectureRepository extends JpaRepository<Lecture, Long>{
 
 	//Tìm Kiếm theo nội dung tên from category where Categoryname
 
-	List<Lecture> findByLectureNameContaining(String name);
+	List<Lecture> findByNameContaining(String name);
 
 	//
-	Lecture findOneBylectureName(String name);
+	Lecture findOneByName(String name);
 
 	//Tìm kiếm và Phân trang
 
-	Page<Lecture> findBylectureNameontaining(String name,Pageable pageable);
+	Page<Lecture> findByNameContaining(String name,Pageable pageable);
 }

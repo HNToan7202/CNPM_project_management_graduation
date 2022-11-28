@@ -2,6 +2,7 @@ package vn.iotstar.Entity;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -141,7 +142,11 @@ public class Student  {
 
 	public void setStatus(String status) {
 		this.status = status;
+		
 	}
+	
+	@OneToOne(mappedBy = "user_student", cascade = CascadeType.ALL)
+    private User student;
 	
 	/*
 	 * public MultipartFile getImageFile() { return imageFile; }
@@ -149,9 +154,5 @@ public class Student  {
 	 * public void setImageFile(MultipartFile imageFile) { this.imageFile =
 	 * imageFile; }
 	 */
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user_student;
 	 
 }

@@ -79,21 +79,22 @@ public class LectureServiceImpl implements ILectureService{
 	}
 
 	@Override
-	public List<Lecture> findByLectureNameContaining(String name) {
+	public List<Lecture> findByNameContaining(String name) {
 		// TODO Auto-generated method stub
-		return lectureRepo.findByLectureNameContaining(name);
+		return lectureRepo.findByNameContaining(name);
+	}
+
+
+	@Override
+	public Page<Lecture> findByNameContaining(String name, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return lectureRepo.findByNameContaining(name, pageable);
 	}
 
 	@Override
-	public Lecture findOneBylectureName(String name) {
+	public Lecture findOneByName(String name) {
 		// TODO Auto-generated method stub
-		return lectureRepo.findOneBylectureName(name);
-	}
-
-	@Override
-	public Page<Lecture> findBylectureNameontaining(String name, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return lectureRepo.findBylectureNameontaining(name, pageable);
+		return lectureRepo.findOneByName(name);
 	}
 
 	

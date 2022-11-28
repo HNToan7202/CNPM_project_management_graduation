@@ -1,6 +1,8 @@
 package vn.iotstar.Entity;
 
 import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,9 +36,8 @@ public class Lecture {
 	private boolean is_truongbomon;
 	private boolean status;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user_lecture;
+    @OneToOne(mappedBy = "user_lecture", cascade = CascadeType.ALL)
+    private User lecture;
 	
 //	@OneToMany(mappedBy = "lectures",cascade = CascadeType.ALL)
 //	private List<Project> project = new ArrayList<>();

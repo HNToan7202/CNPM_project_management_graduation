@@ -86,4 +86,15 @@ public class StudentServiceImpl implements IStudentService {
 		studentRepo.deleteAll();
 	}
 
+	@Override
+	public List<Student> findByNameContaining(String name) {
+		// TODO Auto-generated method stub
+		return studentRepo.findByNameContaining(name);
+	}
+
+	@Override
+	public Page<Student> findByNameContaining(String name, Pageable pageable) {
+		return studentRepo.findByNameContaining(name, pageable);
+	}
+
 }

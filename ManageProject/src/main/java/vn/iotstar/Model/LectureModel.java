@@ -22,6 +22,7 @@ public class LectureModel {
 	private boolean is_truongbomon;
 	private boolean status;
 	private MultipartFile imageFile;
+	
 	private Boolean isEdit = false;
 	
 	public long getId() {

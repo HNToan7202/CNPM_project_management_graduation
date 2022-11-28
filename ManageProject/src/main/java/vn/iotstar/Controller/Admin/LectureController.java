@@ -30,6 +30,7 @@ import vn.iotstar.Service.ILectureService;
 @Controller
 @RequestMapping("/admin/lecture")
 public class LectureController {
+	
 	@Autowired
 	ILectureService lectureSerivce;
 
@@ -88,8 +89,8 @@ public class LectureController {
 
 	@GetMapping("")
 	public String list(ModelMap model) {
-		List<Lecture> lectures = lectureSerivce.findAll();
-		model.addAttribute("lectures", lectures);
+		List<Lecture> list = lectureSerivce.findAll();
+		model.addAttribute("lectures", list);
 		return "admin/lecture/list";
 	}
 
@@ -97,12 +98,12 @@ public class LectureController {
 	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name) {
 		List<Lecture> list = null;
 		if (StringUtils.hasText(name)) {
-			list = lectureSerivce.findByLectureNameContaining(name);
+			list = lectureSerivce.findByNameContaining(name);
 		} else
 			list = lectureSerivce.findAll();
 		model.addAttribute("categories", list);
 
-		return "/admin/categories/search";
+		return "/admin/lecture/search";
 	}
 
 	@GetMapping("delete/{id}")

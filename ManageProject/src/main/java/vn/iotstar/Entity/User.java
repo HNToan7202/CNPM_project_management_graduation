@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -40,14 +41,19 @@ public class User {
 	@JoinTable(name = "user_role",joinColumns = @JoinColumn(name="user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
 	List<Role> roles = new ArrayList<>();
 	
-    @OneToOne(mappedBy = "user_student", cascade = CascadeType.ALL)
-    private Student student;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "student_id")
+	private Student user_student;
+	
     
-    @OneToOne(mappedBy = "user_lecture", cascade = CascadeType.ALL)
-    private Lecture lecture;
-    
-    @OneToOne(mappedBy = "user_admin", cascade = CascadeType.ALL)
-    private Admin admin;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "lecture_id")
+	private Lecture user_lecture;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "admin_id")
+	private Admin user_admin;
+
 	
 	public long getUsername() {
 		return username;
