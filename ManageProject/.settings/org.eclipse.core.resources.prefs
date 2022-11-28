@@ -3,6 +3,9 @@ encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin/Home.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin/add/GiangVien.jsp=UTF-8
+<<<<<<< HEAD
 encoding//src/main/webapp/WEB-INF/views/index.jsp=UTF-8
 encoding//src/main/webapp/common/admin/Student.jsp=UTF-8
+=======
+>>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152
 encoding/<project>=UTF-8

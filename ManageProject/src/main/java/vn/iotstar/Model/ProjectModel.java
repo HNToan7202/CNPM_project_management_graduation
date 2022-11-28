@@ -1,18 +1,27 @@
 package vn.iotstar.Model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import vn.iotstar.Entity.Lecture;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectModel {
-	
-private String id;
-	
+	private String id;
 	private String name;
+	private String mucTieu;
+	private String yeuCau;
 	private String desciption;
+	private int soLuongSV;
+	private boolean is_Faculty;
+	private String Faculty;
+	private String nienKhoa;
+	List<Lecture> lectures ;
+	private float point;
 	private boolean is_active;
 	
 	private Long lecture_id;

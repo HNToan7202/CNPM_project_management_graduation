@@ -1,3 +1,4 @@
+
 package vn.iotstar.Controller.Admin;
 
 import java.io.IOException;
@@ -28,9 +29,14 @@ import vn.iotstar.Model.LectureModel;
 import vn.iotstar.Service.ILectureService;
 
 @Controller
+
 @RequestMapping("/admin/lecture")
+<<<<<<< HEAD:ManageProject/src/main/java/vn/iotstar/Controller/Admin/LectureController.java
 public class LectureController {
-	
+
+=======
+public class LectureManageController {
+>>>>>>> d913d70e0f108de813adb916646e6fe5678de54f:ManageProject/src/main/java/vn/iotstar/Controller/Admin/LectureManageController.java
 	@Autowired
 	ILectureService lectureSerivce;
 
@@ -89,8 +95,8 @@ public class LectureController {
 
 	@GetMapping("")
 	public String list(ModelMap model) {
-		List<Lecture> list = lectureSerivce.findAll();
-		model.addAttribute("lectures", list);
+		List<Lecture> lectures = lectureSerivce.findAll();
+		model.addAttribute("lectures", lectures);
 		return "admin/lecture/list";
 	}
 
@@ -103,7 +109,7 @@ public class LectureController {
 			list = lectureSerivce.findAll();
 		model.addAttribute("categories", list);
 
-		return "/admin/lecture/search";
+		return "/admin/categories/search";
 	}
 
 	@GetMapping("delete/{id}")

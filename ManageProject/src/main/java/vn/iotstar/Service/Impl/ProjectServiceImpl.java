@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import vn.iotstar.Entity.Project;
 import vn.iotstar.Repository.ProjectRepository;
@@ -72,6 +71,7 @@ public class ProjectServiceImpl implements IProjectService{
 		projectRepository.delete(entity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Project getById(String id) {
 		return projectRepository.getById(id);

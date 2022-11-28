@@ -114,4 +114,8 @@
 		crossorigin="anonymous"></script>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152

@@ -68,6 +68,7 @@ public class LectureServiceImpl implements ILectureService{
 		lectureRepo.delete(entity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Lecture getById(Long id) {
 		return lectureRepo.getById(id);
@@ -80,12 +81,16 @@ public class LectureServiceImpl implements ILectureService{
 
 	@Override
 	public List<Lecture> findByNameContaining(String name) {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
+=======
+>>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152
 		return lectureRepo.findByNameContaining(name);
 	}
 
 
 	@Override
+<<<<<<< HEAD
 	public Page<Lecture> findByNameContaining(String name, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return lectureRepo.findByNameContaining(name, pageable);
@@ -95,6 +100,15 @@ public class LectureServiceImpl implements ILectureService{
 	public Lecture findOneByName(String name) {
 		// TODO Auto-generated method stub
 		return lectureRepo.findOneByName(name);
+=======
+	public Lecture findOneByName(String name) {
+		return lectureRepo.findOneByName(name);
+	}
+
+	@Override
+	public Page<Lecture> findByNameContaining(String name, Pageable pageable) {
+		return lectureRepo.findByNameContaining(name, pageable);
+>>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152
 	}
 
 	

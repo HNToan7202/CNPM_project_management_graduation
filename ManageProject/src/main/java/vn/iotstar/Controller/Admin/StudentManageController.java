@@ -35,14 +35,22 @@ import vn.iotstar.Service.IStudentService;
 
 @Controller
 @RequestMapping("/admin/student")
-public class StudentController {
+public class StudentManageController {
 
 	@Autowired
 	IStudentService studentService;
 
 	@Autowired
 	ServletContext application;
-
+	
+	@GetMapping("list")
+	public String ListDS() {
+		return "admin/add/Student";
+	}
+	@GetMapping("logintest")
+	public String login() {
+		return "common/login";
+	}
 	@GetMapping("add")
 	public String add(Model model) {
 		StudentModel student = new StudentModel();

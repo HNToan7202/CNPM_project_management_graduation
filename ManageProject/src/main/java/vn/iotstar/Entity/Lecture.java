@@ -1,5 +1,6 @@
 package vn.iotstar.Entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,7 +25,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "Lecture")
-public class Lecture {
+public class Lecture implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -41,7 +46,10 @@ public class Lecture {
 	
 //	@OneToMany(mappedBy = "lectures",cascade = CascadeType.ALL)
 //	private List<Project> project = new ArrayList<>();
-//    
+	/*
+	 * @ManyToOne((mappedBy = "lecturephanbien",cascade = CascadeType.) Project
+	 * project = new Project();
+	 */
     public Lecture()
     {
     	
