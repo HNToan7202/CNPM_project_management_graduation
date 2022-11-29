@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Danh sách Sinh Vien</title>
-
+<title>Insert title here</title>
 </head>
 <body>
- <!-- Page Wrapper -->
+    <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -20,7 +19,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Trang Sinh Viên <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Trang Admin <sup></sup></div>
             </a>
 
 
@@ -42,7 +41,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Dành cho:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Giảng viên</a>
+                        <a class="collapse-item " href="utilities-color.html">Giảng viên</a>
                         <a class="collapse-item" href="utilities-border.html">Sinh Viên</a>
                     </div>
                 </div>
@@ -62,10 +61,10 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Danh sách</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Xem</h6>
-                        <a class="collapse-item" href="login.html">Giảng Viên</a>
+                        <a class="collapse-item active" href="login.html">Giảng Viên</a>
                         <a class="collapse-item" href="register.html">Sinh Viên</a>
                         <a class="collapse-item" href="forgot-password.html">Trưởng bộ môn</a>
                     </div>
@@ -83,8 +82,8 @@
                     <span>Mở đăng ký</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <!-- Nav Item - Tables  active-->
+            <li class="nav-item ">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Phân chia đề tài</span></a>
@@ -281,12 +280,6 @@
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
                                 </a>
-                                <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-                                </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
@@ -298,152 +291,86 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh sách sinh viên</h1>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Xem Danh sách</h6>
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Giảng Viên</h6>
+                </div>
+                <form>
+                <form>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Mã số</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">Mã số phải có số.</div>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Mã số</th>
-                                            <th>Tên</th>
-                                            <th>Ngày sinh</th>
-                                            <th>Địa chỉ</th>
-                                            <th>Email</th>
-                                            <th>Là trưởng nhóm</th>
-                                            <th>Còn hoạt động</th>
-                                            <th>Quản lý</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Mã số</th>
-                                            <th>Tên</th>
-                                            <th>Ngày sinh</th>
-                                            <th>Địa chỉ</th>
-                                            <th>Email</th>
-                                            <th>Là trưởng nhóm</th>
-                                            <th>Còn hoạt động</th>
-                                            <th>Quản lý</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-
-                                        <tr>
-                                            <td>20110267</td>
-                                            <td>Nguyễn Công Thành</td>
-                                            <td>28/07/2002</td>
-                                            <td>Long Hưng, Châu Thành, Tiền Giang</td>
-                                            <td>20110267@student.hcmute.edu.vn</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Chỉnh sửa/Xóa</td>
-                                        </tr>
-                                        <tr>
-                                            <td>20110267</td>
-                                            <td>Nguyễn Công Thành</td>
-                                            <td>28/07/2002</td>
-                                            <td>Long Hưng, Châu Thành, Tiền Giang</td>
-                                            <td>20110267@student.hcmute.edu.vn</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Chỉnh sửa/Xóa</td>
-                                        </tr>
-                                        <tr>
-                                            <td>20110267</td>
-                                            <td>Nguyễn Công Thành</td>
-                                            <td>28/07/2002</td>
-                                            <td>Long Hưng, Châu Thành, Tiền Giang</td>
-                                            <td>20110267@student.hcmute.edu.vn</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Chỉnh sửa/Xóa</td>
-                                        </tr>
-                                        <tr>
-                                            <td>20110267</td>
-                                            <td>Nguyễn Công Thành</td>
-                                            <td>28/07/2002</td>
-                                            <td>Long Hưng, Châu Thành, Tiền Giang</td>
-                                            <td>20110267@student.hcmute.edu.vn</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Chỉnh sửa/Xóa</td>
-                                        </tr>
-                                        <tr>
-                                            <td>20110267</td>
-                                            <td>Nguyễn Công Thành</td>
-                                            <td>28/07/2002</td>
-                                            <td>Long Hưng, Châu Thành, Tiền Giang</td>
-                                            <td>20110267@student.hcmute.edu.vn</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Chỉnh sửa/Xóa</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Tên</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">Họ và tên</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">@</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Ngày sinh</label>
+                            <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Là trưởng bộ môn</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Còn hoạt động</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
                         </div>
                     </div>
-
-                </div>
-                <!-- /.container-fluid -->
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                </div>
+                    </div>
 
-                <div class="modal-body">Bạn có chắc chắn muốn đăng xuất</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <div class="modal-body">Bạn có chắc chắn muốn đăng xuất</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
 </body>
 </html>

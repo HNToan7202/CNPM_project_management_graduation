@@ -15,5 +15,10 @@ public class HomeController {
 	public String home(Model model) {
 		return "admin/Home";
 	}
+	@RequestMapping("GV")
+	public String ST(Model model) {
+		return "admin/edit/GiangVien";
+	}
+	
 
 }
