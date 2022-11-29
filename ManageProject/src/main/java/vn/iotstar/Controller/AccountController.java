@@ -1,7 +1,9 @@
 package vn.iotstar.Controller;
 
 import java.io.IOException;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.ServletContext;
@@ -26,8 +28,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.iotstar.Entity.Account;
+import vn.iotstar.Entity.Role;
 import vn.iotstar.Model.AccountModel;
 import vn.iotstar.Service.IAccountService;
+import vn.iotstar.Service.IRoleService;
 
 @Controller
 @RequestMapping("/account")
@@ -35,6 +39,9 @@ public class AccountController {
 
 	@Autowired
 	IAccountService accountService;
+
+	@Autowired
+	IRoleService roleService;
 
 	@Autowired
 	ServletContext application;
@@ -46,9 +53,16 @@ public class AccountController {
 		return "common/account/addOrEdit";
 	}
 
+	// đổ dữ liệu vào combobox
+	@ModelAttribute("roles")
+	public List<Role> getRoles() {
+		List<Role> roles = roleService.findAll();
+		return roles;
+	}
+
 	@GetMapping("edit/{email}")
-	public ModelAndView edit(ModelMap model, @PathVariable("email") String id) throws IOException {
-		Optional<Account> opt = accountService.findById(id);
+	public ModelAndView edit(ModelMap model, @PathVariable("email") String email) throws IOException {
+		Optional<Account> opt = accountService.findById(email);
 		AccountModel account = new AccountModel();
 		if (opt.isPresent()) {
 			Account entity = opt.get();

@@ -9,8 +9,13 @@
 		<br />
 	Password:  <form:input path="password" />
 		<br />
-		<form:radiobutton path="status" value="false" />Khóa <form:radiobutton
-			path="status" value="true" />Hoạt động 
+	Phân quyền:
+		<form:select path="role_id" items="${roles}" itemLabel="name"
+			itemvalue="id">
+		</form:select>
+		<br />
+		<form:radiobutton path="is_active" value="false" />Khóa <form:radiobutton
+			path="is_active" value="true" />Hoạt động 
 		<br />
 		<button>Save</button>
 	</form:form>
