@@ -46,7 +46,7 @@ public class ProjectController {
 	}
 
 	@GetMapping("edit/{id}")
-	public ModelAndView edit(ModelMap model, @PathVariable("id") String id) throws IOException {
+	public ModelAndView edit(ModelMap model, @PathVariable("id") Long id) throws IOException {
 		Optional<Project> opt = projectService.findById(id);
 		ProjectModel project = new ProjectModel();
 		if (opt.isPresent()) {
@@ -79,7 +79,7 @@ public class ProjectController {
 	}
 
 	@GetMapping("delete/{id}")
-	public ModelAndView delete(ModelMap model, @PathVariable("id") String id) {
+	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id) {
 		projectService.deleteById(id);
 		return new ModelAndView("redirect:/project", model);
 	}

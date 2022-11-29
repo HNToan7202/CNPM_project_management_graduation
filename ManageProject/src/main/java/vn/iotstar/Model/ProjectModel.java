@@ -1,36 +1,40 @@
 package vn.iotstar.Model;
 
-import java.util.List;
+import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import vn.iotstar.Entity.Lecture;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectModel {
-	private String id;
+	private Long id;
+
 	private String name;
-	private String mucTieu;
-	private String yeuCau;
 	private String desciption;
-	private int soLuongSV;
-	private boolean is_Faculty;
-	private String Faculty;
-	private String nienKhoa;
-	List<Lecture> lectures ;
+	private String muctieu;
+	private String yeucau;
+	private int soluongsv;
+	private Boolean isfaculty;
+	private String faculty;
+	private String nienkhoa;
 	private float point;
-	private boolean is_active;
 	
-	private Long lecture_id;
+	private int idtimeproject;
+	
+	private Date create_at;
+	private Date update_at;
+	private Boolean is_active;
+	
 	private Boolean IsEdit=false;
-	public String getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -50,20 +54,93 @@ public class ProjectModel {
 		this.desciption = desciption;
 	}
 
+	public String getMuctieu() {
+		return muctieu;
+	}
+
+	public void setMuctieu(String muctieu) {
+		this.muctieu = muctieu;
+	}
+
+	public String getYeucau() {
+		return yeucau;
+	}
+
+	public void setYeucau(String yeucau) {
+		this.yeucau = yeucau;
+	}
+
+	public int getSoluongsv() {
+		return soluongsv;
+	}
+
+	public void setSoluongsv(int soluongsv) {
+		this.soluongsv = soluongsv;
+	}
+
+	public Boolean isIs_faculty() {
+		return isfaculty;
+	}
+
+	public void setIs_faculty(Boolean is_faculty) {
+		this.isfaculty = is_faculty;
+	}
+
+	public String getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+	
+	
+	public String getNienkhoa() {
+		return nienkhoa;
+	}
+
+	public void setNienkhoa(String nienkhoa) {
+		this.nienkhoa = nienkhoa;
+	}
+
+	public float getPoint() {
+		return point;
+	}
+
+	public void setPoint(float point) {
+		this.point = point;
+	}
+
+	public int getId_timeproject() {
+		return idtimeproject;
+	}
+
+	public void setId_timeproject(int id_timeproject) {
+		this.idtimeproject = id_timeproject;
+	}
+
+	public Date getCreate_at() {
+		return create_at;
+	}
+
+	public void setCreate_at(Date create_at) {
+		this.create_at = create_at;
+	}
+
+	public Date getUpdate_at() {
+		return update_at;
+	}
+
+	public void setUpdate_at(Date update_at) {
+		this.update_at = update_at;
+	}
+
 	public boolean isIs_active() {
 		return is_active;
 	}
 
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
-	}
-
-	public Long getLecture_id() {
-		return lecture_id;
-	}
-
-	public void setLecture_id(Long lecture_id) {
-		this.lecture_id = lecture_id;
 	}
 
 	public Boolean getIsEdit() {
@@ -73,7 +150,6 @@ public class ProjectModel {
 	public void setIsEdit(Boolean isEdit) {
 		IsEdit = isEdit;
 	}
-	
-	
+
 
 }

@@ -20,32 +20,36 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
-@Table(name = "Projects")
+@Table(name = "Project")
 @NamedQuery(name = "Project.findAll", query = "SELECT p FROM Project p")
 public class Project implements Serializable {
 
 	@Id
-	@Column(name = "id", columnDefinition = "nvarchar(20)")
-	private String id;
+	@Column(name = "id")
+	private Long id;
 
 	private String name;
 	private String desciption;
-	private String mucTieu;
-	private String yeuCau;
-	private int soLuongSV;
-	private boolean is_Faculty;
-	private String Faculty;
-	private String nienKhoa;
+	private String muctieu;
+	private String yeucau;
+	private int soluongsv;
+	private Boolean isfaculty;
+	private String faculty;
+	private String nienkhoa;
+	
 	private float point;
-	private int id_TimeProject;
+	
+	private int idtimeproject;
+	
 	private Date create_at;
 	private Date update_at;
-	private boolean is_active;
-	public String getId() {
+	private Boolean is_active;
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -65,60 +69,73 @@ public class Project implements Serializable {
 		this.desciption = desciption;
 	}
 
-	public boolean isIs_active() {
+	public Boolean isIs_active() {
 		return is_active;
 	}
 
-	public void setIs_active(boolean is_active) {
+	public void setIs_active(Boolean is_active) {
 		this.is_active = is_active;
 	}
 
-	public String getMucTieu() {
-		return mucTieu;
+
+
+	public String getMuctieu() {
+		return muctieu;
 	}
 
-	public void setMucTieu(String mucTieu) {
-		this.mucTieu = mucTieu;
+	public void setMuctieu(String muctieu) {
+		this.muctieu = muctieu;
 	}
 
-	public String getYeuCau() {
-		return yeuCau;
+	public String getYeucau() {
+		return yeucau;
 	}
 
-	public void setYeuCau(String yeuCau) {
-		this.yeuCau = yeuCau;
+	public void setYeucau(String yeucau) {
+		this.yeucau = yeucau;
 	}
 
-	public int getSoLuongSV() {
-		return soLuongSV;
+	public int getSoluongsv() {
+		return soluongsv;
 	}
 
-	public void setSoLuongSV(int soLuongSV) {
-		this.soLuongSV = soLuongSV;
+	public void setSoluongsv(int soluongsv) {
+		this.soluongsv = soluongsv;
+	}
+	
+	
+
+
+	public Boolean getIsfaculty() {
+		return isfaculty;
 	}
 
-	public boolean isIs_Faculty() {
-		return is_Faculty;
+	public void setIsfaculty(Boolean isfaculty) {
+		this.isfaculty = isfaculty;
 	}
 
-	public void setIs_Faculty(boolean is_Faculty) {
-		this.is_Faculty = is_Faculty;
+	public Boolean getIs_active() {
+		return is_active;
+	}
+
+	public void setIdtimeproject(int idtimeproject) {
+		this.idtimeproject = idtimeproject;
 	}
 
 	public String getFaculty() {
-		return Faculty;
+		return faculty;
 	}
 
 	public void setFaculty(String faculty) {
-		Faculty = faculty;
+		this.faculty = faculty;
 	}
 
-	public String getNienKhoa() {
-		return nienKhoa;
+	public String getNienkhoa() {
+		return nienkhoa;
 	}
 
-	public void setNienKhoa(String nienKhoa) {
-		this.nienKhoa = nienKhoa;
+	public void setNienkhoa(String nienkhoa) {
+		this.nienkhoa = nienkhoa;
 	}
 
 	public float getPoint() {
@@ -129,12 +146,14 @@ public class Project implements Serializable {
 		this.point = point;
 	}
 
-	public int getId_TimeProject() {
-		return id_TimeProject;
+
+
+	public int getIdtimeproject() {
+		return idtimeproject;
 	}
 
-	public void setId_TimeProject(int id_TimeProject) {
-		this.id_TimeProject = id_TimeProject;
+	public void setId_timeproject(int id_timeproject) {
+		this.idtimeproject = id_timeproject;
 	}
 
 	public Date getCreate_at() {
