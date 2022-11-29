@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 <c:url value="/resources/css/" var="URL"></c:url>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,16 +23,25 @@
 	rel="stylesheet" type="text/css">
 
 <link href="${URL}styles.css" rel="stylesheet" type="text/css">
-<!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-	type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
-	 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-<!-- Custom styles for this template-->
-<link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+    <!-- Custom fonts for this template -->
+    <link href="/decorators/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/decorators/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="/decorators/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 <body>
 	<%@ include file="/common/admin/header.jsp"%>
@@ -54,12 +64,14 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		type="text/javascript"></script>
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script src="js/sb-admin-2.min.js"></script>
-	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-	<script src="js/demo/datatables-demo.js"></script>
+		
+		
+	<script src="/decorators/vendor/jquery/jquery.min.js"></script>
+	<script src="/decorators/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/decorators/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/decorators/js/sb-admin-2.min.js"></script>
+	<script src="/decorators/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/decorators/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="/decorators/js/demo/datatables-demo.js"></script>
 </body>
 </html>
