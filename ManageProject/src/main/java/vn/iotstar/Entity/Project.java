@@ -1,15 +1,12 @@
 package vn.iotstar.Entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -33,7 +30,6 @@ public class Project implements Serializable {
 
 	private String name;
 	private String desciption;
-	private boolean is_active;
 	private String mucTieu;
 	private String yeuCau;
 	private int soLuongSV;
@@ -41,21 +37,10 @@ public class Project implements Serializable {
 	private String Faculty;
 	private String nienKhoa;
 	private float point;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Lecture lectures;
-
-	@OneToMany(fetch = FetchType.LAZY)
-	List<Lecture> lecturephanbien;
-
-	public Lecture getLectures() {
-		return lectures;
-	}
-
-	public void setLectures(Lecture lectures) {
-		this.lectures = lectures;
-	}
-
+	private int id_TimeProject;
+	private Date create_at;
+	private Date update_at;
+	private boolean is_active;
 	public String getId() {
 		return id;
 	}
@@ -86,6 +71,86 @@ public class Project implements Serializable {
 
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
+	}
+
+	public String getMucTieu() {
+		return mucTieu;
+	}
+
+	public void setMucTieu(String mucTieu) {
+		this.mucTieu = mucTieu;
+	}
+
+	public String getYeuCau() {
+		return yeuCau;
+	}
+
+	public void setYeuCau(String yeuCau) {
+		this.yeuCau = yeuCau;
+	}
+
+	public int getSoLuongSV() {
+		return soLuongSV;
+	}
+
+	public void setSoLuongSV(int soLuongSV) {
+		this.soLuongSV = soLuongSV;
+	}
+
+	public boolean isIs_Faculty() {
+		return is_Faculty;
+	}
+
+	public void setIs_Faculty(boolean is_Faculty) {
+		this.is_Faculty = is_Faculty;
+	}
+
+	public String getFaculty() {
+		return Faculty;
+	}
+
+	public void setFaculty(String faculty) {
+		Faculty = faculty;
+	}
+
+	public String getNienKhoa() {
+		return nienKhoa;
+	}
+
+	public void setNienKhoa(String nienKhoa) {
+		this.nienKhoa = nienKhoa;
+	}
+
+	public float getPoint() {
+		return point;
+	}
+
+	public void setPoint(float point) {
+		this.point = point;
+	}
+
+	public int getId_TimeProject() {
+		return id_TimeProject;
+	}
+
+	public void setId_TimeProject(int id_TimeProject) {
+		this.id_TimeProject = id_TimeProject;
+	}
+
+	public Date getCreate_at() {
+		return create_at;
+	}
+
+	public void setCreate_at(Date create_at) {
+		this.create_at = create_at;
+	}
+
+	public Date getUpdate_at() {
+		return update_at;
+	}
+
+	public void setUpdate_at(Date update_at) {
+		this.update_at = update_at;
 	}
 
 }

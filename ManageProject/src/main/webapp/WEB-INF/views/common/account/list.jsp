@@ -11,8 +11,11 @@
 			id="sample_2">
 			<thead>
 				<tr>
-					<th>Email:</th>
-					<th>password:</th>
+					<th>Email</th>
+					<th>password</th>
+					<th>Phân quyền</th>
+					<th>Trạng thái</th>
+					<th>Chức năng</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -20,9 +23,15 @@
 					<tr class="odd gradeX">
 						<td>${item.email}</td>
 						<td>${item.password}</td>
-						<td><c:if test="${item.status == true}">
+						<c:if test="${item.role_id >2}">
+						<td>${item.role_id==3?'Lecture':'Leader Lecture'}</td>
+						</c:if>
+						<c:if test="${item.role_id <= 2}">
+						<td>${item.role_id==1?'Admin':'Student'}</td>
+						</c:if>
+						<td><c:if test="${item.is_active == true}">
 								<span class="label label-sm label-success"> Hoạt động </span>
-							</c:if> <c:if test="${item.status ==false}">
+							</c:if> <c:if test="${item.is_active ==false}">
 								<span class="label label-sm label-warning"> Khóa</span>
 							</c:if></td>
 						<td><a href="<c:url value='/account/edit/${item.email}'/>"

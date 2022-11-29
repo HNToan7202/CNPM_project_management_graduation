@@ -15,9 +15,11 @@ public class AccountModel {
 	@NotEmpty
 	@Email
 	private String email;
+	
 	private String password;
+	private int role_id;
 	Boolean isEdit = false;
-	private Boolean status;
+	private Boolean is_active;
 	public String getEmail() {
 		return email;
 	}
@@ -36,11 +38,16 @@ public class AccountModel {
 	public void setIsEdit(Boolean isEdit) {
 		this.isEdit = isEdit;
 	}
-	public Boolean getStatus() {
-		return status;
+	public Boolean getIs_active() {
+		return is_active;
 	}
-	public void setStatus(Boolean status) {
-		this.status = status;
+	public void setIs_active(Boolean is_active) {
+		this.is_active = is_active;
 	}
-
+	public int getRole_id() {
+		return role_id;
+	}
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
+	}
 }

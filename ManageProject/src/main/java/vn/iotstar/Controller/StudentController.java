@@ -28,7 +28,7 @@ public class StudentController {
 	@Autowired
 	IStudentService studentService;
 
-	@GetMapping("")
+	@GetMapping("/home")
 	public ModelAndView List(ModelMap model) {
 		List<Notification> notifies = notificationService.findAll();
 		model.addAttribute("notifies", notifies);
