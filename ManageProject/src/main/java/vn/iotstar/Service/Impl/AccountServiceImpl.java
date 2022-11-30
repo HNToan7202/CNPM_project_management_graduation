@@ -13,14 +13,14 @@ import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Account;
 import vn.iotstar.Entity.Student;
-import vn.iotstar.Repository.AccountRepository;
+import vn.iotstar.Repository.IAccountRepository;
 import vn.iotstar.Service.IAccountService;
 
 @Service
 public class AccountServiceImpl implements IAccountService {
 
 	@Autowired
-	AccountRepository accountRepository;
+	IAccountRepository accountRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;

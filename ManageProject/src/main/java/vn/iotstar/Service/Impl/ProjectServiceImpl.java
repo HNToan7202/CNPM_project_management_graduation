@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Project;
-import vn.iotstar.Repository.ProjectRepository;
+import vn.iotstar.Repository.IProjectRepository;
 import vn.iotstar.Service.IProjectService;
 
 
@@ -19,7 +19,7 @@ import vn.iotstar.Service.IProjectService;
 public class ProjectServiceImpl implements IProjectService{
 	
 	@Autowired
-	ProjectRepository projectRepository;
+	IProjectRepository projectRepository;
 
 	@Override
 	public List<Project> findByIdContaining(Long id) {

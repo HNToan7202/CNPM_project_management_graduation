@@ -11,7 +11,7 @@ import vn.iotstar.Entity.Lecture;
 
 @Repository
 
-public interface LectureRepository extends JpaRepository<Lecture, Long>{
+public interface ILectureRepository extends JpaRepository<Lecture, Long>{
 
 	//Tìm Kiếm theo nội dung tên from category where Categoryname
 

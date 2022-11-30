@@ -20,8 +20,18 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
-@Table(name = "timeResgiter")
-public class TimeResgiter implements Serializable {
+@Table
+public class Timeresgiter implements Serializable {
+
+	public Timeresgiter() {
+		super();
+	}
+
+	public Timeresgiter(Date create_at, Date finish_at) {
+		super();
+		this.create_at = create_at;
+		this.finish_at = finish_at;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +39,6 @@ public class TimeResgiter implements Serializable {
 
 	private Date create_at;
 	private Date finish_at;
-	int id_admin;
 	/*
 	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	 * 

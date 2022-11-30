@@ -29,22 +29,9 @@ public class Student implements Serializable {
 	private String email;
 	private String faculty;
 	private Long id_project;
-	private Long id_leader;
+	private Boolean is_leader;
 	private Boolean is_active;
 
-	public Student(Long mssv, String name, Date dateofbirth, String image, String email, String faculty,
-			Long id_project, Long id_leader, Boolean is_active) {
-		super();
-		this.mssv = mssv;
-		this.name = name;
-		this.dateofbirth = dateofbirth;
-		this.image = image;
-		this.email = email;
-		this.faculty = faculty;
-		this.id_project = id_project;
-		this.id_leader = id_leader;
-		this.is_active = is_active;
-	}
 
 	public Student() {
 		super();
@@ -106,20 +93,20 @@ public class Student implements Serializable {
 		this.id_project = id_project;
 	}
 
-	public Long getId_leader() {
-		return id_leader;
-	}
-
-	public void setId_leader(Long id_leader) {
-		this.id_leader = id_leader;
-	}
-
 	public Boolean getIs_active() {
 		return is_active;
 	}
 
 	public void setIs_active(Boolean is_active) {
 		this.is_active = is_active;
+	}
+
+	public Boolean getIs_leader() {
+		return is_leader;
+	}
+
+	public void setIs_leader(Boolean is_leader) {
+		this.is_leader = is_leader;
 	}
 
 	/*

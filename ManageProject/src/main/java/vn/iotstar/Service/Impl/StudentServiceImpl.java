@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import vn.iotstar.Entity.Student;
-import vn.iotstar.Repository.StudentReposiotory;
+import vn.iotstar.Repository.IStudentReposiotory;
 import vn.iotstar.Service.IStudentService;
 
 @Service
@@ -24,7 +24,7 @@ import vn.iotstar.Service.IStudentService;
 public class StudentServiceImpl implements IStudentService {
 
 	@Autowired
-	StudentReposiotory studentRepo;
+	IStudentReposiotory studentRepo;
 
 	@Override
 	public <S extends Student> S save(S entity) {
