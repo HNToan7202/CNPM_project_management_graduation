@@ -11,33 +11,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@SuppressWarnings("serial")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+
 @Entity
-@Builder
-@Table(name = "notification")
-public class Notification implements Serializable{
+@Table(name = "hoiDong")
+public class Council implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long id;
-	@Column(name="name",length = 50, columnDefinition = "nvarchar(50) not null")
-	private String name;
-	@Column(name="create_at")
-	private Date create_at;
-	@Column(name="update_at")
-	private Date update_at;
-	@Column(name="desciption",length = 50, columnDefinition = "nvarchar(50) not null")
-	private String desciption;
-	@Column(name="for_student")
-	private boolean for_student;
+	@Column(name="soluongTV")
+	private int soluongTV;
+	@Column(name="id_project")
+	private int id_project;
+	@Column(name="id_headLecture")
+	private int id_headLecture;
 	@Column(name="is_active")
 	private boolean is_active;
 
-	
 }
