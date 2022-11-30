@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "hoiDong")
+@Table(name = "hoidong")
 public class Council implements Serializable{
 
 	private static final long serialVersionUID = 1L;

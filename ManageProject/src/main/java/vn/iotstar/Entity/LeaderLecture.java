@@ -13,7 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "leaderLecture")
+@Table(name = "leaderlecture")
 public class LeaderLecture  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
