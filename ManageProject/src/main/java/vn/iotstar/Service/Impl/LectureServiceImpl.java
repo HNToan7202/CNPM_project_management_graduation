@@ -10,13 +10,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Lecture;
-import vn.iotstar.Repository.LectureRepository;
+import vn.iotstar.Repository.ILectureRepository;
 import vn.iotstar.Service.ILectureService;
 @Service
 public class LectureServiceImpl implements ILectureService{
 
 	@Autowired
-	LectureRepository lectureRepo;
+	ILectureRepository lectureRepo;
 
 	@Override
 	public <S extends Lecture> S save(S entity) {
@@ -81,26 +81,13 @@ public class LectureServiceImpl implements ILectureService{
 
 	@Override
 	public List<Lecture> findByNameContaining(String name) {
-<<<<<<< HEAD
+
 		// TODO Auto-generated method stub
-=======
->>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152
+
 		return lectureRepo.findByNameContaining(name);
 	}
 
 
-	@Override
-<<<<<<< HEAD
-	public Page<Lecture> findByNameContaining(String name, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return lectureRepo.findByNameContaining(name, pageable);
-	}
-
-	@Override
-	public Lecture findOneByName(String name) {
-		// TODO Auto-generated method stub
-		return lectureRepo.findOneByName(name);
-=======
 	public Lecture findOneByName(String name) {
 		return lectureRepo.findOneByName(name);
 	}
@@ -108,7 +95,6 @@ public class LectureServiceImpl implements ILectureService{
 	@Override
 	public Page<Lecture> findByNameContaining(String name, Pageable pageable) {
 		return lectureRepo.findByNameContaining(name, pageable);
->>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152
 	}
 
 	

@@ -4,11 +4,8 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,55 +21,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "Student")
-public class Student  implements Serializable{
+public class Student implements Serializable {
 
 	@Id
 	private Long mssv;
 
-	@Column(name = "name")
 	private String name;
-
-	@Column(name = "dateofbirth")
 	private Date dateofbirth;
-
-
-	@Column(name = "image")
 	private String image;
-
-	
-	@Column(name = "email")
 	private String email;
-
-	@Column(name = "deparment")
-	private String deparment;
-
-	@Column(name = "id_project")
+	private String faculty;
 	private Long id_project;
+	private Boolean is_leader;
+	private Boolean is_active;
 
-	@Column(name = "id_leader")
-	private Long id_leader;
-
-	@Column(name = "status")
-	private String status;
-
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user_student;
-	
-	public Student(Long mssv, String name, Date dateofbirth, String image, String email, String deparment,
-			Long id_project, Long id_leader, String status) {
-		super();
-		this.mssv = mssv;
-		this.name = name;
-		this.dateofbirth = dateofbirth;
-		this.image = image;
-		this.email = email;
-		this.deparment = deparment;
-		this.id_project = id_project;
-		this.id_leader = id_leader;
-		this.status = status;
-	}
 
 	public Student() {
 		super();
@@ -118,12 +80,12 @@ public class Student  implements Serializable{
 		this.email = email;
 	}
 
-	public String getDeparment() {
-		return deparment;
+	public String getFaculty() {
+		return faculty;
 	}
 
-	public void setDeparment(String deparment) {
-		this.deparment = deparment;
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
 	}
 
 	public Long getId_project() {
@@ -134,32 +96,41 @@ public class Student  implements Serializable{
 		this.id_project = id_project;
 	}
 
-	public Long getId_leader() {
-		return id_leader;
+	public Boolean getIs_active() {
+		return is_active;
 	}
 
-	public void setId_leader(Long id_leader) {
-		this.id_leader = id_leader;
+	public void setIs_active(Boolean is_active) {
+		this.is_active = is_active;
 	}
 
-	public String getStatus() {
-		return status;
+	public Boolean getIs_leader() {
+		return is_leader;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-		
-	}
+
+
 
 	
-	@OneToOne(mappedBy = "user_student", cascade = CascadeType.ALL)
-    private User student;
-	
+
 	/*
 	 * public MultipartFile getImageFile() { return imageFile; }
 	 * 
 	 * public void setImageFile(MultipartFile imageFile) { this.imageFile =
 	 * imageFile; }
+=======
+	public void setIs_leader(Boolean is_leader) {
+		this.is_leader = is_leader;
+	}
+
+	/*
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "email", insertable = false, updatable = false,
+	 * referencedColumnName = "email")
+	 * 
+	 * @JsonManagedReference private Account account;
+>>>>>>> e765cdf4c2d664ba9c04e8ed4e4b0b132551874e
 	 */
 
 }

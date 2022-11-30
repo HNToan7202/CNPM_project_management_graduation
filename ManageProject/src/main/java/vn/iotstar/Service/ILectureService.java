@@ -34,24 +34,14 @@ public interface ILectureService {
 	<S extends Lecture> Optional<S> findOne(Example<S> example);
 
 	<S extends Lecture> S save(S entity);
-<<<<<<< HEAD
+
 	
 	List<Lecture> findByNameContaining(String name);
 
 	//
 	Lecture findOneByName(String name);
-=======
->>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152
 
 	Page<Lecture> findByNameContaining(String name, Pageable pageable);
 
-<<<<<<< HEAD
-	Page<Lecture> findByNameContaining(String name,Pageable pageable);
-=======
-	Lecture findOneByName(String name);
->>>>>>> 5be98e9e22d69a68edab4c94aced0cdd4b910152
-
-	List<Lecture> findByNameContaining(String name);
-	
 
 }

@@ -1,4 +1,3 @@
-
 package vn.iotstar.Controller.Admin;
 
 import java.io.IOException;
@@ -29,19 +28,11 @@ import vn.iotstar.Model.LectureModel;
 import vn.iotstar.Service.ILectureService;
 
 @Controller
-
 @RequestMapping("/admin/lecture")
-<<<<<<< HEAD:ManageProject/src/main/java/vn/iotstar/Controller/Admin/LectureController.java
-public class LectureController {
-
-=======
 public class LectureManageController {
->>>>>>> d913d70e0f108de813adb916646e6fe5678de54f:ManageProject/src/main/java/vn/iotstar/Controller/Admin/LectureManageController.java
 	@Autowired
 	ILectureService lectureSerivce;
 
-	@Autowired
-	ServletContext application;
 
 	@GetMapping("add")
 	public String add(Model model) {
@@ -76,18 +67,18 @@ public class LectureManageController {
 			model.addAttribute("message", "Có lỗi");
 			return new ModelAndView("admin/lecture/addOrEdit");
 		}
-		if (!lecture.getImageFile().isEmpty()) {
-			String path = application.getRealPath("/");
-
-			try {
-				lecture.setImage(lecture.getImageFile().getOriginalFilename());
-				String filePath = path + "/resources/images/" + lecture.getImage();
-				lecture.getImageFile().transferTo(Path.of(filePath));
-				lecture.setImageFile(null);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+//		if (!lecture.getImageFile().isEmpty()) {
+//			String path = application.getRealPath("/");
+//
+//			try {
+//				lecture.setImage(lecture.getImageFile().getOriginalFilename());
+//				String filePath = path + "/resources/images/" + lecture.getImage();
+//				lecture.getImageFile().transferTo(Path.of(filePath));
+//				lecture.setImageFile(null);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		BeanUtils.copyProperties(lecture, entity);
 		lectureSerivce.save(entity);
 		return new ModelAndView("redirect:/admin/lecture", model);

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import vn.iotstar.Entity.Account;
+import vn.iotstar.Entity.Student;
 
 public interface IAccountService {
 
@@ -37,6 +38,7 @@ public interface IAccountService {
 	Page<Account> findAll(Pageable pageable);
 
 	Account login(String email, String password);
+
 
 	
 }

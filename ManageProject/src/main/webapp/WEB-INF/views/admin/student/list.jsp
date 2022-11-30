@@ -28,10 +28,10 @@
 						<img width="100px" height="100px" name="imageFile" src="${imgUrl}"></td>
 					<td>${item.dateofbirth}</td>
 					<td>${item.email}</td>
-					<td>${item.deparment}</td>
-					<td><c:if test="${item.status == true}">
+					<td>${item.faculty}</td>
+					<td><c:if test="${item.is_active == true}">
 							<span class="label label-sm label-success"> Hoạt động </span>
-						</c:if> <c:if test="${item.status ==false}">
+						</c:if> <c:if test="${item.is_active ==false}">
 							<span class="label label-sm label-warning"> Khóa</span>
 						</c:if></td>
 					<td><a

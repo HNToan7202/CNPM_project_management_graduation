@@ -1,3 +1,4 @@
+
 package vn.iotstar.Controller;
 
 import java.io.IOException;
@@ -33,9 +34,11 @@ public class LectureController {
 	
 	@Autowired
 	ILectureService lectureSerivce;
-
-	@Autowired
-	ServletContext application;
+	
+	
+// Khong su dung duoc
+//	@Autowired
+//	ServletContext application;
 
 	@GetMapping("add")
 	public String add(Model model) {
@@ -61,31 +64,31 @@ public class LectureController {
 
 	}
 
-	@PostMapping("saveofUpdate")
-	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("lecture") LectureModel lecture,
-			BindingResult result) {
-		Lecture entity = new Lecture();
-
-		if (result.hasErrors()) {
-			model.addAttribute("message", "Có lỗi");
-			return new ModelAndView("admin/lecture/addOrEdit");
-		}
-		if (!lecture.getImageFile().isEmpty()) {
-			String path = application.getRealPath("/");
-
-			try {
-				lecture.setImage(lecture.getImageFile().getOriginalFilename());
-				String filePath = path + "/resources/images/" + lecture.getImage();
-				lecture.getImageFile().transferTo(Path.of(filePath));
-				lecture.setImageFile(null);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		BeanUtils.copyProperties(lecture, entity);
-		lectureSerivce.save(entity);
-		return new ModelAndView("redirect:/admin/lecture", model);
-	}
+//	@PostMapping("saveofUpdate")
+//	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("lecture") LectureModel lecture,
+//			BindingResult result) {
+//		Lecture entity = new Lecture();
+//
+//		if (result.hasErrors()) {
+//			model.addAttribute("message", "Có lỗi");
+//			return new ModelAndView("admin/lecture/addOrEdit");
+//		}
+//		if (!lecture.getImageFile().isEmpty()) {
+//			//String path = application.getRealPath("/");
+//
+//			try {
+//				lecture.setImage(lecture.getImageFile().getOriginalFilename());
+//				String filePath = path + "/resources/images/" + lecture.getImage();
+//				lecture.getImageFile().transferTo(Path.of(filePath));
+//				lecture.setImageFile(null);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		BeanUtils.copyProperties(lecture, entity);
+//		lectureSerivce.save(entity);
+//		return new ModelAndView("redirect:/admin/lecture", model);
+//	}
 
 	@GetMapping("")
 	public String list(ModelMap model) {
