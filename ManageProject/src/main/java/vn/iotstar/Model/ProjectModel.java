@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectModel {
+	
 	private Long id;
 
 	private String name;
@@ -78,12 +79,12 @@ public class ProjectModel {
 		this.soluongsv = soluongsv;
 	}
 
-	public Boolean isIs_faculty() {
+	public Boolean getIsfaculty() {
 		return isfaculty;
 	}
 
-	public void setIs_faculty(Boolean is_faculty) {
-		this.isfaculty = is_faculty;
+	public void setIsfaculty(Boolean isfaculty) {
+		this.isfaculty = isfaculty;
 	}
 
 	public String getFaculty() {
@@ -93,8 +94,7 @@ public class ProjectModel {
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
-	
-	
+
 	public String getNienkhoa() {
 		return nienkhoa;
 	}
@@ -111,12 +111,12 @@ public class ProjectModel {
 		this.point = point;
 	}
 
-	public int getId_timeproject() {
+	public int getIdtimeproject() {
 		return idtimeproject;
 	}
 
-	public void setId_timeproject(int id_timeproject) {
-		this.idtimeproject = id_timeproject;
+	public void setIdtimeproject(int idtimeproject) {
+		this.idtimeproject = idtimeproject;
 	}
 
 	public Date getCreate_at() {
@@ -135,11 +135,11 @@ public class ProjectModel {
 		this.update_at = update_at;
 	}
 
-	public boolean isIs_active() {
+	public Boolean getIs_active() {
 		return is_active;
 	}
 
-	public void setIs_active(boolean is_active) {
+	public void setIs_active(Boolean is_active) {
 		this.is_active = is_active;
 	}
 
@@ -150,6 +150,5 @@ public class ProjectModel {
 	public void setIsEdit(Boolean isEdit) {
 		IsEdit = isEdit;
 	}
-
 
 }

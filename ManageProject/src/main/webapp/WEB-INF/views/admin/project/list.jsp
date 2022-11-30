@@ -52,76 +52,95 @@
 
 					<!-- Hêt thông báo -->
 
-					<table class="table table-striped table-responsive">
+					<!-- Search -->
+					<div class="row mt-2 mb-2">
+						<div class="col-md-6">
+							<form action="/admin/projects/searchpagenated">
+								<div class="input-group">
+									<input type="text" class="form-control ml-2" name="name"
+										id="name" placeholder="Nhap tu khoa tim kiem">
+									<button class="btn btn-outline-primary ml-2">Search</button>
+								</div>
+							</form>
+						</div>
 
-						<thead class="thead-inverse">
+						<div class="col-md-6">
+							<div class="float-right">
+								<a class="btn btn-outline-success" href="/admin/project/add">Add
+									New Category</a>
+							</div>
+						</div>
 
-							<tr>
-								<th></th>
-								<th>Name</th>
-								<th>Desciption</th>
-								<th>yeuCau</th>
-								<th>soLuongSV</th>
-								<th>is_Faculty</th>
-								<th>Faculty</th>
-								<th>nienKhoa</th>
-								<th>point</th>
-								<th>id_TimeProject</th>
-								<th>create_at</th>
-								<th>update_at</th>
-								<th>is_active</th>
-							</tr>
+						<table class="table table-striped table-responsive">
 
-
-
-						</thead>
-
-						<tbody>
-
-							<c:forEach items="${projects}" var="item">
+							<thead class="thead-inverse">
 
 								<tr>
-
-									<td scope="row">${item.name}</td>
-									<td>${item.desciption}</td>
-									<td>${item.muctieu}</td>
-									<td>${item.yeucau}</td>
-									<td>${item.soluongsv}</td>
-									<td>${item.isfaculty}</td>
-									<td>${item.faculty}</td>
-									<td>${item.nienkhoa}</td>
-									<td>${item.point}</td>
-									<td>${item.idtimeproject}</td>
-									<td>${item.create_at}</td>
-									<td>${item.update_at}</td>
-									<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
-
-									<td><a href="/admin/categories/view/${item.id}"
-										class="btn btn-outline-info"><i class="fa fa-info"></i></a> <a
-										href="/admin/categories/edit/${item.id}"
-										class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
-
-										<a href="/admin/categories/delete/${item.id}"
-										class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
-
+									<th>Name</th>
+									<th>Desciption</th>
+									<th>Goal</th>
+									<th>yeuCau</th>
+									<th>soLuongSV</th>
+									<th>is_Faculty</th>
+									<th>Faculty</th>
+									<th>nienKhoa</th>
+									<th>point</th>
+									<th>id_TimeProject</th>
+									<th>create_at</th>
+									<th>update_at</th>
+									<th>is_active</th>
+									<th>Action</th>
 								</tr>
 
-							</c:forEach>
-
-						</tbody>
 
 
+							</thead>
 
-					</table>
+							<tbody>
+
+								<c:forEach items="${project}" var="item">
+
+									<tr>
+
+										<td scope="row">${item.name}</td>
+										<td>${item.desciption}</td>
+										<td>${item.muctieu}</td>
+										<td>${item.yeucau}</td>
+										<td>${item.soluongsv}</td>
+										<td>${item.isfaculty}</td>
+										<td>${item.faculty}</td>
+										<td>${item.nienkhoa}</td>
+										<td>${item.point}</td>
+										<td>${item.idtimeproject}</td>
+										<td>${item.create_at}</td>
+										<td>${item.update_at}</td>
+										<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+
+										<td><a href="/admin/project/view/${item.id}"
+											class="btn btn-outline-info"><i class="fa fa-info"></i></a> <a
+											href="/admin/project/edit/${item.id}"
+											class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
+
+											<a href="/admin/project/delete/${item.id}"
+											class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+
+									</tr>
+
+								</c:forEach>
+
+							</tbody>
 
 
+
+						</table>
+
+
+
+					</div>
 
 				</div>
 
 			</div>
-
-		</div>
-
 	</section>
 
 	<script

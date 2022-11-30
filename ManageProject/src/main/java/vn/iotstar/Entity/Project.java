@@ -44,132 +44,110 @@ public class Project implements Serializable {
 	private Date create_at;
 	private Date update_at;
 	private Boolean is_active;
-	
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getDesciption() {
 		return desciption;
 	}
-
 	public void setDesciption(String desciption) {
 		this.desciption = desciption;
 	}
-
-	public Boolean isIs_active() {
-		return is_active;
-	}
-
-	public void setIs_active(Boolean is_active) {
-		this.is_active = is_active;
-	}
-
-
-
 	public String getMuctieu() {
 		return muctieu;
 	}
-
 	public void setMuctieu(String muctieu) {
 		this.muctieu = muctieu;
 	}
-
 	public String getYeucau() {
 		return yeucau;
 	}
-
 	public void setYeucau(String yeucau) {
 		this.yeucau = yeucau;
 	}
-
 	public int getSoluongsv() {
 		return soluongsv;
 	}
-
 	public void setSoluongsv(int soluongsv) {
 		this.soluongsv = soluongsv;
 	}
-	
-	
-
-
 	public Boolean getIsfaculty() {
 		return isfaculty;
 	}
-
 	public void setIsfaculty(Boolean isfaculty) {
 		this.isfaculty = isfaculty;
 	}
-
-	public Boolean getIs_active() {
-		return is_active;
-	}
-
-	public void setIdtimeproject(int idtimeproject) {
-		this.idtimeproject = idtimeproject;
-	}
-
 	public String getFaculty() {
 		return faculty;
 	}
-
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
-
 	public String getNienkhoa() {
 		return nienkhoa;
 	}
-
 	public void setNienkhoa(String nienkhoa) {
 		this.nienkhoa = nienkhoa;
 	}
-
 	public float getPoint() {
 		return point;
 	}
-
 	public void setPoint(float point) {
 		this.point = point;
 	}
-
-
-
 	public int getIdtimeproject() {
 		return idtimeproject;
 	}
-
-	public void setId_timeproject(int id_timeproject) {
-		this.idtimeproject = id_timeproject;
+	public void setIdtimeproject(int idtimeproject) {
+		this.idtimeproject = idtimeproject;
 	}
-
 	public Date getCreate_at() {
 		return create_at;
 	}
-
 	public void setCreate_at(Date create_at) {
 		this.create_at = create_at;
 	}
-
 	public Date getUpdate_at() {
 		return update_at;
 	}
-
 	public void setUpdate_at(Date update_at) {
 		this.update_at = update_at;
 	}
-
+	public Boolean getIs_active() {
+		return is_active;
+	}
+	public void setIs_active(Boolean is_active) {
+		this.is_active = is_active;
+	}
+	public Project(String name, String desciption, String muctieu, String yeucau, int soluongsv, Boolean isfaculty,
+			String faculty, String nienkhoa, float point, int idtimeproject, Date create_at, Date update_at,
+			Boolean is_active) {
+		super();
+		this.name = name;
+		this.desciption = desciption;
+		this.muctieu = muctieu;
+		this.yeucau = yeucau;
+		this.soluongsv = soluongsv;
+		this.isfaculty = isfaculty;
+		this.faculty = faculty;
+		this.nienkhoa = nienkhoa;
+		this.point = point;
+		this.idtimeproject = idtimeproject;
+		this.create_at = create_at;
+		this.update_at = update_at;
+		this.is_active = is_active;
+	}
+	public Project() {
+		super();
+	}
+	
 }
