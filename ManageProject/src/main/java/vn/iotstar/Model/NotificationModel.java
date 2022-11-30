@@ -2,6 +2,8 @@ package vn.iotstar.Model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,61 +12,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NotificationModel {
-	private int id;
-
+	private Long id;
 	private String name;
-
+	private Date create_at;
+	private Date update_at;
 	private String desciption;
-	private Date createDate;
-	private boolean status;
+	private boolean for_student;
+	private boolean is_active;
 	
-	private Boolean IsEdit=false;
-	public int getId() {
-		return id;
-	}
+	private Boolean isEdit = false;
 
-	public void setId(int id) {
+	public NotificationModel(Long id, String name, Date create_at, Date update_at, String desciption,
+			boolean for_student, boolean is_active) {
+		super();
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDesciption() {
-		return desciption;
-	}
-
-	public void setDesciption(String desciption) {
+		this.create_at = create_at;
+		this.update_at = update_at;
 		this.desciption = desciption;
+		this.for_student = for_student;
+		this.is_active = is_active;
 	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	public boolean isIsEdit() {
-		return IsEdit;
-	}
-
-	public void setIsEdit(boolean isEdit) {
-		IsEdit = isEdit;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+	
+	
 
 }

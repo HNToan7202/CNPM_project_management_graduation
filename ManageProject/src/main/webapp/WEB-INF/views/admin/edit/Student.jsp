@@ -43,7 +43,6 @@
                         <h6 class="collapse-header">Dành cho:</h6>
                         <a class="collapse-item " href="utilities-color.html">Giảng viên</a>
                         <a class="collapse-item" href="utilities-border.html">Sinh Viên</a>
-                       
                     </div>
                 </div>
             </li>
@@ -65,9 +64,9 @@
                 <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Xem</h6>
-                        <a class="collapse-item active" href="login.html">Giảng Viên</a>
-                        <a class="collapse-item" href="register.html">Sinh Viên</a>
-                        <a class="collapse-item" href="forgot-password.html">Trưởng bộ môn</a>
+                        <a class="collapse-item " href="login.html">Giảng Viên</a>
+                        <a class="collapse-item active" href="register.html">Sinh Viên</a> 
+                        <a class="collapse-item" href="forgot-password.html">Trưởng bộ môn</a>                    
                     </div>
                 </div>
             </li>
@@ -323,7 +322,7 @@
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Là trưởng bộ môn</label>
+                            <label class="form-check-label" for="exampleCheck1">Là trưởng nhóm</label>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
