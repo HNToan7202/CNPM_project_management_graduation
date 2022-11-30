@@ -127,13 +127,5 @@ public class Lecture implements Serializable {
 		super();
 	}
 
-	/*
-	 * @OneToOne(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "email", insertable = false, updatable = false,
-	 * referencedColumnName = "email")
-	 * 
-	 * @JsonManagedReference private Account account;
-	 */
 
 }

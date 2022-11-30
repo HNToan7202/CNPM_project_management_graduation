@@ -3,7 +3,6 @@ package vn.iotstar.Entity;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -20,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
-@Table(name = "Projects")
+@Table(name = "Project")
 @NamedQuery(name = "Project.findAll", query = "SELECT p FROM Project p")
 public class Project implements Serializable {
 
@@ -124,5 +123,5 @@ public class Project implements Serializable {
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
 	}
-
+	
 }

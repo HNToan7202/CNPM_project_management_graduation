@@ -22,13 +22,28 @@ public class ProjectServiceImpl implements IProjectService{
 	IProjectRepository projectRepository;
 
 	@Override
-	public Optional<Project> findById(String id) {
+	public List<Project> findByIdContaining(Long id) {
+		return projectRepository.findByIdContaining(id);
+	}
+
+	@Override
+	public Page<Project> findByIdContaining(Long id, Pageable pageable) {
+		return projectRepository.findByIdContaining(id, pageable);
+	}
+
+	@Override
+	public Optional<Project> findById(Long id) {
 		return projectRepository.findById(id);
 	}
 
 	@Override
 	public <S extends Project> S save(S entity) {
 		return projectRepository.save(entity);
+	}
+
+	@Override
+	public <S extends Project> Optional<S> findOne(Example<S> example) {
+		return projectRepository.findOne(example);
 	}
 
 	@Override
@@ -47,7 +62,7 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
-	public List<Project> findAllById(Iterable<String> ids) {
+	public List<Project> findAllById(Iterable<Long> ids) {
 		return projectRepository.findAllById(ids);
 	}
 
@@ -62,7 +77,7 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
-	public void deleteById(String id) {
+	public void deleteById(Long id) {
 		projectRepository.deleteById(id);
 	}
 
@@ -71,16 +86,20 @@ public class ProjectServiceImpl implements IProjectService{
 		projectRepository.delete(entity);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
-	public Project getById(String id) {
+	@SuppressWarnings("deprecation")
+	public Project getById(Long id) {
 		return projectRepository.getById(id);
+	}
+
+	@Override
+	public void deleteAll(Iterable<? extends Project> entities) {
+		projectRepository.deleteAll(entities);
 	}
 
 	@Override
 	public void deleteAll() {
 		projectRepository.deleteAll();
 	}
-
 	
 }
