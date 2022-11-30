@@ -30,5 +30,59 @@ public class CouncilModel {
 		this.id_headLecture = id_headLecture;
 		this.is_active = is_active;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getSoluongTV() {
+		return soluongTV;
+	}
+
+	public void setSoluongTV(int soluongTV) {
+		this.soluongTV = soluongTV;
+	}
+
+	public int getId_project() {
+		return id_project;
+	}
+
+	public void setId_project(int id_project) {
+		this.id_project = id_project;
+	}
+
+	public int getId_headLecture() {
+		return id_headLecture;
+	}
+
+	public void setId_headLecture(int id_headLecture) {
+		this.id_headLecture = id_headLecture;
+	}
+
+	public boolean isIs_active() {
+		return is_active;
+	}
+
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
+
+	public Boolean getIsEdit() {
+		return isEdit;
+	}
+
+	public void setIsEdit(Boolean isEdit) {
+		this.isEdit = isEdit;
+	}
+
+	public CouncilModel() {
+		super();
+	}
+
+
 	
 }
