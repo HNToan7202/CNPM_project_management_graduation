@@ -3,9 +3,9 @@ package vn.iotstar.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import vn.iotstar.Entity.Account;
+import vn.iotstar.Entity.Role;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, String> {
+public interface IRoleRepository extends JpaRepository<Role, Integer>{
 
 }

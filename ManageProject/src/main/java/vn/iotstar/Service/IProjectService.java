@@ -14,17 +14,19 @@ public interface IProjectService {
 
 	void deleteAll();
 
-	Project getById(String id);
+	void deleteAll(Iterable<? extends Project> entities);
+
+	Project getById(Long id);
 
 	void delete(Project entity);
 
-	void deleteById(String id);
+	void deleteById(Long id);
 
 	long count();
 
 	<S extends Project> Page<S> findAll(Example<S> example, Pageable pageable);
 
-	List<Project> findAllById(Iterable<String> ids);
+	List<Project> findAllById(Iterable<Long> ids);
 
 	List<Project> findAll(Sort sort);
 
@@ -32,9 +34,15 @@ public interface IProjectService {
 
 	List<Project> findAll();
 
+	<S extends Project> Optional<S> findOne(Example<S> example);
+
 	<S extends Project> S save(S entity);
 
-	Optional<Project> findById(String id);
+	Optional<Project> findById(Long id);
 
-	
+	Page<Project> findByIdContaining(Long id, Pageable pageable);
+
+	List<Project> findByIdContaining(Long id);
+
+
 }

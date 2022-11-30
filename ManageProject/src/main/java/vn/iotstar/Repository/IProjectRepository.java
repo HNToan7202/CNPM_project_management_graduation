@@ -11,14 +11,16 @@ import org.springframework.stereotype.Repository;
 import vn.iotstar.Entity.Project;
 
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, String> {
-	
+public interface IProjectRepository extends JpaRepository<Project, Long> {
 	//Tim kiem noi dung ten from account where email
 	
-	List<Project> findByIdContaining(String id);
-	// Tìm kiếm và phân trang
+	List<Project> findByIdContaining(Long id);
 	
-	Page<Project> findByIdContaining(String id, Pageable pageable);
-	Optional<Project> findById (String id);
+	
+	// Tìm kiếm và phân trang
+	Page<Project> findByIdContaining(Long id, Pageable pageable);
+	
+	
+	Optional<Project> findById (Long id);
 
 }

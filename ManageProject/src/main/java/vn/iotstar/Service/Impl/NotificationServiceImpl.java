@@ -10,14 +10,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Notification;
-import vn.iotstar.Repository.NotificationRepository;
+import vn.iotstar.Repository.INotificationRepository;
 import vn.iotstar.Service.INotificationService;
 
 @Service
 public class NotificationServiceImpl implements INotificationService {
 
 	@Autowired
-	NotificationRepository notificationRepository;
+
+	INotificationRepository notificationRepository;
+
 
 	@Override
 	public <S extends Notification> S save(S entity) {

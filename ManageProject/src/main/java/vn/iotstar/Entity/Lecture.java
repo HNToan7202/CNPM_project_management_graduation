@@ -2,14 +2,11 @@ package vn.iotstar.Entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,12 +15,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@AllArgsConstructor
+
 @Data
 @Entity
 @Builder
 @Table(name = "Lecture")
-public class Lecture implements Serializable{
+public class Lecture implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,40 +33,15 @@ public class Lecture implements Serializable{
 	private String address;
 	private String image;
 	private String email;
-	private boolean is_truongbomon;
-	private boolean status;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user_lecture;
-	
-//	@OneToMany(mappedBy = "lectures",cascade = CascadeType.ALL)
-//	private List<Project> project = new ArrayList<>();
-	/*
-	 * @ManyToOne((mappedBy = "lecturephanbien",cascade = CascadeType.) Project
-	 * project = new Project();
-	 */
-    public Lecture()
-    {
-    	
-    }
-	public Lecture(String name, Date dateofbirth, String address, String email, boolean is_truongbomon,
-			boolean status) {
-		super();
-		this.name = name;
-		this.dateofbirth = dateofbirth;
-		this.address = address;
-		this.email = email;
-		this.is_truongbomon = is_truongbomon;
-		this.status = status;
-	}
+	private int id_project;
+	private int id_hoidong;
+	private boolean is_active;
 
-	public void setId(long id) {
-		this.id = id;
+	public Long getId() {
+		return id;
 	}
 
 	public void setId(Long id) {
-
 		this.id = id;
 	}
 
@@ -97,6 +69,14 @@ public class Lecture implements Serializable{
 		this.address = address;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -105,26 +85,47 @@ public class Lecture implements Serializable{
 		this.email = email;
 	}
 
-	public boolean isIs_truongbomon() {
-		return is_truongbomon;
+	public int getId_project() {
+		return id_project;
 	}
 
-	public void setIs_truongbomon(boolean is_truongbomon) {
-		this.is_truongbomon = is_truongbomon;
+	public void setId_project(int id_project) {
+		this.id_project = id_project;
 	}
 
-	public boolean isStatus() {
-		return status;
+	public int getId_hoidong() {
+		return id_hoidong;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setId_hoidong(int id_hoidong) {
+		this.id_hoidong = id_hoidong;
 	}
-	public String getImage() {
-		return image;
+
+	public boolean isIs_active() {
+		return is_active;
 	}
-	public void setImage(String image) {
+
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
+
+	public Lecture(Long id, String name, Date dateofbirth, String address, String image, String email, int id_project,
+			int id_hoidong, boolean is_active) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dateofbirth = dateofbirth;
+		this.address = address;
 		this.image = image;
+		this.email = email;
+		this.id_project = id_project;
+		this.id_hoidong = id_hoidong;
+		this.is_active = is_active;
 	}
+
+	public Lecture() {
+		super();
+	}
+
 
 }

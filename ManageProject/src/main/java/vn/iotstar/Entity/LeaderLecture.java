@@ -3,10 +3,10 @@ package vn.iotstar.Entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+
 import javax.persistence.*;
 
 import lombok.*;
-
 
 @Data
 @NoArgsConstructor

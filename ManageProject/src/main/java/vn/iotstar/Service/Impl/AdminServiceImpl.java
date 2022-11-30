@@ -11,13 +11,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Admin;
-import vn.iotstar.Repository.AdminRepository;
+import vn.iotstar.Repository.IAdminRepository;
 import vn.iotstar.Service.IAdminService;
 @Service
 public class AdminServiceImpl implements IAdminService{
 
 	@Autowired
-	AdminRepository adminRepo;
+	IAdminRepository adminRepo;
 
 	@Override
 	public <S extends Admin> S save(S entity) {

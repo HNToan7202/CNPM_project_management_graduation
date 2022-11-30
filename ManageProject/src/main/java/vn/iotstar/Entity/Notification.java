@@ -38,5 +38,6 @@ public class Notification implements Serializable{
 	private boolean for_student;
 	@Column(name="is_active")
 	private boolean is_active;
+
 	
 }

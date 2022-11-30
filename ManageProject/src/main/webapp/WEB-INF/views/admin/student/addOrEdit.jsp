@@ -96,13 +96,13 @@
 		<br />
 	Ngày sinh : <form:input path="dateofbirth" />
 		<br />
-	Chuyên ngành : <form:input path="deparment" />
+	Chuyên ngành : <form:input path="faculty" />
 		<br />
 		<form:hidden path="image" />
 		<input type="file" name="imageFile" />
 		<br />
-		<form:radiobutton path="status" value="false" />Khóa <form:radiobutton
-			path="status" value="true" />Hoạt động 
+		<form:radiobutton path="is_active" value="false" />Khóa <form:radiobutton
+			path="is_active" value="true" />Hoạt động 
 		<br />
 		<button>Save</button>
 	</form:form>

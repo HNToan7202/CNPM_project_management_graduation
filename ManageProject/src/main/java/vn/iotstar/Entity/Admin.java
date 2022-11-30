@@ -1,12 +1,15 @@
 package vn.iotstar.Entity;
 
+
 import javax.persistence.*;
 import lombok.*;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
+
 @Table(name = "admin")
 public class Admin {
 	@Id
@@ -18,9 +21,5 @@ public class Admin {
 	private String email;
 	@Column(name = "is_active")
 	private boolean is_active;
-	
 
 }
-
-
-

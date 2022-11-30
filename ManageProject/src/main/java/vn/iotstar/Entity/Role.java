@@ -1,44 +1,38 @@
 
 package vn.iotstar.Entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Column;
+import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Builder
 @Table(name = "role")
-public class Role {
+public class Role implements Serializable {
 	@Id
-	private long code;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-	@Column
 	private String name;
 
-	@ManyToMany(mappedBy = "roles")
-	List<User> users = new ArrayList<>();
-
-	public long getCode() {
-		return code;
+	public int getId() {
+		return id;
 	}
 
-	public void setCode(long code) {
-		this.code = code;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -49,14 +43,12 @@ public class Role {
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-
-	}
+	/*
+	 * @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+	 * 
+	 * @JsonManagedReference
+	 * 
+	 * private Set<Account> account;
+	 */
 
 }
-
