@@ -17,10 +17,10 @@ public class StudentModel {
 	private Date dateofbirth;
 	private String image;
 	private String email;
-	private String deparment;
+	private String faculty;
 	private Long id_project;
-	private Long id_leader;
-	private String status;
+	private Boolean is_leader;
+	private Boolean is_active;
 	private MultipartFile imageFile;
 	private Boolean isEdit = false;
 
@@ -63,15 +63,7 @@ public class StudentModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getDeparment() {
-		return deparment;
-	}
-
-	public void setDeparment(String deparment) {
-		this.deparment = deparment;
-	}
-
+	
 	public Long getId_project() {
 		return id_project;
 	}
@@ -79,23 +71,6 @@ public class StudentModel {
 	public void setId_project(Long id_project) {
 		this.id_project = id_project;
 	}
-
-	public Long getId_leader() {
-		return id_leader;
-	}
-
-	public void setId_leader(Long id_leader) {
-		this.id_leader = id_leader;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 
 	public MultipartFile getImageFile() {
 		return imageFile;
@@ -111,6 +86,30 @@ public class StudentModel {
 
 	public void setIsEdit(Boolean isEdit) {
 		this.isEdit = isEdit;
+	}
+
+	public Boolean getIs_active() {
+		return is_active;
+	}
+
+	public void setIs_active(Boolean is_active) {
+		this.is_active = is_active;
+	}
+
+	public String getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+
+	public Boolean getIs_leader() {
+		return is_leader;
+	}
+
+	public void setIs_leader(Boolean is_leader) {
+		this.is_leader = is_leader;
 	}
 
 }

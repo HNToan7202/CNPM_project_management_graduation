@@ -23,7 +23,6 @@ public class ProjectModel {
 	List<Lecture> lectures ;
 	private float point;
 	private boolean is_active;
-	
 	private Long lecture_id;
 	private Boolean IsEdit=false;
 	public String getId() {

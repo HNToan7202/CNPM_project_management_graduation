@@ -10,13 +10,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Lecture;
-import vn.iotstar.Repository.LectureRepository;
+import vn.iotstar.Repository.ILectureRepository;
 import vn.iotstar.Service.ILectureService;
 @Service
 public class LectureServiceImpl implements ILectureService{
 
 	@Autowired
-	LectureRepository lectureRepo;
+	ILectureRepository lectureRepo;
 
 	@Override
 	public <S extends Lecture> S save(S entity) {

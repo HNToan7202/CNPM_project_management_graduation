@@ -18,7 +18,7 @@ public class AccountModel {
 	
 	private String password;
 	private int role_id;
-	Boolean isEdit = false;
+	private Boolean isEdit = false;
 	private Boolean is_active;
 	public String getEmail() {
 		return email;
