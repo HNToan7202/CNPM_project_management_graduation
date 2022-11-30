@@ -35,19 +35,19 @@ public class StudentController {
 		return new ModelAndView("student/home", model);
 	}
 
-	@GetMapping("/notify/{id}")
-	public String seachnotify(ModelMap model, @PathVariable("id") Long id) {
-		Optional<Notification> opt = notificationService.findById((id));
-		NotificationModel notify = new NotificationModel();
-		if (opt.isPresent()) {
-			Notification entity = opt.get();
-			BeanUtils.copyProperties(entity, notify);
-			notify.setIsEdit(false);
-		}
-		model.addAttribute("notify", notify);
-		return "student/notify";
-
-	}
+//	@GetMapping("/notify/{id}")
+//	public String seachnotify(ModelMap model, @PathVariable("id") Long id) {
+//		Optional<Notification> opt = notificationService.findById((id));
+//		NotificationModel notify = new NotificationModel();
+//		if (opt.isPresent()) {
+//			Notification entity = opt.get();
+//			BeanUtils.copyProperties(entity, notify);
+//			notify.setIsEdit(false);
+//		}
+//		model.addAttribute("notify", notify);
+//		return "student/notify";
+//
+//	}
 
 	@GetMapping("/information/{id}")
 	public ModelAndView Inf(ModelMap model, @PathVariable("mssv") Long MSSV) {

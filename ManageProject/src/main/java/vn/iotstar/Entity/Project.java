@@ -30,7 +30,7 @@ public class Project implements Serializable {
 	private String desciption;
 	private String muctieu;
 	private String yeucau;
-	private int soLuongsv;
+	private int soluongsv;
 	private boolean isfaculty;
 	private String faculty;
 	private String nienkhoa;
@@ -69,11 +69,11 @@ public class Project implements Serializable {
 	public void setYeucau(String yeucau) {
 		this.yeucau = yeucau;
 	}
-	public int getSoLuongsv() {
-		return soLuongsv;
+	public int getSoluongsv() {
+		return soluongsv;
 	}
-	public void setSoLuongsv(int soLuongsv) {
-		this.soLuongsv = soLuongsv;
+	public void setSoluongsv(int soluongsv) {
+		this.soluongsv = soluongsv;
 	}
 	public boolean isIsfaculty() {
 		return isfaculty;
@@ -122,6 +122,5 @@ public class Project implements Serializable {
 	}
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
-	}
-	
+	}	
 }

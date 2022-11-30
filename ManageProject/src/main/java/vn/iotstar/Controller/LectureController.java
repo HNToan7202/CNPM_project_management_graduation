@@ -2,12 +2,8 @@
 package vn.iotstar.Controller;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
-
-import javax.servlet.ServletContext;
-import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,11 +27,6 @@ public class LectureController {
 	
 	@Autowired
 	ILectureService lectureSerivce;
-	
-	
-// Khong su dung duoc
-//	@Autowired
-//	ServletContext application;
 
 	@GetMapping("add")
 	public String add(Model model) {
@@ -64,31 +52,7 @@ public class LectureController {
 
 	}
 
-//	@PostMapping("saveofUpdate")
-//	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("lecture") LectureModel lecture,
-//			BindingResult result) {
-//		Lecture entity = new Lecture();
-//
-//		if (result.hasErrors()) {
-//			model.addAttribute("message", "Có lỗi");
-//			return new ModelAndView("admin/lecture/addOrEdit");
-//		}
-//		if (!lecture.getImageFile().isEmpty()) {
-//			//String path = application.getRealPath("/");
-//
-//			try {
-//				lecture.setImage(lecture.getImageFile().getOriginalFilename());
-//				String filePath = path + "/resources/images/" + lecture.getImage();
-//				lecture.getImageFile().transferTo(Path.of(filePath));
-//				lecture.setImageFile(null);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		BeanUtils.copyProperties(lecture, entity);
-//		lectureSerivce.save(entity);
-//		return new ModelAndView("redirect:/admin/lecture", model);
-//	}
+
 
 	@GetMapping("")
 	public String list(ModelMap model) {
