@@ -24,25 +24,24 @@ CREATE TABLE [admin] (
 )
 GO
 
-CREATE TABLE [timeResgiter] (
+CREATE TABLE [timeresgiter] (
   [id] int PRIMARY KEY identity,
   [create_at] date,
   [finish_at] date,
-  id_admin int FOREIGN KEY REFERENCES [admin]([id]),
 )
 GO
-CREATE TABLE [project] (
+create TABLE [project] (
   [id] int PRIMARY KEY identity,
   [name] nvarchar(255),
   [desciption] nvarchar(255),
-  [mucTieu] nvarchar(255),
-  [yeuCau] nvarchar(255),
-  [soLuongSV] int,
-  [is_Faculty] bit,
-  [Faculty] nvarchar(255),
-  [nienKhoa] nvarchar(255),
-  [point] float,
-  [id_TimeProject] int FOREIGN KEY REFERENCES [timeResgiter]([id]),
+  [muctieu] nvarchar(255),
+  [yeucau] nvarchar(255),
+  [soluongsv] int default 0,
+  [isfaculty] bit,
+  [faculty] nvarchar(255),
+  [nienkhoa] nvarchar(255),
+  [point] float default 0,
+  [idtimeproject] int FOREIGN KEY REFERENCES [timeresgiter]([id]),
   [create_at] date default GetDate(),
   [update_at] date,
   [is_active] bit
@@ -62,7 +61,7 @@ CREATE TABLE [student] (
 )
 GO
 
-CREATE TABLE [leaderLecture] (
+CREATE TABLE [leaderlecture] (
   [id] int PRIMARY KEY identity,
   [name] nvarchar(100),
   [dateofbirth] date,
@@ -72,11 +71,11 @@ CREATE TABLE [leaderLecture] (
   is_active bit
 )
 GO
-CREATE TABLE [hoiDong] (
+CREATE TABLE [hoidong] (
   [id] int PRIMARY KEY identity,
-  [soluongTV] int,
+  [soluongtv] int default 0,
   [id_project] int FOREIGN KEY REFERENCES [project]([id]),
-  [id_headLecture] int FOREIGN KEY REFERENCES [leaderLecture]([id]),
+  [id_headLecture] int FOREIGN KEY REFERENCES [leaderlecture]([id]),
   is_active bit
 )
 GO

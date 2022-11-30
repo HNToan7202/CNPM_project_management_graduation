@@ -3,7 +3,6 @@ package vn.iotstar.Entity;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -25,25 +24,25 @@ import lombok.NoArgsConstructor;
 public class Project implements Serializable {
 
 	@Id
-	@Column(name = "id")
 	private Long id;
 
 	private String name;
 	private String desciption;
 	private String muctieu;
 	private String yeucau;
-	private int soluongsv;
-	private Boolean isfaculty;
+	private int soLuongsv;
+	private boolean isfaculty;
 	private String faculty;
 	private String nienkhoa;
-	
 	private float point;
-	
 	private int idtimeproject;
-	
 	private Date create_at;
 	private Date update_at;
+<<<<<<< HEAD
 	private Boolean is_active;
+=======
+	private boolean is_active;
+>>>>>>> 2496bebb3875a3a3cd5eee483a6fecce41bc7e68
 	public Long getId() {
 		return id;
 	}
@@ -74,6 +73,7 @@ public class Project implements Serializable {
 	public void setYeucau(String yeucau) {
 		this.yeucau = yeucau;
 	}
+<<<<<<< HEAD
 	public int getSoluongsv() {
 		return soluongsv;
 	}
@@ -84,6 +84,18 @@ public class Project implements Serializable {
 		return isfaculty;
 	}
 	public void setIsfaculty(Boolean isfaculty) {
+=======
+	public int getSoLuongsv() {
+		return soLuongsv;
+	}
+	public void setSoLuongsv(int soLuongsv) {
+		this.soLuongsv = soLuongsv;
+	}
+	public boolean isIsfaculty() {
+		return isfaculty;
+	}
+	public void setIsfaculty(boolean isfaculty) {
+>>>>>>> 2496bebb3875a3a3cd5eee483a6fecce41bc7e68
 		this.isfaculty = isfaculty;
 	}
 	public String getFaculty() {
@@ -122,6 +134,7 @@ public class Project implements Serializable {
 	public void setUpdate_at(Date update_at) {
 		this.update_at = update_at;
 	}
+<<<<<<< HEAD
 	public Boolean getIs_active() {
 		return is_active;
 	}
@@ -149,5 +162,13 @@ public class Project implements Serializable {
 	public Project() {
 		super();
 	}
+=======
+	public boolean isIs_active() {
+		return is_active;
+	}
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
+>>>>>>> 2496bebb3875a3a3cd5eee483a6fecce41bc7e68
 	
 }

@@ -11,8 +11,7 @@ import org.springframework.stereotype.Repository;
 import vn.iotstar.Entity.Project;
 
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, Long> {
-	
+public interface IProjectRepository extends JpaRepository<Project, Long> {
 	//Tim kiem noi dung ten from account where email
 	
 	List<Project> findByIdContaining(Long id);

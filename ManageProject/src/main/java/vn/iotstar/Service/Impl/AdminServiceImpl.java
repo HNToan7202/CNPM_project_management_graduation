@@ -11,13 +11,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Admin;
-import vn.iotstar.Repository.AdminRepository;
+import vn.iotstar.Repository.IAdminRepository;
 import vn.iotstar.Service.IAdminService;
 @Service
 public class AdminServiceImpl implements IAdminService{
 
 	@Autowired
-	AdminRepository adminRepo;
+	IAdminRepository adminRepo;
 
 	@Override
 	public <S extends Admin> S save(S entity) {
@@ -35,33 +35,13 @@ public class AdminServiceImpl implements IAdminService{
 	}
 
 	@Override
-	public List<Admin> findAllById(Iterable<Integer> ids) {
-		return adminRepo.findAllById(ids);
+	public List<Admin> findAll(Sort sort) {
+		return adminRepo.findAll(sort);
 	}
 
 	@Override
-	public <S extends Admin> S saveAndFlush(S entity) {
-		return adminRepo.saveAndFlush(entity);
-	}
-
-	@Override
-	public <S extends Admin> Page<S> findAll(Example<S> example, Pageable pageable) {
-		return adminRepo.findAll(example, pageable);
-	}
-
-	@Override
-	public Optional<Admin> findById(Integer id) {
+	public Optional<Admin> findById(Long id) {
 		return adminRepo.findById(id);
-	}
-
-	@Override
-	public boolean existsById(Integer id) {
-		return adminRepo.existsById(id);
-	}
-
-	@Override
-	public <S extends Admin> boolean exists(Example<S> example) {
-		return adminRepo.exists(example);
 	}
 
 	@Override
@@ -70,14 +50,8 @@ public class AdminServiceImpl implements IAdminService{
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(Long id) {
 		adminRepo.deleteById(id);
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public Admin getOne(Integer id) {
-		return adminRepo.getOne(id);
 	}
 
 	@Override
@@ -85,9 +59,8 @@ public class AdminServiceImpl implements IAdminService{
 		adminRepo.delete(entity);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
-	public Admin getById(Integer id) {
+	public Admin getById(Long id) {
 		return adminRepo.getById(id);
 	}
 
@@ -96,10 +69,6 @@ public class AdminServiceImpl implements IAdminService{
 		adminRepo.deleteAll();
 	}
 
-	@Override
-	public <S extends Admin> List<S> findAll(Example<S> example, Sort sort) {
-		return adminRepo.findAll(example, sort);
-	}
 	
 	
 }
