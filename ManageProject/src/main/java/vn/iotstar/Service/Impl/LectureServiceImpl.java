@@ -80,11 +80,6 @@ public class LectureServiceImpl implements ILectureService{
 	}
 
 	@Override
-	public List<Lecture> findByNameContaining(String name) {
-		return lectureRepo.findByNameContaining(name);
-	}
-
-	@Override
 	public Lecture findOneByName(String name) {
 		return lectureRepo.findOneByName(name);
 	}
@@ -93,6 +88,14 @@ public class LectureServiceImpl implements ILectureService{
 	public Page<Lecture> findByNameContaining(String name, Pageable pageable) {
 		return lectureRepo.findByNameContaining(name, pageable);
 	}
+
+	@Override
+	public Lecture findByEmailContaining(String email) {
+		// TODO Auto-generated method stub
+		return lectureRepo.findByEmailContaining(email);
+	}
+
+
 
 	
 }

@@ -49,7 +49,6 @@ public class LeaderLectureController {
 		leaderLecture.setIsEdit(false);// thêm
 		model.addAttribute("leaderLecture", leaderLecture);
 		return "admin/leaderLecture/addOrEdit";
-
 	}
 	@PostMapping("saveOrUpdate")
 	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("leaderLectures") LeaderLectureModel leaderLecture,

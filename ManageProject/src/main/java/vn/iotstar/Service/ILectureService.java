@@ -39,7 +39,7 @@ public interface ILectureService {
 
 	Lecture findOneByName(String name);
 
-	List<Lecture> findByNameContaining(String name);
+	Lecture findByEmailContaining(String email);
 	
 
 }

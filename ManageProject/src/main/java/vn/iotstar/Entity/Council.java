@@ -35,5 +35,7 @@ public class Council implements Serializable{
 	private int id_headLecture;
 	//@Column(name="is_active")
 	private boolean is_active;
+	
+	
 
 }

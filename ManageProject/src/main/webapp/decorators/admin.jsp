@@ -41,15 +41,20 @@
 
 </head>
 <body>
+
  	<%@ include file="/common/admin/header.jsp"%>
 	<%@ include file="/common/admin/slidebar.jsp"%> 
 	<%@ include file="/common/admin/wrapper.jsp"%> 
+
+
 	<!-- body -->
 	<sitemesh:write property='body'></sitemesh:write>
 	<!-- body -->
 
 	<!--=== Footer v4 ===-->
+
  	<jsp:include page="/common/admin/footer.jsp"></jsp:include> 
+
 	<!--=== End Footer v4 ===-->
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"

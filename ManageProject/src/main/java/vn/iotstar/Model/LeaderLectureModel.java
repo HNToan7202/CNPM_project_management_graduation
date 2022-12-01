@@ -25,22 +25,7 @@ public class LeaderLectureModel {
 	private String email;
 	private String address;
 	private boolean isActive;
-	
 	private Boolean isEdit = false;
-
-	public LeaderLectureModel(int id, String name, Date dateofbirth, String image,
-			@NotEmpty(message = "mail khong duoc phep de trong") @Email(message = "Mail khong hop le") String email,
-			String address, boolean isActive) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.dateofbirth = dateofbirth;
-		this.image = image;
-		this.email = email;
-		this.address = address;
-		this.isActive = isActive;
-	}
-	
 	
 	
 }

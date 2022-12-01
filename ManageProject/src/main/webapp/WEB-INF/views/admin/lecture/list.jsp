@@ -55,40 +55,37 @@
 						<thead class="thead-inverse">
 
 							<tr>
-								
-								<th>Ảnh đại diện</th>
-								<th>Họ tên</th>
-								<th>Ngày sinh</th>
+								<th>Name</th>
+								<th>Image</th>
+								<th>Date of Birth</th>
+								<th>Address</th>
 								<th>Email</th>
-								<th>Địa chỉ</th>
-								<th>Chuc Vu</th>
 								<th>Trạng thái</th>
 								<th>Hành động</th>
+
 
 							</tr>
 
 						</thead>
 
 						<tbody>
-							<c:forEach items="${lectures}" var="lecture">
+							<c:forEach items="${lecture}" var="item">
 
 								<tr>
 
-									
-									<td>${lecture.image}</td>
-									<td>${lecture.name}</td>
-									<td>${lecture.dateofbirth}</td>
-									<td>${lecture.email}</td>
-									<td>${lecture.address}</td>
-									<td>${lecture.is_truongbomon ? 'Truong Bo Mon' : 'Giang Vien'}</td>
-									<td>${lecture.status ? 'Actived' : 'Not Active'}</td>
+									<td>${item.name}</td>
+									<td>${item.image}</td>
+									<td>${item.dateofbirth}</td>
+									<td>${item.address}</td>
+									<td>${item.email}</td>
+									<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
 
 									<td><a
-										href="/admin/categories/view/${lecture.name}"
+										href="/admin/lecture/view/${item.id}"
 										class="btn btn-outline-info"><i class="fa fa-info"></i></a> <a
-										href="/admin/categories/edit/${lecture.name}"
+										href="/admin/lecture/edit/${item.id}"
 										class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
-										<a href="/admin/categories/delete/${lecture.name}"
+										<a href="/admin/lecture/delete/${item.id}"
 										class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
 
 								</tr>
