@@ -10,8 +10,12 @@ import org.springframework.stereotype.Repository;
 import vn.iotstar.Entity.Student;
 
 @Repository
-public interface IStudentReposiotory extends JpaRepository<Student, Long>{
-	List<Student> findByNameContaining (String name);
-	Page<Student> findByNameContaining (String name, Pageable pageable);
+public interface IStudentReposiotory extends JpaRepository<Student, Long> {
+	List<Student> findByNameContaining(String name);
+
+	List<Student> findByIdprojectContaining(int project);
+
+	Page<Student> findByNameContaining(String name, Pageable pageable);
+
 	Student findByEmailContaining(String email);
-} 
+}

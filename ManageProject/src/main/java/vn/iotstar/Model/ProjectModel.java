@@ -25,6 +25,7 @@ public class ProjectModel {
 	private Date create_at;
 	private Date update_at;
 	private boolean is_active;
+	private int idlecture;
 	private Boolean IsEdit=false;
 	public Long getId() {
 		return id;
@@ -116,28 +117,14 @@ public class ProjectModel {
 	public void setIsEdit(Boolean isEdit) {
 		IsEdit = isEdit;
 	}
-	public ProjectModel( String name, String desciption, String muctieu, String yeucau, int soluongsv,
-			Boolean isfaculty, String faculty, String nienkhoa, float point, int idtimeproject, Date create_at,
-			Date update_at, boolean is_active, Boolean isEdit) {
-		super();
-
-		this.name = name;
-		this.desciption = desciption;
-		this.muctieu = muctieu;
-		this.yeucau = yeucau;
-		this.soluongsv = soluongsv;
-		this.isfaculty = isfaculty;
-		this.faculty = faculty;
-		this.nienkhoa = nienkhoa;
-		this.point = point;
-		this.idtimeproject = idtimeproject;
-		this.create_at = create_at;
-		this.update_at = update_at;
-		this.is_active = is_active;
-		IsEdit = isEdit;
-	}
 	public ProjectModel() {
 		super();
+	}
+	public int getIdlecture() {
+		return idlecture;
+	}
+	public void setIdlecture(int idlecture) {
+		this.idlecture = idlecture;
 	}
 	
 	

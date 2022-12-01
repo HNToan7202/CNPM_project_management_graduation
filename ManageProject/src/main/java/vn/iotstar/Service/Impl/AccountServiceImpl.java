@@ -96,5 +96,12 @@ public class AccountServiceImpl implements IAccountService {
 		}
 		return null;
 	}
+
+	@Override
+	public Account findByEmailContaining(String email) {
+		return accountRepository.findByEmailContaining(email);
+	}
+	
+	
 	
 }

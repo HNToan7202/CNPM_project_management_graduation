@@ -103,4 +103,9 @@ public class StudentServiceImpl implements IStudentService {
 		return studentRepo.findByEmailContaining(email);
 	}
 
+	@Override
+	public List<Student> findByIdprojectContaining(int project) {
+		return studentRepo.findByIdprojectContaining(project);
+	}
+
 }

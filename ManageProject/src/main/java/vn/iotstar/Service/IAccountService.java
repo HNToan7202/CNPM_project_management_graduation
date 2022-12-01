@@ -39,6 +39,8 @@ public interface IAccountService {
 
 	Account login(String email, String password);
 
+	Account findByEmailContaining(String email);
+
 
 	
 }

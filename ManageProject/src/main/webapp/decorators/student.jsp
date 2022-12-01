@@ -35,6 +35,7 @@
 <link href="/decorators/vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
 <link href="${URL}css/styles.css" rel="stylesheet" type="text/css">
+<link href="${URL}css/student.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%@ include file="/common/student/header.jsp"%>
@@ -68,5 +69,6 @@
 	<script
 		src="/decorators/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 	<script src="/decorators/js/demo/datatables-demo.js"></script>
+	<script src="${URL}js/student.js"></script>
 </body>
 </html>

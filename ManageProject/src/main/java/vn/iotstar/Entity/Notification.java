@@ -38,6 +38,51 @@ public class Notification implements Serializable{
 	private boolean for_student;
 	@Column(name="is_active")
 	private boolean is_active;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Date getCreate_at() {
+		return create_at;
+	}
+	public void setCreate_at(Date create_at) {
+		this.create_at = create_at;
+	}
+	public Date getUpdate_at() {
+		return update_at;
+	}
+	public void setUpdate_at(Date update_at) {
+		this.update_at = update_at;
+	}
+	public String getDesciption() {
+		return desciption;
+	}
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
+	}
+	public boolean isFor_student() {
+		return for_student;
+	}
+	public void setFor_student(boolean for_student) {
+		this.for_student = for_student;
+	}
+	public boolean isIs_active() {
+		return is_active;
+	}
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
+	public Notification() {
+		super();
+	}
 
 	
 }

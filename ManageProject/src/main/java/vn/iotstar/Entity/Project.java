@@ -38,7 +38,7 @@ public class Project implements Serializable {
 	private int idtimeproject;
 	private Date create_at;
 	private Date update_at;
-	
+	private int idlecture;
 	private Boolean is_active;
 
 	public Long getId() {
@@ -174,6 +174,14 @@ public class Project implements Serializable {
 
 	public Project() {
 		super();
+	}
+
+	public int getIdlecture() {
+		return idlecture;
+	}
+
+	public void setIdlecture(int idlecture) {
+		this.idlecture = idlecture;
 	}
 	
 	

@@ -18,8 +18,8 @@ public class StudentModel {
 	private String image;
 	private String email;
 	private String faculty;
-	private Long id_project;
-	private Boolean is_leader;
+	private int idproject;
+	private Boolean isleader;
 	private Boolean is_active;
 	private MultipartFile imageFile;
 	private Boolean isEdit = false;
@@ -63,14 +63,6 @@ public class StudentModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public Long getId_project() {
-		return id_project;
-	}
-
-	public void setId_project(Long id_project) {
-		this.id_project = id_project;
-	}
 
 	public MultipartFile getImageFile() {
 		return imageFile;
@@ -104,12 +96,20 @@ public class StudentModel {
 		this.faculty = faculty;
 	}
 
-	public Boolean getIs_leader() {
-		return is_leader;
+	public Boolean getIsleader() {
+		return isleader;
 	}
 
-	public void setIs_leader(Boolean is_leader) {
-		this.is_leader = is_leader;
+	public void setIsleader(Boolean isleader) {
+		this.isleader = isleader;
+	}
+
+	public int getIdproject() {
+		return idproject;
+	}
+
+	public void setIdproject(int idproject) {
+		this.idproject = idproject;
 	}
 
 }

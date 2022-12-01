@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-
+<c:url value="/student/project/resgiter" var="Resgiter"></c:url>
 <!-- Sidebar -->
 <ul
 	class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
@@ -49,12 +49,11 @@
 		<div id="collapsePages" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item active" href="student/project">Danh sách
-					đề tài</a> <a class="collapse-item" href="student/project/search">Tìm
-					kiếm đề tài</a> <a class="collapse-item"
-					href="student/project/resgiter">Đăng ký đề tài</a> <a
-					class="collapse-item" href="student/project/detail">Xem thông
-					tin đề tài</a>
+				<a class="collapse-item active" href="/student/project">Danh
+					sách đề tài</a> <a class="collapse-item" href="${Resgiter}">Đăng ký
+					đề tài</a> <a class="collapse-item"
+					href="/student/project/my/${user.idproject}">Xem thông tin đề
+					tài</a>
 			</div>
 		</div></li>
 	<!-- Divider -->
@@ -62,8 +61,7 @@
 	<div class="sidebar-heading">Quản lý tài khoản</div>
 	<!-- Nav Item - Charts -->
 	<li class="nav-item"><a class="nav-link" href="/student/account">
-			<i class="fas fa-fw fa-chart-area"></i> <span>Thông tin tài
-				khoản</span>
+			<i class="fas fa-fw fa-chart-area"></i> <span>Đổi mật khẩu</span>
 	</a></li>
 
 	<!-- Nav Item - Tables  active-->

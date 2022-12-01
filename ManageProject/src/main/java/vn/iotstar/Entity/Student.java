@@ -2,6 +2,8 @@ package vn.iotstar.Entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,8 +14,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
-/* @NoArgsConstructor */
-@AllArgsConstructor
 @Data
 @Entity
 @Builder
@@ -28,10 +28,12 @@ public class Student implements Serializable {
 	private String image;
 	private String email;
 	private String faculty;
-	private Long id_project;
-	private Boolean is_leader;
-	private Boolean is_active;
 
+	@Column(name = "idproject", nullable = true)
+	private int idproject;
+
+	private Boolean isleader;
+	private Boolean is_active;
 
 	public Student() {
 		super();
@@ -85,14 +87,6 @@ public class Student implements Serializable {
 		this.faculty = faculty;
 	}
 
-	public Long getId_project() {
-		return id_project;
-	}
-
-	public void setId_project(Long id_project) {
-		this.id_project = id_project;
-	}
-
 	public Boolean getIs_active() {
 		return is_active;
 	}
@@ -101,13 +95,22 @@ public class Student implements Serializable {
 		this.is_active = is_active;
 	}
 
-	public Boolean getIs_leader() {
-		return is_leader;
+	public int getIdproject() {
+		return idproject;
 	}
 
-	public void setIs_leader(Boolean is_leader) {
-		this.is_leader = is_leader;
+	public void setIdproject(int idproject) {
+		this.idproject = idproject;
 	}
+
+	public Boolean getIsleader() {
+		return isleader;
+	}
+
+	public void setIsleader(Boolean isleader) {
+		this.isleader = isleader;
+	}
+
 
 	/*
 	 * @OneToOne(cascade = CascadeType.ALL)
