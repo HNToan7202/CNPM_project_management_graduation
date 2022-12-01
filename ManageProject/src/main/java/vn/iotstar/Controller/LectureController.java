@@ -80,3 +80,21 @@
  * new ModelAndView("redirect:/admin/lecture", model); } }
  * 
  */
+
+package vn.iotstar.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+
+@RequestMapping("/lecture")
+public class LectureController {
+	
+	@RequestMapping("profile")
+	public String profile(Model model) {
+		return "/lecture/profile";
+	}
+	
+}

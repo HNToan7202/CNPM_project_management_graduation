@@ -11,16 +11,18 @@ import vn.iotstar.Entity.Lecture;
 
 @Repository
 
-public interface ILectureRepository extends JpaRepository<Lecture, Long>{
+public interface ILectureRepository extends JpaRepository<Lecture, Long> {
 
-	//Tìm Kiếm theo nội dung tên from category where Categoryname
+	// Tìm Kiếm theo nội dung tên from category where Categoryname
 
 	List<Lecture> findByNameContaining(String name);
 
 	//
 	Lecture findOneByName(String name);
 
-	//Tìm kiếm và Phân trang
+	// Tìm kiếm và Phân trang
 
-	Page<Lecture> findByNameContaining(String name,Pageable pageable);
+	Page<Lecture> findByNameContaining(String name, Pageable pageable);
+
+	Lecture findByEmailContaining(String email);
 }

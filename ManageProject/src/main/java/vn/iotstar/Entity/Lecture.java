@@ -14,8 +14,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 @Data
 @Entity
 @Builder
@@ -25,7 +25,6 @@ public class Lecture implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
@@ -33,8 +32,11 @@ public class Lecture implements Serializable {
 	private String address;
 	private String image;
 	private String email;
+	
 	private int id_project;
+	
 	private int id_hoidong;
+	
 	private boolean is_active;
 
 	public Long getId() {

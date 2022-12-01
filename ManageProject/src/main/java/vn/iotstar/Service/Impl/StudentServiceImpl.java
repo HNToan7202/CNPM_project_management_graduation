@@ -98,4 +98,9 @@ public class StudentServiceImpl implements IStudentService {
 		return studentRepo.findByNameContaining(name, pageable);
 	}
 
+	@Override
+	public Student findByEmailContaining(String email) {
+		return studentRepo.findByEmailContaining(email);
+	}
+
 }

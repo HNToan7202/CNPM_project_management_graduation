@@ -22,7 +22,13 @@ public class AuthenticationInterceptorConfig implements WebMvcConfigurer {
 		.addPathPatterns("/admin/**");
 		
 		registry.addInterceptor(sideAuthenticationInterceptor)
-		.addPathPatterns("/side/**");
+		.addPathPatterns("/student/**");
+		
+		registry.addInterceptor(sideAuthenticationInterceptor)
+		.addPathPatterns("/lecture/**");
+		
+		registry.addInterceptor(sideAuthenticationInterceptor)
+		.addPathPatterns("/leaderlecture/**");
 	}
 
 }

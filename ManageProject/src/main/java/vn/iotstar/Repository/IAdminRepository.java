@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import vn.iotstar.Entity.Admin;
 
 @Repository
-public interface IAdminRepository extends JpaRepository<Admin, Integer> {
-
+public interface IAdminRepository extends JpaRepository<Admin, Long> {
+	Admin findByEmailContaining(String email);
 }

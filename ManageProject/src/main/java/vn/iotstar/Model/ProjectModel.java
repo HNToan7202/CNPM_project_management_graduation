@@ -7,9 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class ProjectModel {
+	
 	private Long id;
 
 	private String name;
@@ -116,11 +116,11 @@ public class ProjectModel {
 	public void setIsEdit(Boolean isEdit) {
 		IsEdit = isEdit;
 	}
-	public ProjectModel(Long id, String name, String desciption, String muctieu, String yeucau, int soluongsv,
+	public ProjectModel( String name, String desciption, String muctieu, String yeucau, int soluongsv,
 			Boolean isfaculty, String faculty, String nienkhoa, float point, int idtimeproject, Date create_at,
 			Date update_at, boolean is_active, Boolean isEdit) {
 		super();
-		this.id = id;
+
 		this.name = name;
 		this.desciption = desciption;
 		this.muctieu = muctieu;
@@ -139,6 +139,9 @@ public class ProjectModel {
 	public ProjectModel() {
 		super();
 	}
+	
+	
+
 
 
 }

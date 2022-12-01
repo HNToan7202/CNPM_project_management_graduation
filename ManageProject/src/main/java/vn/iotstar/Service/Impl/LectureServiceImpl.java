@@ -94,5 +94,10 @@ public class LectureServiceImpl implements ILectureService{
 		return lectureRepo.findByNameContaining(name, pageable);
 	}
 
+	@Override
+	public Lecture findByEmailContaining(String email) {
+		return lectureRepo.findByEmailContaining(email);
+	}
+
 	
 }

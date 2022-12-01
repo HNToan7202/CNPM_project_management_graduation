@@ -1,14 +1,22 @@
 package vn.iotstar.Controller;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +35,9 @@ public class StudentController {
 
 	@Autowired
 	IStudentService studentService;
+
+	@Autowired
+	ServletContext application;
 
 	@GetMapping("/home")
 	public ModelAndView List(ModelMap model) {
@@ -64,4 +75,52 @@ public class StudentController {
 		return new ModelAndView("redirect:/student", model);
 	}
 
+	@SuppressWarnings("deprecation")
+	@GetMapping("/profile")
+	public String Profile(ModelMap model, HttpSession sesson) {
+		String email = (String) sesson.getValue("email");
+		Student entity = studentService.findByEmailContaining(email);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(entity, student);
+		model.addAttribute("user", student);
+		return "student/profile";
+	}
+
+	@PostMapping("saveofUpdate")
+	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("student") StudentModel student,
+			BindingResult result) {
+		Student entity = new Student();
+
+		/*
+		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
+		 * ModelAndView("redirect:/student/profile", model); }
+		 */
+		if (!student.getImageFile().isEmpty()) {
+			String path = application.getRealPath("/");
+
+			try {
+				student.setImage(student.getImageFile().getOriginalFilename());
+				String filePath = path + "/resources/images/" + student.getImage();
+				student.getImageFile().transferTo(Path.of(filePath));
+				student.setImageFile(null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		BeanUtils.copyProperties(student, entity);
+		studentService.save(entity);
+		return new ModelAndView("redirect:/student/profile", model);
+
+	}
+
+	@SuppressWarnings("deprecation")
+	@GetMapping("group")
+	public String Group(ModelMap model, HttpSession sesson) {
+		String email = (String) sesson.getValue("email");
+		Student entity = studentService.findByEmailContaining(email);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(entity, student);
+		model.addAttribute("user", student);
+		return "student/group";
+	}
 }
