@@ -1,4 +1,4 @@
-package vn.iotstar.Controller.LeaderLecture;
+package vn.iotstar.Controller.Admin;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +24,7 @@ import vn.iotstar.Model.LeaderLectureModel;
 import vn.iotstar.Service.ILeaderLectureService;
 
 @Controller
-@RequestMapping("/leaderLecture")
+@RequestMapping("/admin/leaderLecture")
 public class LeaderLectureController {
 	@Autowired
 	ILeaderLectureService leaderLectureService;
