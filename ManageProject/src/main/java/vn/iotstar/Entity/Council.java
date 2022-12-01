@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "hoiDong")
+@Table(name = "hoidong")
 public class Council implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -27,13 +27,15 @@ public class Council implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
-	@Column(name="soluongTV")
-	private int soluongTV;
+	@Column(name="soluongtv")
+	private int soluongtv;
 	@Column(name="id_project")
 	private int id_project;
-	@Column(name="id_headLecture")
-	private int id_headLecture;
+	@Column(name="id_headlecture")
+	private int id_headlecture;
 	@Column(name="is_active")
 	private boolean is_active;
+	
+	
 
 }

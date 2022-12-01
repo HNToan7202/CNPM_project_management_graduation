@@ -33,7 +33,7 @@ public class Lecture implements Serializable {
 	private String image;
 	private String email;
 	
-	private int id_project;
+//	private int id_project;
 	
 	private int id_hoidong;
 	
@@ -87,13 +87,13 @@ public class Lecture implements Serializable {
 		this.email = email;
 	}
 
-	public int getId_project() {
-		return id_project;
-	}
-
-	public void setId_project(int id_project) {
-		this.id_project = id_project;
-	}
+//	public int getId_project() {
+//		return id_project;
+//	}
+//
+//	public void setId_project(int id_project) {
+//		this.id_project = id_project;
+//	}
 
 	public int getId_hoidong() {
 		return id_hoidong;
@@ -111,7 +111,7 @@ public class Lecture implements Serializable {
 		this.is_active = is_active;
 	}
 
-	public Lecture(Long id, String name, Date dateofbirth, String address, String image, String email, int id_project,
+	public Lecture(Long id, String name, Date dateofbirth, String address, String image, String email,
 			int id_hoidong, boolean is_active) {
 		super();
 		this.id = id;
@@ -120,7 +120,7 @@ public class Lecture implements Serializable {
 		this.address = address;
 		this.image = image;
 		this.email = email;
-		this.id_project = id_project;
+		//this.id_project = id_project;
 		this.id_hoidong = id_hoidong;
 		this.is_active = is_active;
 	}
@@ -128,6 +128,5 @@ public class Lecture implements Serializable {
 	public Lecture() {
 		super();
 	}
-
 
 }

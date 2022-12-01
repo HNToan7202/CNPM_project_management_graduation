@@ -81,11 +81,11 @@
 									<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
 
 									<td><a
-										href="/admin/categories/view/${item.id}"
+										href="/admin/lecture/view/${item.id}"
 										class="btn btn-outline-info"><i class="fa fa-info"></i></a> <a
-										href="/admin/categories/edit/${item.id}"
+										href="/admin/lecture/edit/${item.id}"
 										class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
-										<a href="/admin/categories/delete/${item.id}"
+										<a href="/admin/lecture/delete/${item.id}"
 										class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
 
 								</tr>

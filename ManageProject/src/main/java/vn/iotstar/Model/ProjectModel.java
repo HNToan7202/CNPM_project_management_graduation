@@ -25,6 +25,15 @@ public class ProjectModel {
 	private Date create_at;
 	private Date update_at;
 	private boolean is_active;
+	
+	//private Long id_lecture;
+	
+//	public Long getId_lecture() {
+//		return id_lecture;
+//	}
+//	public void setId_lecture(Long id_lecture) {
+//		this.id_lecture = id_lecture;
+//	}
 	private Boolean IsEdit=false;
 	public Long getId() {
 		return id;
@@ -62,17 +71,9 @@ public class ProjectModel {
 	public void setSoluongsv(int soluongsv) {
 		this.soluongsv = soluongsv;
 	}
-<<<<<<< HEAD
-
 	public Boolean getIsfaculty() {
 		return isfaculty;
 	}
-
-=======
-	public Boolean getIsfaculty() {
-		return isfaculty;
-	}
->>>>>>> 2496bebb3875a3a3cd5eee483a6fecce41bc7e68
 	public void setIsfaculty(Boolean isfaculty) {
 		this.isfaculty = isfaculty;
 	}
@@ -82,10 +83,6 @@ public class ProjectModel {
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> 2496bebb3875a3a3cd5eee483a6fecce41bc7e68
 	public String getNienkhoa() {
 		return nienkhoa;
 	}
@@ -98,17 +95,9 @@ public class ProjectModel {
 	public void setPoint(float point) {
 		this.point = point;
 	}
-<<<<<<< HEAD
-
 	public int getIdtimeproject() {
 		return idtimeproject;
 	}
-
-=======
-	public int getIdtimeproject() {
-		return idtimeproject;
-	}
->>>>>>> 2496bebb3875a3a3cd5eee483a6fecce41bc7e68
 	public void setIdtimeproject(int idtimeproject) {
 		this.idtimeproject = idtimeproject;
 	}
@@ -124,19 +113,10 @@ public class ProjectModel {
 	public void setUpdate_at(Date update_at) {
 		this.update_at = update_at;
 	}
-<<<<<<< HEAD
-
-	public Boolean getIs_active() {
-		return is_active;
-	}
-
-	public void setIs_active(Boolean is_active) {
-=======
 	public boolean isIs_active() {
 		return is_active;
 	}
 	public void setIs_active(boolean is_active) {
->>>>>>> 2496bebb3875a3a3cd5eee483a6fecce41bc7e68
 		this.is_active = is_active;
 	}
 	public Boolean getIsEdit() {
@@ -145,11 +125,11 @@ public class ProjectModel {
 	public void setIsEdit(Boolean isEdit) {
 		IsEdit = isEdit;
 	}
-	public ProjectModel(Long id, String name, String desciption, String muctieu, String yeucau, int soluongsv,
+	public ProjectModel( String name, String desciption, String muctieu, String yeucau, int soluongsv,
 			Boolean isfaculty, String faculty, String nienkhoa, float point, int idtimeproject, Date create_at,
 			Date update_at, boolean is_active, Boolean isEdit) {
 		super();
-		this.id = id;
+
 		this.name = name;
 		this.desciption = desciption;
 		this.muctieu = muctieu;
@@ -168,5 +148,9 @@ public class ProjectModel {
 	public ProjectModel() {
 		super();
 	}
+	
+	
+
+
 
 }
