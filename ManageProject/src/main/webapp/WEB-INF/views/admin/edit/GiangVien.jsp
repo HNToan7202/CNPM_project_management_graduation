@@ -296,7 +296,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Edit Giảng Viên</h6>
                 </div>
                 <form>
-                <form>
+                
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Mã số</label>

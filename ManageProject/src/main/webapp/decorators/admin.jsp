@@ -29,9 +29,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    
-
     <!-- Custom fonts for this template -->
     <link href="/decorators/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -44,14 +41,20 @@
 
 </head>
 <body>
-<%-- 	<%@ include file="/common/admin/header.jsp"%>
-	<%@ include file="/common/admin/slidebar.jsp"%> --%>
+
+ 	<%@ include file="/common/admin/header.jsp"%>
+	<%@ include file="/common/admin/slidebar.jsp"%> 
+	<%@ include file="/common/admin/wrapper.jsp"%> 
+
+
 	<!-- body -->
 	<sitemesh:write property='body'></sitemesh:write>
 	<!-- body -->
 
 	<!--=== Footer v4 ===-->
-<%-- 	<jsp:include page="/common/admin/footer.jsp"></jsp:include> --%>
+
+ 	<jsp:include page="/common/admin/footer.jsp"></jsp:include> 
+
 	<!--=== End Footer v4 ===-->
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -64,7 +67,6 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		type="text/javascript"></script>
-		
 		
 	<script src="/decorators/vendor/jquery/jquery.min.js"></script>
 	<script src="/decorators/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

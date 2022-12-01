@@ -24,16 +24,20 @@ import vn.iotstar.Model.LeaderLectureModel;
 import vn.iotstar.Service.ILeaderLectureService;
 
 @Controller
-@RequestMapping("leaderLecture")
+@RequestMapping("/leaderLecture")
 public class LeaderLectureController {
 	@Autowired
 	ILeaderLectureService leaderLectureService;
 	//IN TẤT CẢ TRƯỞNG BỘ MÔN
 	//admin
-	@RequestMapping("")
+	@RequestMapping("list")
 	public String LeaderLectureAdmin(ModelMap model) {
 		List<LeaderLecture> list = leaderLectureService.findAll();
 		model.addAttribute("leaderLecture", list);
+		return "admin/leaderLecture/list";
+	}
+	@RequestMapping("")
+	public String LeaderLectureAdmin1(ModelMap model) {
 		return "admin/leaderLecture/list";
 	}
 
@@ -76,7 +80,7 @@ public class LeaderLectureController {
 	//CHỈNH SỬA TRƯỞNG BỘ MÔN
 	//admin
 	@GetMapping("edit/{id}")
-	public ModelAndView edit(ModelMap model, @PathVariable("id") Long id) {
+	public ModelAndView edit(ModelMap model, @PathVariable("id") int id) {
 		// @PathVariable("categoryId") Long categoryId): nhận biến từ trên form
 		// xet categoryId đó có ton tai hay chua coppoy du lieu tu entity => model
 		Optional<LeaderLecture> opt = leaderLectureService.findById(id);
@@ -101,7 +105,7 @@ public class LeaderLectureController {
 	}
 	//XÓA TRƯỞNG BỘ MÔN
 	@GetMapping("delete/{id}")
-	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id) {
+	public ModelAndView delete(ModelMap model, @PathVariable("id") int id) {
 		leaderLectureService.deleteById(id);
 		model.addAttribute("message", "/LeaderLecture Delete Succesfull !!!");
 		return new ModelAndView("forward:/leaderLecture", model);
@@ -109,7 +113,7 @@ public class LeaderLectureController {
 	}
 	//TÌM KIẾM TRƯỞNG BỘ MÔN THEO ID
 	@GetMapping("search/{id}")
-	public ModelAndView search(ModelMap model, @RequestParam(name="id") Long id) {
+	public ModelAndView search(ModelMap model, @RequestParam(name="id") int id) {
 		// @PathVariable("categoryId") Long categoryId): nhận biến từ trên form
 		// xet categoryId đó có ton tai hay chua coppoy du lieu tu entity => model
 		Optional<LeaderLecture> opt = leaderLectureService.findById(id);

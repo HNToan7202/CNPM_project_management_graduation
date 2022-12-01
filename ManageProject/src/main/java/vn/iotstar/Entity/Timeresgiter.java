@@ -36,7 +36,6 @@ public class Timeresgiter implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
 	private Date create_at;
 	private Date finish_at;
 	/*

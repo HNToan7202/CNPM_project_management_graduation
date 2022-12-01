@@ -13,17 +13,15 @@ public interface ILeaderLectureService {
 
 	void deleteAll();
 
-	LeaderLecture getById(Long id);
-
 	void delete(LeaderLecture entity);
 
-	LeaderLecture getOne(Long id);
-
-	void deleteById(Long id);
+	void deleteById(Integer id);
 
 	long count();
 
-	Optional<LeaderLecture> findById(Long id);
+	Optional<LeaderLecture> findById(Integer id);
+
+	List<LeaderLecture> findAllById(Iterable<Integer> ids);
 
 	List<LeaderLecture> findAll(Sort sort);
 
@@ -32,5 +30,7 @@ public interface ILeaderLectureService {
 	List<LeaderLecture> findAll();
 
 	<S extends LeaderLecture> S save(S entity);
+
+
 
 }

@@ -24,16 +24,16 @@ public class Council implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name="id")
 	private Long id;
-	@Column(name="soluongtv")
-	private int soluongtv;
-	@Column(name="id_project")
+	//@Column(name="soluongTV")
+	private int soluongTV;
+	//@Column(name="id_project")
 	private int id_project;
-	@Column(name="id_headlecture")
-	private int id_headlecture;
-	@Column(name="is_active")
+	//@Column(name="id_headLecture")
+	private int id_headLecture;
+	//@Column(name="is_active")
 	private boolean is_active;
 	
 	

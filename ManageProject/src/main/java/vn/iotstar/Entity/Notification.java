@@ -24,19 +24,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "notification")
 public class Notification implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="name",length = 50, columnDefinition = "nvarchar(50) not null")
+	//@Column(name="name",length = 50, columnDefinition = "nvarchar(50) not null")
 	private String name;
-	@Column(name="create_at")
+	//@Column(name="create_at")
 	private Date create_at;
-	@Column(name="update_at")
+	//@Column(name="update_at")
 	private Date update_at;
-	@Column(name="desciption",length = 50, columnDefinition = "nvarchar(50) not null")
+	//@Column(name="desciption",length = 50, columnDefinition = "nvarchar(50) not null")
 	private String desciption;
-	@Column(name="for_student")
+	//@Column(name="for_student")
 	private boolean for_student;
-	@Column(name="is_active")
+	//@Column(name="isactive")
 	private boolean is_active;
 
 	
