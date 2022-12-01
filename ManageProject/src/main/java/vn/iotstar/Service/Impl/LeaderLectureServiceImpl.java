@@ -39,7 +39,12 @@ public class LeaderLectureServiceImpl implements ILeaderLectureService{
 	}
 
 	@Override
-	public Optional<LeaderLecture> findById(Long id) {
+	public List<LeaderLecture> findAllById(Iterable<Integer> ids) {
+		return leaderLectureRepository.findAllById(ids);
+	}
+
+	@Override
+	public Optional<LeaderLecture> findById(Integer id) {
 		return leaderLectureRepository.findById(id);
 	}
 
@@ -49,13 +54,8 @@ public class LeaderLectureServiceImpl implements ILeaderLectureService{
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		leaderLectureRepository.deleteById(id);
-	}
-
-	@Override
-	public LeaderLecture getOne(Long id) {
-		return leaderLectureRepository.getOne(id);
 	}
 
 	@Override
@@ -64,13 +64,10 @@ public class LeaderLectureServiceImpl implements ILeaderLectureService{
 	}
 
 	@Override
-	public LeaderLecture getById(Long id) {
-		return leaderLectureRepository.getById(id);
-	}
-
-	@Override
 	public void deleteAll() {
 		leaderLectureRepository.deleteAll();
 	}
+
+
 	
 }

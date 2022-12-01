@@ -13,13 +13,13 @@ import lombok.*;
 @Table(name = "admin")
 public class Admin {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="name",length = 100, columnDefinition = "nvarchar(100) not null")
+	//@Column(name="name",length = 100, columnDefinition = "nvarchar(100) not null")
 	private String name;
-	@Column(name = "email")
+	//@Column(name = "email")
 	private String email;
-	@Column(name = "is_active")
+	//@Column(name = "isactive")
 	private boolean is_active;
 
 }

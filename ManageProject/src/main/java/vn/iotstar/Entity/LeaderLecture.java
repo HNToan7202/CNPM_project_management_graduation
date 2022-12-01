@@ -17,21 +17,21 @@ import lombok.*;
 public class LeaderLecture  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private Long id;
-	@Column(name="name",length = 255, columnDefinition = "nvarchar(255) not null")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name="id")
+	private int id;
+	//@Column(name="name",length = 255, columnDefinition = "nvarchar(255) not null")
 	private String name;
-	@Column(name="dateofbirth")
+	//@Column(name="dateofbirth")
 	private Date dateofbirth;
-	@Column(name="image")
+	//@Column(name="image")
 	private String image;
-	@Column(name="email")
+	//@Column(name="email")
 	private String email;
-	@Column(name="address", length = 255, columnDefinition = "nvarchar(255) not null")
+	//@Column(name="address", length = 255, columnDefinition = "nvarchar(255) not null")
 	private String address;
-	@Column(name="is_active")
-	private boolean is_active;
+	//@Column(name="isactive")
+	private boolean isactive;
 	
 
 }

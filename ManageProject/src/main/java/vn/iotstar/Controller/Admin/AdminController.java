@@ -26,10 +26,18 @@ import vn.iotstar.Service.IAdminService;
 
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminController {
 	@Autowired
 	IAdminService adminService;
+	//TRANG CHỦ ADMIN
+	@RequestMapping("trangchu")
+	public String Main(ModelMap model) {
+		List<Admin> list = adminService.findAll();
+		model.addAttribute("admin", list);
+		return "Home/admin";
+	}
+	
 	//IN TẤT CẢ ADMIN
 	//admin
 	@RequestMapping("")
