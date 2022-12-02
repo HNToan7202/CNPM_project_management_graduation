@@ -21,6 +21,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Lecture")
 public class Lecture implements Serializable {
 
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Long id;
@@ -28,6 +29,7 @@ public class Lecture implements Serializable {
 	private Date dateofbirth;
 	private String address;
 	private String image;
+
 	private String email;
 	private int idhoidong;
 	private Boolean isactive;

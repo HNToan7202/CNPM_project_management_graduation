@@ -31,6 +31,10 @@ public class LeaderLecture  implements Serializable{
 	//@Column(name="address", length = 255, columnDefinition = "nvarchar(255) not null")
 	private String address;
 	//@Column(name="isactive")
+
+	private Boolean isactive;
+	
+
 	private boolean is_active;
 	public int getId() {
 		return id;
@@ -74,6 +78,7 @@ public class LeaderLecture  implements Serializable{
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
 	}
+
 
 
 }

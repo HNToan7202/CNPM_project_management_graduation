@@ -24,7 +24,7 @@ public class LeaderLectureModel {
 	@Email(message = "Mail khong hop le")
 	private String email;
 	private String address;
-	private boolean isActive;
+	private Boolean isactive;
 	private Boolean isEdit = false;
 	public int getId() {
 		return id;

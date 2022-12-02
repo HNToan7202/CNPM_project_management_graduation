@@ -21,6 +21,10 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Xem Danh sách</h6>
                         </div>
+                         <div class="card-footer text-muted">
+                         <a href=<c:url value="/admin/leaderLecture/addOrEdit"/>
+						class="btn btn-dark"><i class="fa fa-new"></i>Tạo Trưởng bộ môn</a> 
+						</div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -54,7 +58,9 @@
                                                 <td>${leaderLecture.id}</td>
                                                 <td>${leaderLecture.name}</td>
                                                 <td>${leaderLecture.dateofbirth}</td>
-                                                <td>${leaderLecture.image}</td>
+                                               
+                                                <td><c:url value="/images/${leaderLecture.image}" var="imgUrl"></c:url>
+												<img width="100px" height="100px" name="imageFile" src="${imgUrl}"></td>
                                                 <td>${leaderLecture.email}</td>
                                                 <td>${leaderLecture.address}</td>
                                                 <td>${leaderLecture.isactive ? 'Actived' : 'Not Active'}</td> 
@@ -62,7 +68,7 @@
                                                     <!-- Button trigger modal -->
                                                     <a href="Thông tin" class="btn btn-outline-info"><i class="fa fa-info"></i></a>
 
-                                                    <a href="chỉnh sửa" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
+                                                    <a href="/admin/leaderLecture/edit/${leaderLecture.id}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
                                                     
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${leaderLecture.id}">
                                                       <i class="fa fa-trash"></i>

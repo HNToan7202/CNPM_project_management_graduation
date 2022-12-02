@@ -75,7 +75,7 @@
                                                     <a href="Thông tin" class="btn btn-outline-info"><i class="fa fa-info"></i></a>
 
                                                     <a href="/admin/student/edit/${student.mssv}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${student.mssv}">
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal${student.mssv}">
                                                       <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
@@ -110,6 +110,6 @@
                     </div>
 
                 </div>
-                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
