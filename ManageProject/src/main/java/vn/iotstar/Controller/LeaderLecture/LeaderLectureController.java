@@ -1,8 +1,10 @@
 package vn.iotstar.Controller.LeaderLecture;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -24,22 +26,21 @@ import vn.iotstar.Model.LeaderLectureModel;
 import vn.iotstar.Service.ILeaderLectureService;
 
 @Controller
-@RequestMapping("/leaderLecture")
+@RequestMapping("/admin/leaderLecture")
 public class LeaderLectureController {
 	@Autowired
 	ILeaderLectureService leaderLectureService;
+	@Autowired
+	ServletContext application;
 	//IN TẤT CẢ TRƯỞNG BỘ MÔN
 	//admin
-	@RequestMapping("list")
+	@RequestMapping("")
 	public String LeaderLectureAdmin(ModelMap model) {
 		List<LeaderLecture> list = leaderLectureService.findAll();
 		model.addAttribute("leaderLecture", list);
 		return "admin/leaderLecture/list";
 	}
-	@RequestMapping("")
-	public String LeaderLectureAdmin1(ModelMap model) {
-		return "admin/leaderLecture/list";
-	}
+
 
 	//TẠO TRƯỞNG BỘ MÔN
 	//admin
@@ -58,6 +59,18 @@ public class LeaderLectureController {
 		if (result.hasErrors()) {
 			return new ModelAndView("admin/leaderLecture/addOrEdit");
 		}
+		if (!leaderLecture.getImageFile().isEmpty()) {
+			String path = application.getRealPath("/");
+
+			try {
+				leaderLecture.setImage(leaderLecture.getImageFile().getOriginalFilename());
+				String filePath = path + "/resources/images/" + leaderLecture.getImage();
+				leaderLecture.getImageFile().transferTo(Path.of(filePath));
+				leaderLecture.setImageFile(null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		LeaderLecture entity = new LeaderLecture();
 		// đổ dữ liệu từ cate qua bên entity
 		BeanUtils.copyProperties(leaderLecture, entity);
@@ -66,14 +79,14 @@ public class LeaderLectureController {
 
 		String message = "";
 		if (leaderLecture.getIsEdit() == true) {
-			message = "Councils Update succesfull !";
+			message = "LeaderLecture Update succesfull !";
 		} else {
-			message = "CouncilsCreate Successfull !";
+			message = "LeaderLecture Successfull !";
 		}
 
 		model.addAttribute("message", message);
 		//điều hướng vào link  để in danh sách có message
-		return new ModelAndView("forward:/leaderLecture", model);
+		return new ModelAndView("forward:/admin/leaderLecture", model);
 
 	}
 	
@@ -98,9 +111,9 @@ public class LeaderLectureController {
 			return new ModelAndView("/admin/leaderLecture/addOrEdit", model);
 		}
 		// nếu ko Id, eroll
-		model.addAttribute("message", "Councilis not vaild !!!");
+		model.addAttribute("message", "LeaderLecture not vaild !!!");
 		// đẩy về list sau khi hoàn thành có message
-		return new ModelAndView("forward:/leaderLecture", model);
+		return new ModelAndView("forward:/admin/leaderLecture", model);
 
 	}
 	//XÓA TRƯỞNG BỘ MÔN
@@ -108,7 +121,7 @@ public class LeaderLectureController {
 	public ModelAndView delete(ModelMap model, @PathVariable("id") int id) {
 		leaderLectureService.deleteById(id);
 		model.addAttribute("message", "/LeaderLecture Delete Succesfull !!!");
-		return new ModelAndView("forward:/leaderLecture", model);
+		return new ModelAndView("forward:/admin/leaderLecture", model);
 
 	}
 	//TÌM KIẾM TRƯỞNG BỘ MÔN THEO ID
@@ -131,7 +144,7 @@ public class LeaderLectureController {
 		// nếu ko Id, eroll
 		model.addAttribute("message", "LeaderLecture not vaild !!!");
 		// đẩy về list sau khi hoàn thành có message
-		return new ModelAndView("forward:/leaderLecture", model);
+		return new ModelAndView("forward:/admin/leaderLecture", model);
 		
 	}
 

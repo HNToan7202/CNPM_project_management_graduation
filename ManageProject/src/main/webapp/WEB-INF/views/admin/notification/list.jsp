@@ -85,7 +85,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <!-- <button type="button" class="btn btn-primary" >Yes</button> -->
-                                                            <a class="btn btn-primary" href="notification/delete/${notification.id}" class="btn btn-outline-danger">Yes</a>
+                                                            <a class="btn btn-primary" href="/notification/delete/${notification.id}/1" class="btn btn-outline-danger">Yes</a>
                                                         </div>
                                                     </div>
                                                 </div>

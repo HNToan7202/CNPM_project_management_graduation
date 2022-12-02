@@ -31,7 +31,7 @@ public class LeaderLecture  implements Serializable{
 	//@Column(name="address", length = 255, columnDefinition = "nvarchar(255) not null")
 	private String address;
 	//@Column(name="isactive")
-	private boolean isactive;
+	private Boolean isactive;
 	
 
 }

@@ -23,14 +23,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "Lecture")
 public class Lecture implements Serializable {
 
+
 	private static final long serialVersionUID = 1L;
-@Id
+	@Id
 	private Long id;
 	private String name;
 	private Date dateofbirth;
 	private String address;
 	private String image;
-	private Boolean istruongbomon;
+	//private Boolean istruongbomon;
 	private String email;
 	private int idhoidong;
 	private Boolean isactive;

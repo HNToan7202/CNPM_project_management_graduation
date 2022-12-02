@@ -32,7 +32,7 @@ public class AccountServiceImpl implements IAccountService {
 
 	@Override
 	public <S extends Account> S save(S entity) {
-		entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));
+		//entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));
 
 		return accountRepository.save(entity);
 	}
@@ -91,11 +91,17 @@ public class AccountServiceImpl implements IAccountService {
 	public Account login(String email, String password) {
 		Optional<Account> optExist = findById(email);
 
-		if (optExist.isPresent() && bCryptPasswordEncoder.matches(password, optExist.get().getPassword())) {
-			optExist.get().setPassword("");
+		if (optExist.isPresent() /* && bCryptPasswordEncoder.matches(password, optExist.get().getPassword()) */) {
+
 			return optExist.get();
 		}
 		return null;
+	}
+
+	@Override
+	public Account findOneByemail(String email) {
+		// TODO Auto-generated method stub
+		return accountRepository.findOneByemail(email);
 	}
 	
 }

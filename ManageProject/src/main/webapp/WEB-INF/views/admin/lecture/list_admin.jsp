@@ -21,6 +21,10 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Xem Danh sách</h6>
                         </div>
+                         <div class="card-footer text-muted">
+                         <a href=<c:url value="/admin/lecture/add"/>
+						class="btn btn-dark"><i class="fa fa-new"></i>Tạo Giảng Viên</a> 
+						</div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -30,9 +34,8 @@
                                             <th>Tên</th>
                                             <th>Ngày sinh</th>
                                             <th>Địa chỉ</th>
-                                            <th>Nhận diện</th>
+                                            <th>Nhận diện</th>   
                                             <th>Email</th>
-                                            <th>Id_project</th>
                                             <th>Id_hoidong</th>
                                             <th>Is_active</th>
                                             <th>Action</th>
@@ -44,9 +47,8 @@
                                             <th>Tên</th>
                                             <th>Ngày sinh</th>
                                             <th>Địa chỉ</th>
-                                            <th>Nhận diện</th>
+                                            <th>Nhận diện</th>   
                                             <th>Email</th>
-                                            <th>Id_project</th>
                                             <th>Id_hoidong</th>
                                             <th>Is_active</th>
                                             <th>Action</th>
@@ -59,16 +61,17 @@
                                                 <td>${lecture.name}</td>
                                                 <td>${lecture.dateofbirth}</td>
                                                 <td>${lecture.address}</td>
-                                                <td>${lecture.image}</td>
+                                           
+                                                <td><c:url value="/images/${lecture.image}" var="imgUrl"></c:url>
+												<img width="100px" height="100px" name="imageFile" src="${imgUrl}"></td>
                                                 <td>${lecture.email}</td>
-                                                <td>${lecture.id_project}</td>
-                                                <td>${lecture.id_hoidong}</td>
-                                                <td>${lecture.is_active ? 'Actived' : 'Not Active'}</td> 
+                                                <td>${lecture.idhoidong}</td>
+                                                <td>${lecture.isactive ? 'Actived' : 'Not Active'}</td> 
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <a href="Thông tin" class="btn btn-outline-info"><i class="fa fa-info"></i></a>
 
-                                                    <a href="chỉnh sửa" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
+                                                    <a href="/admin/lecture/edit/${lecture.id}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${lecture.id}">
                                                       <i class="fa fa-trash"></i>
                                                     </button>
@@ -79,7 +82,7 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel${category.categoryId}">Delete</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel${lecture.id}">Delete</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -88,7 +91,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <!-- <button type="button" class="btn btn-primary" >Yes</button> -->
-                                                            <a class="btn btn-primary" href="/admin/categories/delete/${lecture.id}" class="btn btn-outline-danger">Yes</a>
+                                                            <a class="btn btn-primary" href="/admin/lecture/delete/${lecture.id}" class="btn btn-outline-danger">Yes</a>
                                                         </div>
                                                     </div>
                                                 </div>

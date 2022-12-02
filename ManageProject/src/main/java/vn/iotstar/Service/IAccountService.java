@@ -38,6 +38,7 @@ public interface IAccountService {
 	Page<Account> findAll(Pageable pageable);
 
 	Account login(String email, String password);
+	Account findOneByemail(String email);
 
 
 	
