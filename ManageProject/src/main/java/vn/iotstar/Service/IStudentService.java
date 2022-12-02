@@ -37,4 +37,6 @@ public interface IStudentService {
 	
 	List<Student> findByNameContaining (String name);
 	Page<Student> findByNameContaining (String name,Pageable pageable);
+
+	Student findByEmailContaining(String email);
 }

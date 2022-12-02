@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "notification")
 public class Notification implements Serializable{
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	//@Column(name="name",length = 50, columnDefinition = "nvarchar(50) not null")
 	private String name;
