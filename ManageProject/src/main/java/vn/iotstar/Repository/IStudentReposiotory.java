@@ -11,7 +11,12 @@ import vn.iotstar.Entity.Student;
 
 @Repository
 public interface IStudentReposiotory extends JpaRepository<Student, Long>{
-	List<Student> findByNameContaining (String name);
-	Page<Student> findByNameContaining (String name, Pageable pageable);
+	List<Student> findByNameContaining(String name);
+
+	List<Student> findByIdproject(Integer idproject); // lấy đúng từng ký tự
+	//List<Student> findByIdprojectContaining(int project); // lấy idproject có các ký tự giống idproject
+
+	Page<Student> findByNameContaining(String name, Pageable pageable);
+
 	Student findByEmailContaining(String email);
-} 
+}

@@ -31,6 +31,8 @@ public interface IAdminService {
 
 	<S extends Admin> S save(S entity);
 
+	Admin findByEmailContaining(String email);
+
 
 
 }
