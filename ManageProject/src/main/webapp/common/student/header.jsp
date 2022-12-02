@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
-<nav class="navbar navbar-light bg-light">
+<nav class="">
 	<div id="banner">
 	</div>
 </nav>

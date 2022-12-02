@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -11,8 +13,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -177,19 +184,65 @@ public class StudentController {
 		BeanUtils.copyProperties(entity, student);
 		model.addAttribute("user", student);
 		int idproject = entity.getIdproject();
-		List<Student> list = studentService.findAll();
+		List<Student> list = studentService.findByIdproject(idproject);
 		model.addAttribute("list", list);
 
 		return "student/group";
 	}
 
 	@GetMapping("/project")
+	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name, HttpSession sesson,
+			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+		String email = (String) sesson.getValue("email");
+		Student entity = studentService.findByEmailContaining(email);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(entity, student);
+		model.addAttribute("user", student);
+		// Tong mau tin trong category services
+
+		int count = (int) projectService.count();
+		int currentpage = page.orElse(1);
+		int pageSize = size.orElse(3); // load len 3 mau tin
+
+		Pageable pageable = PageRequest.of(currentpage - 1, pageSize, Sort.by("id"));
+
+		Page<Project> resultPage = null;
+
+		if (StringUtils.hasText(name)) {
+			resultPage = projectService.findByNameContaining(name, pageable);
+
+			model.addAttribute("name", name);
+		} else {
+			resultPage = projectService.findAll(pageable);
+		}
+
+		int totalPages = resultPage.getTotalPages();
+		if (totalPages > 0) {
+			int start = Math.max(1, currentpage - 2);
+			int end = Math.min(currentpage + 2, totalPages);
+			if (totalPages > count) {
+				if (end == totalPages) {
+					start = end - count;
+				} else if (start == 1)
+					end = start + count;
+			}
+			List<Integer> pageNumbers = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+
+		}
+
+		model.addAttribute("projectPage", resultPage);
+		return "student/project";
+
+	}
+
 	public String Project(ModelMap model, HttpSession sesson) {
 		String email = (String) sesson.getValue("email");
 		Student entity = studentService.findByEmailContaining(email);
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(entity, student);
 		model.addAttribute("user", student);
+
 		List<Lecture> lectures = lectureService.findAll();
 		model.addAttribute("lectures", lectures);
 		List<Project> project = projectService.findAll();
@@ -256,6 +309,10 @@ public class StudentController {
 			model.addAttribute("finish_date", finish);
 			model.addAttribute("getdate", getDate);
 		}
+		List<Lecture> lectures = lectureService.findAll();
+		model.addAttribute("lectures", lectures);
+		List<Project> project = projectService.findAll();
+		model.addAttribute("projects", project);
 		return "student/projectResgiter";
 
 	}

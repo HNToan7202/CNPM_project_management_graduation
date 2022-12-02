@@ -7,5 +7,5 @@ import vn.iotstar.Entity.Account;
 
 @Repository
 public interface IAccountRepository extends JpaRepository<Account, String> {
-
+	Account findByEmailContaining(String email);
 }
