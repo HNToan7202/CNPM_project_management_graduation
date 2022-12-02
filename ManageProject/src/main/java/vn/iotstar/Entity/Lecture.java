@@ -14,7 +14,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Data
 @Entity
@@ -23,112 +24,70 @@ import lombok.NoArgsConstructor;
 public class Lecture implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
+@Id
 	private Long id;
-
 	private String name;
 	private Date dateofbirth;
 	private String address;
 	private String image;
+	private Boolean istruongbomon;
 	private String email;
-	
-//	private int id_project;
-	
 	private int idhoidong;
-	
-	private boolean isactive;
-
+	private Boolean isactive;
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public Date getDateofbirth() {
 		return dateofbirth;
 	}
-
 	public void setDateofbirth(Date dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public String getImage() {
 		return image;
 	}
-
 	public void setImage(String image) {
 		this.image = image;
 	}
-
+	public Boolean getIstruongbomon() {
+		return istruongbomon;
+	}
+	public void setIstruongbomon(Boolean istruongbomon) {
+		this.istruongbomon = istruongbomon;
+	}
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-//	public int getId_project() {
-//		return id_project;
-//	}
-//
-//	public void setId_project(int id_project) {
-//		this.id_project = id_project;
-//	}
-
-
-
-	public boolean isIsactive() {
-		return isactive;
-	}
-
 	public int getIdhoidong() {
 		return idhoidong;
 	}
-
 	public void setIdhoidong(int idhoidong) {
 		this.idhoidong = idhoidong;
 	}
-
-	public void setIsactive(boolean isactive) {
+	public Boolean getIsactive() {
+		return isactive;
+	}
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
-	public Lecture(Long id, String name, Date dateofbirth, String address, String image, String email,
-			int idhoidong, boolean isactive) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.dateofbirth = dateofbirth;
-		this.address = address;
-		this.image = image;
-		this.email = email;
-		//this.id_project = id_project;
-		this.idhoidong = idhoidong;
-		this.isactive = isactive;
-	}
-
-	public Lecture() {
-		super();
-	}
-
+	
 }

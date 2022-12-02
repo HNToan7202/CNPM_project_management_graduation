@@ -13,4 +13,5 @@ import vn.iotstar.Entity.Student;
 public interface IStudentReposiotory extends JpaRepository<Student, Long>{
 	List<Student> findByNameContaining (String name);
 	Page<Student> findByNameContaining (String name, Pageable pageable);
+	Student findByEmailContaining(String email);
 } 

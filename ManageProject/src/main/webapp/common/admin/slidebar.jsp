@@ -56,7 +56,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Xem</h6>
                         <a class="collapse-item" href="/admin/test/listGV">Giảng Viên</a>
-                        <a class="collapse-item" href="/admin/test/listST">Sinh Viên</a>
+                        <a class="collapse-item" href="/admin/student">Sinh Viên</a>
                         <a class="collapse-item" href="/leaderLecture/list">Trưởng bộ môn</a>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
             </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/notification/admin">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Quản lý thông báo</span></a>
             </li>
