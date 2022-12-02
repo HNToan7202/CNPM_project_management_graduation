@@ -59,19 +59,17 @@
 						<thead class="thead-inverse">
 
 							<tr>
-								<th>Name</th>
-								<th>Desciption</th>
-								<th>Goal</th>
-								<th>yeuCau</th>
-								<th>soLuongSV</th>
-								<th>is_Faculty</th>
-								<th>Faculty</th>
-								<th>nienKhoa</th>
-								<th>point</th>
-								<th>id_TimeProject</th>
-								<th>create_at</th>
-								<th>update_at</th>
-								<th>is_active</th>
+								<th>Tên Đề Tài</th>
+								<th>Chi Tiết</th>
+								<th>Mục Tiêu</th>
+								<th>Yêu Cầu</th>
+								<th>Số Lượng Sinh Viên</th>
+								<th>Khác Chuyên Ngành</th>
+								<th>Chuyên Ngành</th>
+								<th>Niên Khóa</th>
+								<th>Điểm</th>
+								<th>Ngày Lập</th>
+								<th>Trạng Thái</th>
 								<th>Action</th>
 							</tr>
 
@@ -90,13 +88,12 @@
 									<td>${item.muctieu}</td>
 									<td>${item.yeucau}</td>
 									<td>${item.soluongsv}</td>
-									<td>${item.isfaculty}</td>
+									<td>${item.isfaculty ? 'Được Phép':'Không Được Phép'}</td>
 									<td>${item.faculty}</td>
 									<td>${item.nienkhoa}</td>
-									<td>${item.point}</td>
-									<td>${item.idtimeproject}</td>
+									<td>${item.point }</td>
 									<td>${item.create_at}</td>
-									<td>${item.update_at}</td>
+									
 									<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
 
 									<td><a href="/lecture/project/edit/${item.id}"

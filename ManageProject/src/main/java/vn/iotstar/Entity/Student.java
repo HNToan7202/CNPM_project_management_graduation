@@ -85,6 +85,22 @@ public class Student implements Serializable {
 	public void setIs_active(Boolean is_active) {
 		this.is_active = is_active;
 	}
+	public Student(Long mssv, String name, Date dateofbirth, String image, String email, String faculty, int idproject,
+			Boolean isleader, Boolean is_active) {
+		super();
+		this.mssv = mssv;
+		this.name = name;
+		this.dateofbirth = dateofbirth;
+		this.image = image;
+		this.email = email;
+		this.faculty = faculty;
+		this.idproject = idproject;
+		this.isleader = isleader;
+		this.is_active = is_active;
+	}
+	public Student() {
+		super();
+	}
 
 
 	

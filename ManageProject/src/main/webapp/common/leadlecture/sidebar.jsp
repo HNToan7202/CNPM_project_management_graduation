@@ -12,7 +12,7 @@
 	<!-- Sidebar - Brand -->
 	<a
 		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="index.html">
+		href="/leadlecture/home">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -54,25 +54,18 @@
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Xem</h6>
-				<a class="collapse-item" href="/leadlecture/dshoidong">Danh
-					Sách Hội Đồng </a> <a class="collapse-item"
+				<a class="collapse-item" href="/leadlecture/dshoidong">Danh Sách
+					Hội Đồng </a> <a class="collapse-item"
 					href="/leadlecture/dshoidong/add">Thêm Hội Đồng</a>
 			</div>
 		</div></li>
 	<!-- Nav Item - Charts -->
-	<!-- Divider -->
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">Thông báo</div>
-	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts.html"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Quản lý thông báo</span>
-	</a></li>
 
 	<hr class="sidebar-divider">
 	<div class="sidebar-heading">Đề Tài</div>
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="/leadlecture/list"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Duyệt Đề Tài</span>
+	<li class="nav-item"><a class="nav-link" href="/leadlecture/list">
+			<i class="fas fa-fw fa-chart-area"></i> <span>Duyệt Đề Tài</span>
 	</a></li>
 
 	<!-- Divider -->

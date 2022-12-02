@@ -19,7 +19,7 @@
 				<div
 					class="d-flex flex-column align-items-center text-center p-3 py-5">
 					<img class="rounded-circle mt-5" width="150px"
-						src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+						src="/images/${user.image}"><span
 						class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span>
 					</span>
 				</div>
@@ -54,12 +54,6 @@
 								class="form-control" value="${user.email}">
 						</div>
 
-
-						<div class="mt-5 text-center">
-							<button class="btn btn-primary profile-button" type="button">Save
-								Profile</button>
-
-						</div>
 
 					</div>
 				</div>

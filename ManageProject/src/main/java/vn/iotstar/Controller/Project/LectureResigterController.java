@@ -183,5 +183,7 @@ public class LectureResigterController {
 		model.addAttribute("project", project);
 		return new ModelAndView("common/lecproject/ratelistproject", model);
 	}
+	
+	
 
 }

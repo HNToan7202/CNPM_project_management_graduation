@@ -22,14 +22,17 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.iotstar.Entity.Council;
 import vn.iotstar.Entity.LeaderLecture;
 import vn.iotstar.Entity.Lecture;
+import vn.iotstar.Entity.Notification;
 import vn.iotstar.Entity.Project;
 import vn.iotstar.Model.CouncilModel;
 import vn.iotstar.Model.LectureModel;
+import vn.iotstar.Model.NotificationModel;
 import vn.iotstar.Model.ProjectModel;
 import vn.iotstar.Repository.IProjectRepository;
 import vn.iotstar.Service.ICouncilService;
 import vn.iotstar.Service.ILeaderLectureService;
 import vn.iotstar.Service.ILectureService;
+import vn.iotstar.Service.INotificationService;
 import vn.iotstar.Service.IProjectService;
 
 @Controller
@@ -48,6 +51,9 @@ public class LeadLectureController {
 
 	@Autowired
 	ILectureService lectureService;
+	
+	@Autowired 
+	INotificationService notificationService;
 
 	@RequestMapping("profile")
 	public String profile(ModelMap model, HttpSession sesson) {
@@ -71,7 +77,7 @@ public class LeadLectureController {
 		model.addAttribute("council", council);
 		return "common/leadlecture/addOrEditHD";
 	}
-	
+
 	@GetMapping("/project/view/{id}")
 	public ModelAndView view(ModelMap model, @PathVariable("id") Long id) throws IOException {
 		Optional<Project> opt = projectService.findById(id);
@@ -171,4 +177,34 @@ public class LeadLectureController {
 		return new ModelAndView("common/leadlecture/listlecture", model);
 	}
 
+	@GetMapping("/home")
+	public ModelAndView List(ModelMap model, HttpSession sesson) {
+		String email = (String) sesson.getValue("email");
+		Lecture studententity = lectureService.findByEmailContaining(email);
+		LectureModel student = new LectureModel();
+		BeanUtils.copyProperties(studententity, student);
+		model.addAttribute("user", student);
+		List<Notification> notifies = notificationService.findAll();
+		model.addAttribute("notifies", notifies);
+		return new ModelAndView("lecture/home", model);
+	}
+
+	@GetMapping("/notify/{id}")
+	public String seachnotify(ModelMap model, @PathVariable("id") Long id, HttpSession sesson) {
+		String email = (String) sesson.getValue("email");
+		Lecture studententity = lectureService.findByEmailContaining(email);
+		LectureModel student = new LectureModel();
+		BeanUtils.copyProperties(studententity, student);
+		model.addAttribute("user", student);
+		Optional<Notification> opt = notificationService.findById((id));
+		NotificationModel notify = new NotificationModel();
+		if (opt.isPresent()) {
+			Notification entity = opt.get();
+			BeanUtils.copyProperties(entity, notify);
+			notify.setIsEdit(false);
+		}
+		model.addAttribute("notify", notify);
+		return "lecture/notify";
+
+	}
 }

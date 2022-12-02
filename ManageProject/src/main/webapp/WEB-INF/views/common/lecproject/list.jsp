@@ -18,10 +18,10 @@
 				<thead class="thead-inverse">
 
 					<tr>
-						<th>Name</th>
-						<th>point</th>
-						<th>create_at</th>
-						<th>is_active</th>
+						<th>Tên Đề Tài</th>
+						<th>Điểm</th>
+						<th>Ngày Tạo</th>
+						<th>Trạng Thái</th>
 						<th>Action</th>
 					</tr>
 
