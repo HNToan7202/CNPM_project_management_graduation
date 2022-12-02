@@ -60,6 +60,15 @@
 			</div>
 		</div></li>
 	<!-- Nav Item - Charts -->
+
+	<!-- Divider -->
+	<hr class="sidebar-divider">
+	<div class="sidebar-heading">Hội Đồng</div>
+	<!-- Nav Item - Charts -->
+	<li class="nav-item"><a class="nav-link"
+		href="/lecture/project/rate"> <i class="fas fa-fw fa-chart-area"></i>
+			<span>Đánh giá</span>
+	</a></li>
 	<!-- Divider -->
 	<hr class="sidebar-divider">
 	<div class="sidebar-heading">Thông báo</div>
@@ -68,13 +77,7 @@
 			class="fas fa-fw fa-chart-area"></i> <span>Quản lý thông báo</span>
 	</a></li>
 
-	<!-- Divider -->
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">Hội Đồng</div>
-	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts.html"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Đánh giá</span>
-	</a></li>
+
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 

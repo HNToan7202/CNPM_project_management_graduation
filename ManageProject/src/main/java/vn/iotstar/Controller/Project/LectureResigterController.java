@@ -83,7 +83,7 @@ public class LectureResigterController {
 			return new ModelAndView("common/lecproject/addOrEdit", model);
 		}
 		model.addAttribute("message", "project không tồn tại");
-		return new ModelAndView("redirect:/project/lecture", model);
+		return new ModelAndView("redirect:/lecutre/project", model);
 	}
 
 	@GetMapping("view/{id}")
@@ -98,7 +98,7 @@ public class LectureResigterController {
 			return new ModelAndView("common/lecproject/view", model);
 		}
 		model.addAttribute("message", "project không tồn tại");
-		return new ModelAndView("redirect:/project/lecture", model);
+		return new ModelAndView("redirect:/lecture/project", model);
 	}
 
 	@PostMapping("saveOrUpdate")
@@ -113,7 +113,7 @@ public class LectureResigterController {
 		projectService.save(entity);
 		return new ModelAndView("redirect:/lecture/project", model);
 	}
-
+	
 	@GetMapping("search")
 	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name,
 			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
@@ -159,7 +159,29 @@ public class LectureResigterController {
 	@GetMapping("delete/{id}")
 	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id) {
 		projectService.deleteById(id);
-		return new ModelAndView("redirect:/project/lecture", model);
+		return new ModelAndView("redirect:/lecture/project", model);
+	}
+
+	@GetMapping("/project/danhgia/{id}")
+	public ModelAndView danhgia(ModelMap model, @PathVariable("id") Long id) throws IOException {
+		Optional<Project> opt = projectService.findById(id);
+		ProjectModel project = new ProjectModel();
+		if (opt.isPresent()) {
+			Project entity = opt.get();
+			BeanUtils.copyProperties(entity, project);
+			project.setIsEdit(true);
+			model.addAttribute("project", project);
+			return new ModelAndView("common/lecproject/danhGia", model);
+		}
+		model.addAttribute("message", "project không tồn tại");
+		return new ModelAndView("redirect:/lecture/project", model);
+	}
+
+	@GetMapping("rate")
+	public ModelAndView rate(ModelMap model) {
+		List<Project> project = projectService.findAll();
+		model.addAttribute("project", project);
+		return new ModelAndView("common/lecproject/ratelistproject", model);
 	}
 
 }

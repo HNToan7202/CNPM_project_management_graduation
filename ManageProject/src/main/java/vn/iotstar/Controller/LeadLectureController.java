@@ -71,6 +71,21 @@ public class LeadLectureController {
 		model.addAttribute("council", council);
 		return "common/leadlecture/addOrEditHD";
 	}
+	
+	@GetMapping("/project/view/{id}")
+	public ModelAndView view(ModelMap model, @PathVariable("id") Long id) throws IOException {
+		Optional<Project> opt = projectService.findById(id);
+		ProjectModel project = new ProjectModel();
+		if (opt.isPresent()) {
+			Project entity = opt.get();
+			BeanUtils.copyProperties(entity, project);
+			project.setIsEdit(true);
+			model.addAttribute("project", project);
+			return new ModelAndView("common/lecproject/view", model);
+		}
+		model.addAttribute("message", "project không tồn tại");
+		return new ModelAndView("redirect:/lecture/project", model);
+	}
 
 	@GetMapping("/dshoidong/addGV/{id}")
 	public ModelAndView addGV(ModelMap model, @PathVariable("id") int id) throws IOException {

@@ -37,7 +37,9 @@
 							<td scope="row">${item.name}</td>			
 							<td>${item.point}</td>
 							<td>${item.create_at}</td>
-							<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+							
+							
+							<td>${item.is_active ? 'Đã Duyệt' : 'Chưa Duyệt'}</td>
 
 
 

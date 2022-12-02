@@ -48,7 +48,6 @@ public class LectureManageController {
 		return "admin/project/addOrEdit";
 
 	}
-	
 	@GetMapping("delete/{id}")
 	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id) {
 		lectureSerivce.deleteById(id);

@@ -24,7 +24,7 @@
 
 				</c:if>
 				
-				<input type="text" value="${id}" readonly="readonly" name = "id">
+				<input type="text" value="${id}" readonly="readonly" hidden="" name = "id">
 
 				<!-- Hêt thông báo -->
 
@@ -48,7 +48,7 @@
 
 					<tbody>
 						<c:forEach items="${lecture}" var="item">
-							 <c:if test="${item.idhoidong == id}"> 
+<%-- 							 <c:if test="${item.idhoidong == id}">  --%>
 
 								<tr>
 
@@ -65,7 +65,7 @@
 									</td>
 
 								</tr>
-						</c:if> 
+					<%-- 	</c:if>  --%>
 
 						</c:forEach>
 					</tbody>

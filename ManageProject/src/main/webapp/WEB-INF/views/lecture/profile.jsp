@@ -29,20 +29,20 @@
 					<div class="d-flex justify-content-between align-items-center mb-3">
 						<h4 class="text-right">Profile Settings</h4>
 					</div>
-					<div class="row mt-2">
-						<div class="col-md-6">
+					<div class="row mt-3">
+						<div class="col-md-12">
 							<label class="labels">ID</label><input type="text"
-								class="form-control" placeholder="first name"
+								class="form-control" placeholder="first name" readonly="readonly"
 								value="${user.id }">
 						</div>
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-12">
-							<label class="labels">Name</label><input type="text"
+							<label class="labels">Name</label><input type="text" readonly="readonly"
 								class="form-control" value="${user.name}">
 						</div>
 						<div class="col-md-12">
-							<label class="labels">Date Of Birth</label><input type="date"
+							<label class="labels">Date Of Birth</label><input type="date" readonly="readonly"
 								class="form-control" value="${user.dateofbirth}">
 						</div>
 						<div class="col-md-12">

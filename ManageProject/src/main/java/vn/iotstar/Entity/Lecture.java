@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -30,7 +28,6 @@ public class Lecture implements Serializable {
 	private Date dateofbirth;
 	private String address;
 	private String image;
-	private Boolean istruongbomon;
 	private String email;
 	private int idhoidong;
 	private Boolean isactive;
@@ -64,12 +61,7 @@ public class Lecture implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public Boolean getIstruongbomon() {
-		return istruongbomon;
-	}
-	public void setIstruongbomon(Boolean istruongbomon) {
-		this.istruongbomon = istruongbomon;
-	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -87,6 +79,21 @@ public class Lecture implements Serializable {
 	}
 	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
+	}
+	public Lecture(Long id, String name, Date dateofbirth, String address, String image, 
+			String email, int idhoidong, Boolean isactive) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dateofbirth = dateofbirth;
+		this.address = address;
+		this.image = image;
+		this.email = email;
+		this.idhoidong = idhoidong;
+		this.isactive = isactive;
+	}
+	public Lecture() {
+		super();
 	}
 
 	

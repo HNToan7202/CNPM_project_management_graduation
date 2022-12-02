@@ -93,9 +93,10 @@
 			<label for="Satus" class="form-lablel">Status:</label> <select
 				class="form-select" name="is_active" aria-describedby="is_activeid"
 				id="is_active">
-				<option ${project.is_active == true ? 'selected':'' } value="true">Active</option>
-				<option ${project.is_active == false ? 'selected':'' } value="false">Not
-					Active</option>
+				<option ${project.is_active == true ? 'selected':'' } value="true">Đã
+					Duyệt</option>
+				<option ${project.is_active == false ? 'selected':'' } value="false">
+					Chưa được duyệt</option>
 			</select>
 		</div>
 
@@ -103,11 +104,11 @@
 		<button class="btn btn-primary" type="submit">
 			<i class="fas fa-save"></i>
 			<c:if test="${project.isEdit }">
-				<span>Update</span>
+				<span>Submit</span>
 			</c:if>
 
 			<c:if test="${!project.isEdit }">
-				<span>Save</span>
+				<span>Submit</span>
 			</c:if>
 
 		</button>
