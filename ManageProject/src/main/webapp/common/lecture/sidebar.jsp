@@ -12,7 +12,7 @@
 	<!-- Sidebar - Brand -->
 	<a
 		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="index.html">
+		href="/lecture/home">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -44,30 +44,49 @@
 	<!-- Divider -->
 
 	<div class="sidebar-heading">Đề tài</div>
+	<li class="nav-item"><a class="nav-link collapsed" href="#"
+		data-toggle="collapse" data-target="#collapsePages"
+		aria-expanded="true" aria-controls="collapsePages"> <i
+			class="fas fa-fw fa-folder"></i> <span>Danh sách</span>
+	</a>
+		<div id="collapsePages" class="collapse"
+			aria-labelledby="headingPages" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">Xem</h6>
+				<a class="collapse-item" href="/lecture/project/add">Đăng Ký Đề
+					Tài</a> <a class="collapse-item" href="/lecture/project"> Danh Sách
+					Đề Tài</a> <a class="collapse-item" href="/lecture/project/search">Tìm
+					Kiếm Đề Tài</a>
+			</div>
+		</div></li>
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link"
-		href="/lecture/project/add"> <i class="fas fa-fw fa-chart-area"></i>
-			<span>Đăng Ký Đề Tài</span>
-	</a></li>
 
-	<li class="nav-item "><a class="nav-link" href="/lecture/project">
-			<i class="fas fa-fw fa-table"></i> <span>Danh Sách Đề Tài</span>
-	</a></li>
-	<!-- Divider -->
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">Thông báo</div>
-	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts.html"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Quản lý thông báo</span>
-	</a></li>
-	
 	<!-- Divider -->
 	<hr class="sidebar-divider">
 	<div class="sidebar-heading">Hội Đồng</div>
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts.html"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Đánh giá</span>
+	<li class="nav-item"><a class="nav-link"
+		href="/lecture/project/rate"> <i class="fas fa-fw fa-chart-area"></i>
+			<span>Đánh giá</span>
 	</a></li>
+
+
+	<hr class="sidebar-divider">
+	<div class="sidebar-heading">Thống Kê</div>
+	<!-- Nav Item - Charts -->
+	<li class="nav-item"><a class="nav-link"
+		href="/lecture/project/rate"> <i class="fas fa-fw fa-chart-area"></i>
+			<span>Đang online : 1</span>
+
+	</a></li>
+
+	<li class="nav-item"><a class="nav-link"
+		href="/lecture/project/rate"> <i class="fas fa-fw fa-chart-area"></i>
+			<span>Lượt truy cập : ${count}</span>
+
+	</a></li>
+
+
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 

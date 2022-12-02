@@ -101,5 +101,11 @@ public class ProjectServiceImpl implements IProjectService{
 	public void deleteAll() {
 		projectRepository.deleteAll();
 	}
+
+	@Override
+	public Page<Project> findByNameContaining(String name, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return projectRepository.findByNameContaining(name, pageable);
+	}
 	
 }

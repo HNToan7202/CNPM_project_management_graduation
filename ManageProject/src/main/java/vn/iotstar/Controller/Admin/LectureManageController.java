@@ -71,6 +71,7 @@ public class LectureManageController {
 
 	}
 
+
 	@PostMapping("saveofUpdate")
 	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("lecture") LectureModel lecture,
 			BindingResult result) {

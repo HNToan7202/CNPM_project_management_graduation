@@ -95,6 +95,12 @@ public class LectureServiceImpl implements ILectureService{
 		return lectureRepo.findByEmailContaining(email);
 	}
 
+	@Override
+	public List<Lecture> findByIdhoidongContaining(int idhoidong) {
+		// TODO Auto-generated method stub
+		return lectureRepo.findByIdhoidongContaining(idhoidong);
+	}
+
 
 
 	

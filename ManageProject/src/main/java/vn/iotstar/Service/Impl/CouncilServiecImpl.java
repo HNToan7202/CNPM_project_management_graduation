@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Council;
+import vn.iotstar.Entity.Project;
 import vn.iotstar.Repository.CouncilRepository;
 import vn.iotstar.Service.ICouncilService;
 
@@ -67,6 +68,20 @@ public class CouncilServiecImpl implements ICouncilService{
 	public void deleteAll() {
 		councilRepository.deleteAll();
 	}
+
+	@Override
+	public Page<Council> findByIdContaining(Long id, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return councilRepository.findByIdContaining(id, pageable);
+	}
+
+
+	@Override
+	public List<Project> findByIdContaining(Long id) {
+		// TODO Auto-generated method stub
+		return councilRepository.findByIdContaining(id);
+	}
+	
 	
 
 }

@@ -91,7 +91,9 @@ public class AccountServiceImpl implements IAccountService {
 	public Account login(String email, String password) {
 		Optional<Account> optExist = findById(email);
 
+
 		if (optExist.isPresent() /* && bCryptPasswordEncoder.matches(password, optExist.get().getPassword()) */) {
+
 
 			return optExist.get();
 		}

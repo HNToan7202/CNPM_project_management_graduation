@@ -10,11 +10,12 @@
 <title>List Lecture</title>
 </head>
 <body>
-               <!-- Begin Page Content -->
-                <div class="container-fluid">
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh sách Giảng Viên</h1>
+		<!-- Page Heading -->
+		<h1 class="h3 mb-2 text-gray-800">Danh sách Giảng Viên</h1>
+
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -100,12 +101,15 @@
                                         </c:forEach>
 
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+							</c:forEach>
 
-                </div>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>
