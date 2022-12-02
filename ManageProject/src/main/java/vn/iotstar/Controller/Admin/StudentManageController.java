@@ -71,7 +71,7 @@ public class StudentManageController {
 			return new ModelAndView("admin/student/addOrEdit", model);
 		}
 		model.addAttribute("message", "Student không tồn tại");
-		return new ModelAndView("redirect:/admin/student", model);
+		return new ModelAndView("forward:/admin/student", model);
 
 	}
 
@@ -80,10 +80,11 @@ public class StudentManageController {
 			BindingResult result) {
 		Student entity = new Student();
 
-		if (result.hasErrors()) {
-			model.addAttribute("message", "Có lỗi");
-			return new ModelAndView("admin/student/addOrEdit");
-		}
+		/*
+		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
+		 * ModelAndView("admin/student/addOrEdit"); }
+		 */
+		
 		if (!student.getImageFile().isEmpty()) {
 			String path = application.getRealPath("/");
 
@@ -101,12 +102,17 @@ public class StudentManageController {
 		return new ModelAndView("redirect:/admin/student", model);
 	}
 
+	/*
+	 * @GetMapping("") public String list(ModelMap model,@RequestParam("p")
+	 * Optional<Integer> p) { Pageable pageable = PageRequest.of(p.orElse(0), 3);
+	 * Page<Student> page = studentService.findAll(pageable);
+	 * model.addAttribute("students", page); return "admin/student/list"; }
+	 */
 	@GetMapping("")
-	public String list(ModelMap model,@RequestParam("p") Optional<Integer> p) {
-		Pageable pageable = PageRequest.of(p.orElse(0), 3);
-		Page<Student> page = studentService.findAll(pageable);
+	public String list(ModelMap model) {
+		List<Student> page = studentService.findAll();
 		model.addAttribute("students", page);
-		return "admin/student/list";
+		return "admin/student/list_admin";
 	}
 
 	@GetMapping("search")

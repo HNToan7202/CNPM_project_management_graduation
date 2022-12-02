@@ -20,7 +20,7 @@ import vn.iotstar.Service.IStudentService;
 @Service
 @RequiredArgsConstructor
 @Transactional
-@Slf4j
+
 public class StudentServiceImpl implements IStudentService {
 
 	@Autowired
@@ -96,6 +96,12 @@ public class StudentServiceImpl implements IStudentService {
 	@Override
 	public Page<Student> findByNameContaining(String name, Pageable pageable) {
 		return studentRepo.findByNameContaining(name, pageable);
+	}
+
+	
+	public Student findByEmailContaining(String email) {
+		// TODO Auto-generated method stub
+		return studentRepo.findByEmailContaining(email);
 	}
 
 }

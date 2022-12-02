@@ -14,7 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity

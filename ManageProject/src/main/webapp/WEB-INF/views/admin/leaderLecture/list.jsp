@@ -7,6 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
                 <!-- Begin Page Content -->
@@ -62,6 +63,7 @@
                                                     <a href="Thông tin" class="btn btn-outline-info"><i class="fa fa-info"></i></a>
 
                                                     <a href="chỉnh sửa" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
+                                                    
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${leaderLecture.id}">
                                                       <i class="fa fa-trash"></i>
                                                     </button>
@@ -81,7 +83,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <!-- <button type="button" class="btn btn-primary" >Yes</button> -->
-                                                            <a class="btn btn-primary" href="/admin/categories/delete/${leaderLecture.id}" class="btn btn-outline-danger">Yes</a>
+                                                            <a class="btn btn-primary" href="/leaderLecture/delete/${leaderLecture.id}" class="btn btn-outline-danger">Yes</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,6 +101,6 @@
                 </div>
                 <!-- /.container-fluid -->
 
-            
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
 </html>

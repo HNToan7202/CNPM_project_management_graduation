@@ -66,7 +66,7 @@ public class NotificationController {
 	public String add1(ModelMap model) {
 		NotificationModel notificationModel = new NotificationModel();
 		notificationModel.setIsEdit(false);// thêm
-		model.addAttribute("notificationModel", notificationModel);
+		model.addAttribute("notification", notificationModel);
 		return "admin/notification/addOrEdit";
 
 	}
@@ -192,7 +192,7 @@ public class NotificationController {
 				// nếu ko Id, eroll
 				model.addAttribute("message", "Notifications not vaild !!!");
 				// đẩy về list sau khi hoàn thành có message
-				return new ModelAndView("forward:/notifications/admin", model);
+				return new ModelAndView("forward:/notification/admin", model);
 	}
 	//Giảng viên
 	@GetMapping("edit2/{id}")
