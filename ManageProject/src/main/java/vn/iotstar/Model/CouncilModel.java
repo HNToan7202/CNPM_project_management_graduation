@@ -8,31 +8,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CouncilModel {
+	
 	private Long id;
-	
+
 	private int soluongtv;
-	
-	private int id_project;
-	
-	private int id_headlecture;
-	
-	private boolean is_active;
+
+	private int idproject;
+
+	private int idheadlecture;
+
+	private boolean isactive;
 	
 	private Boolean isEdit = false;
-
-	public CouncilModel(Long id, int soluongTV, int id_project, int id_headLecture, boolean is_active) {
-		super();
-		this.id = id;
-		this.soluongtv = soluongTV;
-		this.id_project = id_project;
-		this.id_headlecture = id_headLecture;
-		this.is_active = is_active;
-	}
-	
-	public CouncilModel() {
-		super();
-	}
-
 
 	public Long getId() {
 		return id;
@@ -50,28 +37,28 @@ public class CouncilModel {
 		this.soluongtv = soluongtv;
 	}
 
-	public int getId_project() {
-		return id_project;
+	public int getIdproject() {
+		return idproject;
 	}
 
-	public void setId_project(int id_project) {
-		this.id_project = id_project;
+	public void setIdproject(int idproject) {
+		this.idproject = idproject;
 	}
 
-	public int getId_headlecture() {
-		return id_headlecture;
+	public int getIdheadlecture() {
+		return idheadlecture;
 	}
 
-	public void setId_headlecture(int id_headlecture) {
-		this.id_headlecture = id_headlecture;
+	public void setIdheadlecture(int idheadlecture) {
+		this.idheadlecture = idheadlecture;
 	}
 
-	public boolean isIs_active() {
-		return is_active;
+	public boolean isIsactive() {
+		return isactive;
 	}
 
-	public void setIs_active(boolean is_active) {
-		this.is_active = is_active;
+	public void setIsactive(boolean isactive) {
+		this.isactive = isactive;
 	}
 
 	public Boolean getIsEdit() {
@@ -81,7 +68,18 @@ public class CouncilModel {
 	public void setIsEdit(Boolean isEdit) {
 		this.isEdit = isEdit;
 	}
-	
-	
-	
+
+	public CouncilModel(Long id, int soluongtv, int idproject, int idheadlecture, boolean isactive) {
+		super();
+		this.id = id;
+		this.soluongtv = soluongtv;
+		this.idproject = idproject;
+		this.idheadlecture = idheadlecture;
+		this.isactive = isactive;
+	}
+
+	public CouncilModel() {
+		super();
+	}
+
 }

@@ -31,21 +31,21 @@
 				
 				<tbody>
 
-					<c:forEach items="${project}" var="item">
+					<c:forEach items="${council}" var="item">
 
 						<tr>
-							<td scope="row">${item.name}</td>			
-							<td>${item.point}</td>
-							<td>${item.create_at}</td>
-							<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+							<td scope="row">${item.soluongtv}</td>			
+							<td>${item.idproject}</td>
+							<td>${item.idheadlecture}</td>
+							<td>${item.isactive ? 'Actived' : 'Not Active'}</td>
 
 
 
-							<td><a href="/lecture/project/view/${item.id}"
+							<td><a href="/leadlecture/dshoidong/view/${item.id}"
 								class="btn btn-outline-info"><i class="fa fa-info"></i>Detail</a> <a
-								href="/lecture/project/edit/${item.id}"
-								class="btn btn-outline-warning"><i class="fa fa-edit"></i>Edit</a>
-								<a href="/lecture/project/delete/${item.id}"
+								href="/leadlecture/dshoidong/addGV/${item.id}"
+								class="btn btn-outline-warning"><i class="fa fa-edit"></i>Add</a>
+								<a href="/leadlecture/dshoidong/delete/${item.id}"
 								class="btn btn-outline-danger"><i class="fa fa-trash"></i>Delete</a></td>
 
 						</tr>

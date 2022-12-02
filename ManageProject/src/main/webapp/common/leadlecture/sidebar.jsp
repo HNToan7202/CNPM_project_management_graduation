@@ -32,8 +32,9 @@
 	<!-- Nav Item - Utilities Collapse Menu -->
 
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="/lecture/profile">
-			<i class="fas fa-fw fa-chart-area"></i> <span>Thông Tin</span>
+	<li class="nav-item"><a class="nav-link"
+		href="/leadlecture/profile"> <i class="fas fa-fw fa-chart-area"></i>
+			<span>Thông Tin</span>
 	</a></li>
 	<!-- Divider -->
 	<hr class="sidebar-divider">
@@ -43,7 +44,7 @@
 	<!-- Nav Item - Pages Collapse Menu -->
 	<!-- Divider -->
 
-	<div class="sidebar-heading">Đề tài</div>
+	<div class="sidebar-heading">Hội Đồng</div>
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapsePages"
 		aria-expanded="true" aria-controls="collapsePages"> <i
@@ -53,10 +54,9 @@
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Xem</h6>
-				<a class="collapse-item" href="/lecture/project/add">Đăng Ký Đề
-					Tài</a> <a class="collapse-item" href="/lecture/project"> Danh Sách
-					Đề Tài</a> <a class="collapse-item" href="/lecture/project/search">Tìm
-					Kiếm Đề Tài</a>
+				<a class="collapse-item" href="/leadlecture/dshoidong">Danh
+					Sách Hội Đồng </a> <a class="collapse-item"
+					href="/leadlecture/dshoidong/add">Thêm Hội Đồng</a>
 			</div>
 		</div></li>
 	<!-- Nav Item - Charts -->
@@ -66,6 +66,13 @@
 	<!-- Nav Item - Charts -->
 	<li class="nav-item"><a class="nav-link" href="charts.html"> <i
 			class="fas fa-fw fa-chart-area"></i> <span>Quản lý thông báo</span>
+	</a></li>
+
+	<hr class="sidebar-divider">
+	<div class="sidebar-heading">Đề Tài</div>
+	<!-- Nav Item - Charts -->
+	<li class="nav-item"><a class="nav-link" href="/leadlecture/list"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>Duyệt Đề Tài</span>
 	</a></li>
 
 	<!-- Divider -->

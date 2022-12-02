@@ -37,12 +37,7 @@
 //	public void setId(Long id) {
 //		this.id = id;
 //	}
-//	public int getSoLuongTV() {
-//		return soLuongTV;
-//	}
-//	public void setSoLuongTV(int soLuongTV) {
-//		this.soLuongTV = soLuongTV;
-//	}
+//
 //	public int getId_project() {
 //		return id_project;
 //	}

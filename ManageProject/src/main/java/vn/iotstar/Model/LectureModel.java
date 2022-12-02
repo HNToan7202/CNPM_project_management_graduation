@@ -15,23 +15,26 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 public class LectureModel {
-	private long id;
+
+	private Long id;
 
 	private String name;
 	private Date dateofbirth;
 	private String address;
-	private String email;
 	private String image;
-	private boolean is_truongbomon;
-	private boolean status;
-	private MultipartFile imageFile;
+	private String email;
+	
+	private int idhoidong;
+	
+	private boolean isactive;
+	
 	private Boolean isEdit = false;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -59,6 +62,14 @@ public class LectureModel {
 		this.address = address;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -67,20 +78,20 @@ public class LectureModel {
 		this.email = email;
 	}
 
-	public boolean isIs_truongbomon() {
-		return is_truongbomon;
+	public int getIdhoidong() {
+		return idhoidong;
 	}
 
-	public void setIs_truongbomon(boolean is_truongbomon) {
-		this.is_truongbomon = is_truongbomon;
+	public void setIdhoidong(int idhoidong) {
+		this.idhoidong = idhoidong;
 	}
 
-	public boolean isStatus() {
-		return status;
+	public boolean isIs_active() {
+		return isactive;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setIs_active(boolean is_active) {
+		this.isactive = is_active;
 	}
 
 	public Boolean getIsEdit() {
@@ -91,20 +102,21 @@ public class LectureModel {
 		this.isEdit = isEdit;
 	}
 
-	public MultipartFile getImageFile() {
-		return imageFile;
-	}
-
-	public void setImageFile(MultipartFile imageFile) {
-		this.imageFile = imageFile;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
+	public LectureModel(Long id, String name, Date dateofbirth, String address, String image, String email,
+			int idhoidong, boolean is_active) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dateofbirth = dateofbirth;
+		this.address = address;
 		this.image = image;
+		this.email = email;
+		this.idhoidong = idhoidong;
+		this.isactive = is_active;
+	}
+
+	public LectureModel() {
+		super();
 	}
 
 }

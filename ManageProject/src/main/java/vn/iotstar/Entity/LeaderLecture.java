@@ -31,7 +31,49 @@ public class LeaderLecture  implements Serializable{
 	//@Column(name="address", length = 255, columnDefinition = "nvarchar(255) not null")
 	private String address;
 	//@Column(name="isactive")
-	private boolean isactive;
-	
+	private boolean is_active;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Date getDateofbirth() {
+		return dateofbirth;
+	}
+	public void setDateofbirth(Date dateofbirth) {
+		this.dateofbirth = dateofbirth;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public boolean isIs_active() {
+		return is_active;
+	}
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
+
 
 }

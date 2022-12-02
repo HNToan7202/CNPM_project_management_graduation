@@ -1,12 +1,8 @@
 package vn.iotstar.Entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -24,18 +20,55 @@ public class Council implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name="id")
 	private Long id;
-	//@Column(name="soluongTV")
-	private int soluongTV;
-	//@Column(name="id_project")
-	private int id_project;
-	//@Column(name="id_headLecture")
-	private int id_headLecture;
-	//@Column(name="is_active")
-	private boolean is_active;
-	
-	
+
+	private int soluongtv;
+
+	private int idproject;
+
+	private int idheadlecture;
+
+	private boolean isactive;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getSoluongtv() {
+		return soluongtv;
+	}
+
+	public void setSoluongtv(int soluongtv) {
+		this.soluongtv = soluongtv;
+	}
+
+	public int getIdproject() {
+		return idproject;
+	}
+
+	public void setIdproject(int idproject) {
+		this.idproject = idproject;
+	}
+
+	public int getIdheadlecture() {
+		return idheadlecture;
+	}
+
+	public void setIdheadlecture(int idheadlecture) {
+		this.idheadlecture = idheadlecture;
+	}
+
+	public boolean isIsactive() {
+		return isactive;
+	}
+
+	public void setIsactive(boolean isactive) {
+		this.isactive = isactive;
+	}
+
 
 }

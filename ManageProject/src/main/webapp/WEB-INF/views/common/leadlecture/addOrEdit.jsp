@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
-<form action=<c:url value = "/lecture/project/saveOrUpdate"/>
+<form action=<c:url value = "/leadlecture/project/saveOrUpdate"/>
 	method=POST>
 	<div class="card-body">
 
@@ -79,8 +79,8 @@
 
 		<div class="mb-3">
 			<label for="categoryname" class="form-lablel">Ngày Lập:</label> <input
-				type="date" value="${project.create_at}" id="create_at" name="create_at"
-				aria-describedby="create_atid">
+				type="date" value="${project.create_at}" id="create_at"
+				name="create_at" aria-describedby="create_atid">
 		</div>
 
 		<div class="mb-3">
@@ -102,11 +102,11 @@
 
 		<button class="btn btn-primary" type="submit">
 			<i class="fas fa-save"></i>
-			<c:if test="${project.isEdit}">
+			<c:if test="${project.isEdit }">
 				<span>Update</span>
 			</c:if>
 
-			<c:if test="${!project.isEdit}">
+			<c:if test="${!project.isEdit }">
 				<span>Save</span>
 			</c:if>
 

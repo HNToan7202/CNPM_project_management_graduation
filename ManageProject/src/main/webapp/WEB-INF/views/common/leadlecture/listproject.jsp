@@ -41,11 +41,11 @@
 
 
 
-							<td><a href="/lecture/project/view/${item.id}"
+							<td><a href="/leadlecturelecture/project/view/${item.id}"
 								class="btn btn-outline-info"><i class="fa fa-info"></i>Detail</a> <a
-								href="/lecture/project/edit/${item.id}"
-								class="btn btn-outline-warning"><i class="fa fa-edit"></i>Edit</a>
-								<a href="/lecture/project/delete/${item.id}"
+								href="/leadlecture/project/edit/${item.id}"
+								class="btn btn-outline-warning"><i class="fa fa-edit"></i>Duyệt</a>
+								<a href="/leadlecture/project/delete/${item.id}"
 								class="btn btn-outline-danger"><i class="fa fa-trash"></i>Delete</a></td>
 
 						</tr>
