@@ -99,6 +99,10 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	
+	public List<Student> findByIdproject(Integer idproject) {
+		return studentRepo.findByIdproject(idproject);
+	}
+
 	public Student findByEmailContaining(String email) {
 		// TODO Auto-generated method stub
 		return studentRepo.findByEmailContaining(email);
