@@ -17,6 +17,7 @@ public class ProjectModel {
 	private String muctieu;
 	private String yeucau;
 	private int soluongsv;
+	private int slsv;
 	private Boolean isfaculty;
 	private String faculty;
 	private String nienkhoa;
@@ -25,8 +26,7 @@ public class ProjectModel {
 	private Date create_at;
 	private Date update_at;
 	private boolean is_active;
-	
-	//private Long id_lecture;
+	private Integer idlecture;
 	
 //	public Long getId_lecture() {
 //		return id_lecture;
@@ -147,6 +147,18 @@ public class ProjectModel {
 	}
 	public ProjectModel() {
 		super();
+	}
+	public Integer getIdlecture() {
+		return idlecture;
+	}
+	public void setIdlecture(Integer idlecture) {
+		this.idlecture = idlecture;
+	}
+	public int getSlsv() {
+		return slsv;
+	}
+	public void setSlsv(int slsv) {
+		this.slsv = slsv;
 	}
 	
 	

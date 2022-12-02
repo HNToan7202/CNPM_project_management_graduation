@@ -38,8 +38,7 @@ public class Project implements Serializable {
 	private int idtimeproject;
 	private Date create_at;
 	private Date update_at;
-	
-	//private Long id_lecture;
+	private Integer idlecture;
 	
 //	public Long getId_lecture() {
 //		return id_lecture;
@@ -184,6 +183,14 @@ public class Project implements Serializable {
 
 	public Project() {
 		super();
+	}
+
+	public Integer getIdlecture() {
+		return idlecture;
+	}
+
+	public void setIdlecture(Integer idlecture) {
+		this.idlecture = idlecture;
 	}
 	
 	
