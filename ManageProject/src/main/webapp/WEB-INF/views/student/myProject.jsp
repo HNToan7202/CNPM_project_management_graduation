@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <div class="w-100">
-	<c:if test="${project.id <1}">
+	<c:if test="${id <1}">
 		<h2>
 			Bạn chưa đăng ký đề tài, vui lòng đăng ký<a
 				href="/student/project/resgiter">Tại đây</a>
 		</h2>
 
 	</c:if>
-	<c:if test="${project.id > 0}">
+	<c:if test="${id> 0}">
 		<div class="col-lg-6 col-md-6 col-sm-6">
 			<h3 class="box-title mt-5">Thông tin đề tài</h3>
 			<div class="table-responsive">
