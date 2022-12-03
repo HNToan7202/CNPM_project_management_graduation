@@ -25,7 +25,7 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Xem Danh sách</h6>
                     </div>
-                                <!-- Hiển thông báo -->
+     <!-- Hiển thông báo -->
 						<%@include file="/common/info.jsp"%>
 			<!-- Hêt thông báo -->
                                              <div class="card-footer text-muted">

@@ -21,7 +21,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Xem Danh sách</h6>
                         </div>
                         <div class="card-footer text-muted">
-                         <a href=<c:url value="/admin/categories/add"/>
+                         <a href=<c:url value="/admin/timeResgiter/addOrEdit"/>
 						class="btn btn-dark"><i class="fa fa-new"></i>Tạo đợt đăng ký mới</a> 
 						</div>
                         <div class="card-body">
@@ -32,7 +32,8 @@
                                             <th>Mã số</th>
                                             <th>Ngày khởi tạo</th>
                                             <th>Ngày kết thúc</th>
-                                            <th>Admin thực hiện</th>
+                                            <th>Hành động</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -40,33 +41,32 @@
                                             <th>Mã số</th>
                                             <th>Ngày khởi tạo</th>
                                             <th>Ngày kết thúc</th>
-                                            <th>Admin thực hiện</th>
+                                             <th>Hành động</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <c:forEach items="${timeResgiter}" var="timeResgiter">
                                             <tr>
                                                 <td>${timeResgiter.id}</td>
-                                                <td>${timeResgiter.create_at}</td>
-                                                <td>${timeResgiter.finish_at}</td>
-                                                <td>${timeResgiter.id_admin}</td>
-
+                                                <td>${timeResgiter.createat}</td>
+                                                <td>${timeResgiter.finishat}</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <a href="Thông tin" class="btn btn-outline-info"><i class="fa fa-info"></i></a>
 
-                                                    <a href="chỉnh sửa" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${lecture.id}">
+                                                    <a href="/admin/timeResgiter/edit/${timeResgiter.id}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${timeResgiter.id}">
                                                       <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
                                             </tr>
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal${lecture.id}" tabindex="-1" aria-labelledby="exampleModalLabel${lecture.id}" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal${timeResgiter.id}" tabindex="-1" aria-labelledby="exampleModalLabel${timeResgiter.id}" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel${category.categoryId}">Delete</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel${timeResgiter.id}">Delete</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -75,7 +75,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <!-- <button type="button" class="btn btn-primary" >Yes</button> -->
-                                                            <a class="btn btn-primary" href="/admin/categories/delete/${lecture.id}" class="btn btn-outline-danger">Yes</a>
+                                                            <a class="btn btn-primary" href="/admin/timeResgiter/delete/${timeResgiter.id}" class="btn btn-outline-danger">Yes</a>
                                                         </div>
                                                     </div>
                                                 </div>

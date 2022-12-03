@@ -33,25 +33,26 @@ public class ProjectManageController {
 		return "admin/project/addOrUpdate";
 	}
 
-	@GetMapping("")
+	@GetMapping("list")
 	public String list(ModelMap model) {
 		List<Timeresgiter> times = timeResgiterService.findAll();
 		model.addAttribute("timeresgiter", times);
-		return "admin/project/list";
+		return "admin/timeResgiter/list";
 	}
 
 	@PostMapping("saveOrUpdate")
 	public ModelAndView saveOrUpdate(ModelMap model, @RequestParam("create_at") Date createAt,
 			@RequestParam("finish_at") Date finishAt, @RequestParam(value = "id", required = false) Long id) {
 		if (id == null) {
-			Timeresgiter entity = new Timeresgiter(createAt, finishAt);
+			Timeresgiter entity = new Timeresgiter( id,createAt, finishAt);
 			timeResgiterService.save(entity);
 		} else {
 			Optional<Timeresgiter> opt = timeResgiterService.findById(id);
 			if (opt.isPresent()) {
 				Timeresgiter entity = opt.get();
-				entity.setCreate_at(createAt);
-				entity.setFinish_at(finishAt);
+				
+				entity.setCreateat(createAt);
+				entity.setFinishat(finishAt);
 				timeResgiterService.save(entity);
 			}
 		}
@@ -72,8 +73,8 @@ public class ProjectManageController {
 			Timeresgiter entity = opt.get();
 			BeanUtils.copyProperties(entity, time);
 			time.setIsEdit(true);
-			model.addAttribute("create_at", time.getCreate_at());
-			model.addAttribute("finish_at", time.getFinish_at());
+			model.addAttribute("create_at", time.getCreateat());
+			model.addAttribute("finish_at", time.getFinishat());
 			model.addAttribute("id", time.getId());
 			return new ModelAndView("admin/project/addOrUpdate", model);
 		}

@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.iotstar.Entity.Admin;
-
+import vn.iotstar.Entity.Notification;
 import vn.iotstar.Model.AdminModel;
 
 import vn.iotstar.Service.IAdminService;
+import vn.iotstar.Service.INotificationService;
 
 
 @Controller
@@ -30,11 +31,13 @@ import vn.iotstar.Service.IAdminService;
 public class AdminController {
 	@Autowired
 	IAdminService adminService;
+	@Autowired
+	INotificationService notificationService;
 	//TRANG CHỦ ADMIN
 	@RequestMapping("trangchu")
 	public String Main(ModelMap model) {
-		List<Admin> list = adminService.findAll();
-		model.addAttribute("admin", list);
+		List<Notification> list = notificationService.findAll();
+		model.addAttribute("notification", list);
 		return "Home/admin";
 	}
 	

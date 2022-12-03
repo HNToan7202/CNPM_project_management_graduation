@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 
+import vn.iotstar.Entity.Notification;
 import vn.iotstar.Entity.Timeresgiter;
 
 public interface ITimeResgiterSerivce {
@@ -39,5 +40,7 @@ public interface ITimeResgiterSerivce {
 	List<Timeresgiter> findAll();
 
 	<S extends Timeresgiter> S save(S entity);
+
+	
 
 }
