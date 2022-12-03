@@ -41,5 +41,7 @@ public interface ILectureService {
 
 	Lecture findByEmailContaining(String email);
 	
+	List <Lecture> findByIdhoidongContaining(int idhoidong);
+	
 
 }

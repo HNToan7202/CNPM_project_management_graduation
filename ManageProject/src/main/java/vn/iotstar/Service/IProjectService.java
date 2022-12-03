@@ -43,6 +43,8 @@ public interface IProjectService {
 	Page<Project> findByIdContaining(Long id, Pageable pageable);
 
 	List<Project> findByIdContaining(Long id);
+	
+	Page<Project> findByNameContaining(String name, Pageable pageable);
 
 
 }

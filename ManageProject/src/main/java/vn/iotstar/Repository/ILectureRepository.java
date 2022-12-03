@@ -1,5 +1,7 @@
 package vn.iotstar.Repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,13 +14,14 @@ import vn.iotstar.Entity.Lecture;
 public interface ILectureRepository extends JpaRepository<Lecture, Long>{
 
 	//Tìm Kiếm theo nội dung tên from category where Categoryname
-
+	List<Lecture> findByNameContaining(String name);
 	Lecture findByEmailContaining(String email);
 
-	//
 	Lecture findOneByName(String name);
 
 	//Tìm kiếm và Phân trang
 
 	Page<Lecture> findByNameContaining(String name,Pageable pageable);
+	
+	List <Lecture> findByIdhoidongContaining(int idhoidong);
 }

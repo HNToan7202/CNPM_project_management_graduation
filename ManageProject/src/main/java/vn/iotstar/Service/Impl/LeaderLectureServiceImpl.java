@@ -68,6 +68,22 @@ public class LeaderLectureServiceImpl implements ILeaderLectureService{
 		leaderLectureRepository.deleteAll();
 	}
 
+	@Override
+	public LeaderLecture findByEmailContaining(String email) {
+		// TODO Auto-generated method stub
+		return leaderLectureRepository.findByEmailContaining(email);
+	}
 
-	
+	@Override
+	public LeaderLecture findOneByName(String name) {
+		// TODO Auto-generated method stub
+		return leaderLectureRepository.findOneByName(name);
+	}
+
+	@Override
+	public Page<LeaderLecture> findByNameContaining(String name, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return leaderLectureRepository.findByNameContaining(name, pageable);
+	}
+
 }

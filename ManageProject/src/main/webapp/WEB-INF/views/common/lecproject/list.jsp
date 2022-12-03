@@ -18,47 +18,34 @@
 				<thead class="thead-inverse">
 
 					<tr>
-						<th>Name</th>
-						<th>Desciption</th>
-						<th>Goal</th>
-						<th>yeuCau</th>
-						<th>soLuongSV</th>
-						<th>is_Faculty</th>
-						<th>Faculty</th>
-						<th>nienKhoa</th>
-						<th>point</th>
-						<th>id_TimeProject</th>
-						<th>create_at</th>
-						<th>update_at</th>
-						<th>is_active</th>
+						<th>Tên Đề Tài</th>
+						<th>Điểm</th>
+						<th>Ngày Tạo</th>
+						<th>Trạng Thái</th>
 						<th>Action</th>
 					</tr>
 
 
 
 				</thead>
-
+				
 				<tbody>
 
 					<c:forEach items="${project}" var="item">
 
 						<tr>
-
-							<td scope="row">${item.name}</td>
-							<td>${item.desciption}</td>
-							<td>${item.muctieu}</td>
-							<td>${item.yeucau}</td>
-							<td>${item.soluongsv}</td>
-							<td>${item.isfaculty}</td>
-							<td>${item.faculty}</td>
-							<td>${item.nienkhoa}</td>
+							<td scope="row">${item.name}</td>			
 							<td>${item.point}</td>
-							<td>${item.idtimeproject}</td>
 							<td>${item.create_at}</td>
-							<td>${item.update_at}</td>
-							<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+							
+							
+							<td>${item.is_active ? 'Đã Duyệt' : 'Chưa Duyệt'}</td>
 
-							<td><a href="/lecture/project/edit/${item.id}"
+
+
+							<td><a href="/lecture/project/view/${item.id}"
+								class="btn btn-outline-info"><i class="fa fa-info"></i>Detail</a> <a
+								href="/lecture/project/edit/${item.id}"
 								class="btn btn-outline-warning"><i class="fa fa-edit"></i>Edit</a>
 								<a href="/lecture/project/delete/${item.id}"
 								class="btn btn-outline-danger"><i class="fa fa-trash"></i>Delete</a></td>

@@ -78,7 +78,7 @@
 									<td>${item.dateofbirth}</td>
 									<td>${item.address}</td>
 									<td>${item.email}</td>
-									<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+									<td>${item.isactive ? 'Actived' : 'Not Active'}</td>
 
 									<td><a
 										href="/admin/lecture/view/${item.id}"

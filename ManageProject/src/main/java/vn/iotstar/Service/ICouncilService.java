@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import vn.iotstar.Entity.Council;
+import vn.iotstar.Entity.Project;
 
 public interface ICouncilService {
 
@@ -30,5 +31,10 @@ public interface ICouncilService {
 	List<Council> findAll();
 
 	<S extends Council> S save(S entity);
+	
+	// Tìm kiếm và phân trang
+	Page<Council> findByIdContaining(Long id, Pageable pageable);
+	
+	List<Project> findByIdContaining(Long id);
 
 }

@@ -69,6 +69,11 @@ public class AdminServiceImpl implements IAdminService{
 		adminRepo.deleteAll();
 	}
 
+	@Override
+	public Admin findByEmailContaining(String email) {
+		return adminRepo.findByEmailContaining(email);
+	}
+
 	
 	
 }

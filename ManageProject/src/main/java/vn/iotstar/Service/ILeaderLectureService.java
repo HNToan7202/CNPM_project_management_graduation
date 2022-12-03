@@ -31,6 +31,13 @@ public interface ILeaderLectureService {
 
 	<S extends LeaderLecture> S save(S entity);
 
+	LeaderLecture findByEmailContaining(String email);
 
+	//
+	LeaderLecture findOneByName(String name);
+
+	// Tìm kiếm và Phân trang
+
+	Page<LeaderLecture> findByNameContaining(String name, Pageable pageable);
 
 }

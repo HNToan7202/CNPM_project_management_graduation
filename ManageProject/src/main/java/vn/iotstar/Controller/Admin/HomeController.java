@@ -49,4 +49,8 @@ public class HomeController {
 		return "admin/timeResgiter/list";
 	}
 	
+	@RequestMapping("addinput")
+	public String listTgDK1(Model model) {
+		return "leaderLecture/council/addcouncil";
+	}
 }

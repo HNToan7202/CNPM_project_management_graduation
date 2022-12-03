@@ -79,8 +79,8 @@
 
 		<div class="mb-3">
 			<label for="categoryname" class="form-lablel">Ngày Lập:</label> <input
-				type="date" value="${project.create_at}" id="create_at"
-				name="create_at" aria-describedby="create_atid">
+				type="date" value="${project.create_at}" id="create_at" name="create_at"
+				aria-describedby="create_atid">
 		</div>
 
 		<div class="mb-3">
@@ -91,28 +91,29 @@
 
 		<div class="mb-3">
 			<label for="Satus" class="form-lablel">Status:</label> <select
-				class="form-select" name="status" aria-describedby="categorycodeid"
-				id="status">
-
-				<%-- 					<option ${project.is_active == true ? 'selected':'' } value="false">Active</option> --%>
-				<option ${project.is_active == false ? 'selected':'' } value="true">Not
+				class="form-select" name="is_active" aria-describedby="is_activeid"
+				id="is_active">
+				<option ${project.is_active == true ? 'selected':'' } value="true">Active</option>
+				<option ${project.is_active == false ? 'selected':'' } value="false">Not
 					Active</option>
 			</select>
-
 		</div>
 
 
 		<button class="btn btn-primary" type="submit">
 			<i class="fas fa-save"></i>
-			<c:if test="${project.isEdit }">
+			<c:if test="${project.isEdit}">
 				<span>Update</span>
 			</c:if>
 
-			<c:if test="${!project.isEdit }">
+			<c:if test="${!project.isEdit}">
 				<span>Save</span>
 			</c:if>
 
 		</button>
+
 	</div>
 </form>
+
+
 

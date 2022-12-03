@@ -20,6 +20,7 @@ public interface IProjectRepository extends JpaRepository<Project, Long> {
 	// Tìm kiếm và phân trang
 	Page<Project> findByIdContaining(Long id, Pageable pageable);
 	
+	Page<Project> findByNameContaining(String name, Pageable pageable);
 	
 	Optional<Project> findById (Long id);
 

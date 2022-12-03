@@ -1,9 +1,12 @@
 package vn.iotstar.Controller;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -11,8 +14,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -94,37 +102,6 @@ public class StudentController {
 
 	}
 
-	@GetMapping("/information/{id}")
-	public ModelAndView Inf(ModelMap model, @PathVariable("id") Long MSSV, HttpSession sesson) {
-		String email = (String) sesson.getValue("email");
-		Student studententity = studentService.findByEmailContaining(email);
-		StudentModel student1 = new StudentModel();
-		BeanUtils.copyProperties(studententity, student1);
-		model.addAttribute("user", student1);
-		Optional<Student> opt = studentService.findById(MSSV);
-		StudentModel student = new StudentModel();
-		if (opt.isPresent()) {
-			Student entity = opt.get();
-			BeanUtils.copyProperties(entity, student);
-			student.setIsEdit(true);
-			model.addAttribute("student", student);
-			return new ModelAndView("student/inf", model);
-		}
-		model.addAttribute("message", "Student không tồn tại");
-		return new ModelAndView("redirect:/student", model);
-	}
-
-	@SuppressWarnings("deprecation")
-	@GetMapping("/profile")
-	public String Profile(ModelMap model, HttpSession sesson) {
-		String email = (String) sesson.getValue("email");
-		Student entity = studentService.findByEmailContaining(email);
-		StudentModel student = new StudentModel();
-		BeanUtils.copyProperties(entity, student);
-		model.addAttribute("user", student);
-		return "student/profile";
-	}
-
 	@SuppressWarnings("deprecation")
 	@GetMapping("/detail/{mssv}")
 	public String Profile(ModelMap model, HttpSession sesson, @PathVariable("mssv") Long MSSV) {
@@ -139,6 +116,17 @@ public class StudentController {
 		model.addAttribute("user", stu);
 
 		return "student/yourProfile";
+	}
+
+	@SuppressWarnings("deprecation")
+	@GetMapping("/profile")
+	public String Profile(ModelMap model, HttpSession sesson) {
+		String email = (String) sesson.getValue("email");
+		Student entity = studentService.findByEmailContaining(email);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(entity, student);
+		model.addAttribute("user", student);
+		return "student/profile";
 	}
 
 	@PostMapping("saveofUpdate")
@@ -177,24 +165,98 @@ public class StudentController {
 		BeanUtils.copyProperties(entity, student);
 		model.addAttribute("user", student);
 		int idproject = entity.getIdproject();
-		List<Student> list = studentService.findAll();
-		model.addAttribute("list", list);
+		if (idproject == 0) {
+			model.addAttribute("message", "Bạn chưa đăng ký đề tài");
+		} else {
+			List<Student> list = studentService.findByIdproject(idproject);
+			model.addAttribute("list", list);
+		}
 
 		return "student/group";
 	}
 
 	@GetMapping("/project")
-	public String Project(ModelMap model, HttpSession sesson) {
+	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name, HttpSession sesson,
+			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
 		String email = (String) sesson.getValue("email");
 		Student entity = studentService.findByEmailContaining(email);
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(entity, student);
 		model.addAttribute("user", student);
-		List<Lecture> lectures = lectureService.findAll();
-		model.addAttribute("lectures", lectures);
-		List<Project> project = projectService.findAll();
-		model.addAttribute("project", project);
+		// Tong mau tin trong category services
+
+		int count = (int) projectService.count();
+		int currentpage = page.orElse(1);
+		int pageSize = size.orElse(3); // load len 3 mau tin
+
+		Pageable pageable = PageRequest.of(currentpage - 1, pageSize, Sort.by("id"));
+
+		Page<Project> resultPage = null;
+
+		if (StringUtils.hasText(name)) {
+			resultPage = projectService.findByNameContaining(name, pageable);
+
+			model.addAttribute("name", name);
+		} else {
+			resultPage = projectService.findAll(pageable);
+		}
+
+		int totalPages = resultPage.getTotalPages();
+		if (totalPages > 0) {
+			int start = Math.max(1, currentpage - 2);
+			int end = Math.min(currentpage + 2, totalPages);
+			if (totalPages > count) {
+				if (end == totalPages) {
+					start = end - count;
+				} else if (start == 1)
+					end = start + count;
+			}
+			List<Integer> pageNumbers = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+
+		}
+
+		model.addAttribute("projectPage", resultPage);
 		return "student/project";
+
+	}
+
+	@SuppressWarnings("deprecation")
+	@GetMapping("project/dangky/{id}")
+	public ModelAndView ProjectResgiter(ModelMap model, HttpSession sesson, @PathVariable("id") Long id) {
+		String email = (String) sesson.getValue("email");
+		Student entity = studentService.findByEmailContaining(email);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(entity, student);
+		model.addAttribute("user", student);
+
+		int id1 = id.intValue();
+		Project projectentity = projectService.getById(id);
+
+		List<Student> studentlist = studentService.findByIdproject(id1);
+
+		System.out.print(studentlist.size());
+		System.out.print(projectentity.getSoluongsv());
+		if (studentlist.size() < projectentity.getSoluongsv()) {
+
+			int idproject = entity.getIdproject();
+			if (idproject == 0) {
+				if (studentlist.size() == 0) {
+					entity.setIsleader(true);
+				} else {
+					entity.setIsleader(false);
+				}
+				entity.setIdproject((id1));
+				model.addAttribute("message", "Đã đăng ký thành công");
+			}else {
+				model.addAttribute("message", "Bạn đã đăng ký đề tài trước đó");
+			}
+		}else {
+
+			model.addAttribute("message", "Số lượng thành viên đã đủ");
+		}
+
+		return new ModelAndView("forward:/student/project/resgiter", model);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -212,6 +274,8 @@ public class StudentController {
 			Project entity = opt.get();
 			BeanUtils.copyProperties(entity, project);
 			student.setIsEdit(false);
+			List<Student> studentlist = studentService.findByIdproject(id.intValue());
+			model.addAttribute("sldk", studentlist.size());
 			model.addAttribute("project", project);
 			return new ModelAndView("student/projectDetail", model);
 		}
@@ -232,6 +296,7 @@ public class StudentController {
 			Project entity = opt.get();
 			BeanUtils.copyProperties(entity, project);
 			student.setIsEdit(false);
+			model.addAttribute("id", student.getIdproject());
 			model.addAttribute("project", project);
 			return new ModelAndView("student/myProject", model);
 		}
@@ -256,6 +321,10 @@ public class StudentController {
 			model.addAttribute("finish_date", finish);
 			model.addAttribute("getdate", getDate);
 		}
+		List<Lecture> lectures = lectureService.findAll();
+		model.addAttribute("lectures", lectures);
+		List<Project> project = projectService.findAll();
+		model.addAttribute("projects", project);
 		return "student/projectResgiter";
 
 	}
@@ -285,5 +354,20 @@ public class StudentController {
 		accountSerivce.save(acc);
 		model.addAttribute("message", "Mật khẩu đã được cập nhật");
 		return new ModelAndView("student/account", model);
+	}
+
+	@GetMapping("deletegroup/{mssv}")
+	public ModelAndView edit(ModelMap model, @PathVariable("mssv") Long MSSV) throws IOException {
+		Optional<Student> opt = studentService.findById(MSSV);
+		if (opt.isPresent()) {
+			Student entity = opt.get();
+			entity.setIdproject(0);
+			studentService.save(entity);
+			model.addAttribute("message", "Xóa thành viên thành công");
+			return new ModelAndView("forward:/student/group", model);
+		}
+		model.addAttribute("message", "Thành viên này không thể xóa");
+		return new ModelAndView("forward:/student/group", model);
+
 	}
 }
