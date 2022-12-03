@@ -19,6 +19,9 @@ public class LectureModel {
 	private Date dateofbirth;
 	private String address;
 	private String image;
+
+	//private Boolean istruongbomon;
+
 	private String email;
 	private int idhoidong;
 	
@@ -97,6 +100,7 @@ public class LectureModel {
 	public void setIsEdit(Boolean isEdit) {
 		this.isEdit = isEdit;
 	}
+
 
 
 }

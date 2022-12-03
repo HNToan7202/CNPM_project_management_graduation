@@ -24,7 +24,15 @@ public class LeaderLectureModel {
 	@Email(message = "Mail khong hop le")
 	private String email;
 	private String address;
-	private boolean isActive;
+	private Boolean isactive;
+	
+	
+	public Boolean getIsactive() {
+		return isactive;
+	}
+	public void setIsactive(Boolean isactive) {
+		this.isactive = isactive;
+	}
 	private Boolean isEdit = false;
 	public int getId() {
 		return id;
@@ -68,12 +76,7 @@ public class LeaderLectureModel {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public boolean isActive() {
-		return isActive;
-	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
+
 	public Boolean getIsEdit() {
 		return isEdit;
 	}

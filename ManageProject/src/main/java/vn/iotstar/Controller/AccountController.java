@@ -90,7 +90,7 @@ public class AccountController {
 
 	@GetMapping("")
 	public String list(ModelMap model, @RequestParam("p") Optional<Integer> p) {
-		Pageable pageable = PageRequest.of(p.orElse(0), 3);
+		Pageable pageable = PageRequest.of(p.orElse(0), 10);
 		Page<Account> page = accountService.findAll(pageable);
 		model.addAttribute("accounts", page);
 		return "common/account/list";
