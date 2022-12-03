@@ -106,7 +106,6 @@ public class NotificationController {
 		return "lecture/notification/addOrEdit";
 
 	}
-	//
 	@PostMapping("saveOrUpdateLecture")
 	public ModelAndView saveOrUpdateLecture(ModelMap model, @Valid @ModelAttribute("notifications") NotificationModel notification,
 			BindingResult result) // lấy dữ liệu từ bên giao diện file addOrEdit đỗ dô model

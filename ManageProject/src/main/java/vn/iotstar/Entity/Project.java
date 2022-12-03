@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
 //@NoArgsConstructor
@@ -39,14 +38,6 @@ public class Project implements Serializable {
 	private Date create_at;
 	private Date update_at;
 	private Integer idlecture;
-	
-//	public Long getId_lecture() {
-//		return id_lecture;
-//	}
-//	
-//	public void setId_lecture(Long id_lecture) {
-//		this.id_lecture = id_lecture;
-//	}
 
 	private Boolean is_active;
 
@@ -192,10 +183,5 @@ public class Project implements Serializable {
 	public void setIdlecture(Integer idlecture) {
 		this.idlecture = idlecture;
 	}
-	
-	
-
-
-
 	
 }

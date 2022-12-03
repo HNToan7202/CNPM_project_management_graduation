@@ -51,8 +51,8 @@ public class LeadLectureController {
 
 	@Autowired
 	ILectureService lectureService;
-	
-	@Autowired 
+
+	@Autowired
 	INotificationService notificationService;
 
 	@RequestMapping("profile")
@@ -99,7 +99,7 @@ public class LeadLectureController {
 		List<Lecture> lecture = lectureService.findAll();
 		model.addAttribute("lecture", lecture);
 		model.addAttribute("id", id);
-		return new ModelAndView("common/leadlecture/listlecture", model);
+		return new ModelAndView("common/leadlecture/listlectureadd", model);
 	}
 
 	@GetMapping("list")
@@ -174,7 +174,7 @@ public class LeadLectureController {
 		List<Lecture> lecture = lectureService.findAll();
 		model.addAttribute("lecture", lecture);
 		model.addAttribute("id", id);
-		return new ModelAndView("common/leadlecture/listlecture", model);
+		return new ModelAndView("common/leadlecture/listlecturedetail", model);
 	}
 
 	@GetMapping("/home")

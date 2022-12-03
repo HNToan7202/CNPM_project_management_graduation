@@ -17,7 +17,7 @@
 			<i class="fas fa-laugh-wink"></i>
 		</div>
 		<div class="sidebar-brand-text mx-3">
-			Trang Admin <sup></sup>
+			Trưởng Bộ Môn <sup></sup>
 		</div>
 	</a>
 
@@ -68,13 +68,7 @@
 			<i class="fas fa-fw fa-chart-area"></i> <span>Duyệt Đề Tài</span>
 	</a></li>
 
-	<!-- Divider -->
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">Hội Đồng</div>
-	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts.html"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Đánh giá</span>
-	</a></li>
+
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 
