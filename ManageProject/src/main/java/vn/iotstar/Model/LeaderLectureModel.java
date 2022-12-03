@@ -68,12 +68,7 @@ public class LeaderLectureModel {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public boolean isActive() {
-		return isActive;
-	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
+
 	public Boolean getIsEdit() {
 		return isEdit;
 	}

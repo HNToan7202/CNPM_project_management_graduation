@@ -3,6 +3,8 @@ package vn.iotstar.Model;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,7 @@ public class LectureModel {
 	private Date dateofbirth;
 	private String address;
 	private String image;
-
+	private MultipartFile imageFile;
 	//private Boolean istruongbomon;
 
 	private String email;
