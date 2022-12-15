@@ -25,6 +25,14 @@ public class LeaderLectureModel {
 	private String email;
 	private String address;
 	private Boolean isactive;
+	
+	
+	public Boolean getIsactive() {
+		return isactive;
+	}
+	public void setIsactive(Boolean isactive) {
+		this.isactive = isactive;
+	}
 	private Boolean isEdit = false;
 	public int getId() {
 		return id;

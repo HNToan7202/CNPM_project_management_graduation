@@ -22,13 +22,14 @@ public class LectureModel {
 	private String address;
 	private String image;
 	private MultipartFile imageFile;
-	//private Boolean istruongbomon;
+
+	// private Boolean istruongbomon;
 
 	private String email;
 	private int idhoidong;
-	
+
 	private boolean isactive;
-	
+
 	private Boolean isEdit = false;
 
 	public Long getId() {
@@ -102,6 +103,5 @@ public class LectureModel {
 	public void setIsEdit(Boolean isEdit) {
 		this.isEdit = isEdit;
 	}
-
 
 }

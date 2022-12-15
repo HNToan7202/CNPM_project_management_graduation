@@ -1,8 +1,11 @@
 package vn.iotstar.Controller.Admin;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -18,12 +21,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.iotstar.Entity.Account;
 import vn.iotstar.Entity.Admin;
+import vn.iotstar.Entity.LeaderLecture;
+import vn.iotstar.Entity.Lecture;
 import vn.iotstar.Entity.Notification;
+import vn.iotstar.Entity.Student;
+import vn.iotstar.Model.AccountModel;
 import vn.iotstar.Model.AdminModel;
-
+import vn.iotstar.Model.LectureModel;
+import vn.iotstar.Service.IAccountService;
 import vn.iotstar.Service.IAdminService;
+import vn.iotstar.Service.ILeaderLectureService;
+import vn.iotstar.Service.ILectureService;
 import vn.iotstar.Service.INotificationService;
+import vn.iotstar.Service.IStudentService;
 
 
 @Controller
@@ -33,6 +45,137 @@ public class AdminController {
 	IAdminService adminService;
 	@Autowired
 	INotificationService notificationService;
+	@Autowired
+	ILectureService lectureSerivce;
+	@Autowired
+	ServletContext application;
+	@Autowired
+	IStudentService studentService;
+	@Autowired
+	ILeaderLectureService leaderLectureService;
+	@Autowired
+	IAccountService accountService;
+	
+	// thêm tài khoản 
+	@GetMapping("addAccount/{id}/{loaitaikhoan}")
+	public ModelAndView addAccount(ModelMap model, @PathVariable("id") int id, @PathVariable("loaitaikhoan") int loaitaikhoan) {
+		if(loaitaikhoan==1) {
+			Lecture giangvien = lectureSerivce.findById((long)id).get();
+			Random generator = new Random();
+			model.addAttribute("pass", generator.nextInt(999999));
+			model.addAttribute("lecture", giangvien);
+			model.addAttribute("role", 1);
+			return new ModelAndView("admin/AddTaiKhoan/GiangVien/Account", model);
+		}
+		else if(loaitaikhoan==2) {
+			Student sinhvien = studentService.findById(id).get();
+			Random generator = new Random();
+			model.addAttribute("pass", generator.nextInt(999999));
+			model.addAttribute("student", sinhvien);
+			model.addAttribute("role", 2);
+			return new ModelAndView("admin/AddTaiKhoan/SinhVien/Account", model);
+		}
+		else {
+		
+			LeaderLecture truongbomon = leaderLectureService.findById(id).get();
+			Random generator = new Random();
+			model.addAttribute("pass", generator.nextInt(999999));
+			model.addAttribute("leaderLecture", truongbomon);
+			model.addAttribute("role", 3);
+			return new ModelAndView("admin/AddTaiKhoan/GiangVien/Account", model);
+		}
+		
+
+	}// thêm tài khoản 
+	@GetMapping("editAccount/{id}/{loaitaikhoan}")
+	public ModelAndView editAccount(ModelMap model, @PathVariable("id") int id, @PathVariable("loaitaikhoan") int loaitaikhoan) {
+		if(loaitaikhoan==1) {
+			Lecture giangvien = lectureSerivce.findById((long)id).get();
+			Random generator = new Random();
+			model.addAttribute("pass", generator.nextInt(999999));
+			model.addAttribute("lecture", giangvien);
+			model.addAttribute("role", 1);
+			return new ModelAndView("admin/AccountManagement/GiangVien/Account", model);
+		}
+		else if(loaitaikhoan==2) {
+			Student sinhvien = studentService.findById(id).get();
+			Random generator = new Random();
+			model.addAttribute("pass", generator.nextInt(999999));
+			model.addAttribute("student", sinhvien);
+			model.addAttribute("role", 2);
+			return new ModelAndView("admin/AccountManagement/SinhVien/Account", model);
+		}
+		else {
+		
+			LeaderLecture truongbomon = leaderLectureService.findById(id).get();
+			Random generator = new Random();
+			model.addAttribute("pass", generator.nextInt(999999));
+			model.addAttribute("leaderLecture", truongbomon);
+			model.addAttribute("role", 3);
+			return new ModelAndView("admin/AccountManagement/TruongBoMon/Account", model);
+		}
+		
+
+	}
+	
+	@PostMapping("saveoAccount/{loaitaikhoan}")
+	public ModelAndView saveOrUpdate(ModelMap model,@PathVariable("loaitaikhoan") int loaitaikhoan, @Valid @ModelAttribute("account") AccountModel account,
+			BindingResult result) {
+		Account entity = new Account();
+
+		/*
+		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
+		 * ModelAndView("admin/student/addOrEdit"); }
+		 */
+		
+		BeanUtils.copyProperties(account, entity);
+		entity.setIsactive(false);
+		if (loaitaikhoan==1)
+			entity.setRoleid(1);
+		else if(loaitaikhoan==2)
+			entity.setRoleid(2);
+		else entity.setRoleid(3);
+		accountService.save(entity);
+		model.addAttribute("message", "Đã thêm tài khoản thành công");
+		return new ModelAndView("admin/AddTaiKhoan/Home", model);
+	}
+	
+	@PostMapping("saveoAccount2/{loaitaikhoan}")
+	public ModelAndView saveOrUpdate2(ModelMap model,@PathVariable("loaitaikhoan") int loaitaikhoan, @Valid @ModelAttribute("account") AccountModel account,
+			BindingResult result) {
+		/*
+		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
+		 * ModelAndView("admin/student/addOrEdit"); }
+		 */
+		
+		Account entity1 = accountService.findById(account.getEmail()).get();
+		
+		entity1.setIsactive(false);
+		entity1.setPassword(account.getPassword());
+		if (loaitaikhoan==1)
+			entity1.setRoleid(1);
+		else if(loaitaikhoan==2)
+			entity1.setRoleid(2);
+		else entity1.setRoleid(3);
+		accountService.save(entity1);
+		//model.addAttribute("message", "Cập nhật tài khoản " +account.getEmail() + " thành công");
+		if (loaitaikhoan==1)
+			return new ModelAndView("/admin/student", model);
+		else if(loaitaikhoan==2)
+			return new ModelAndView("forward:/admin/student", model);
+		else return new ModelAndView("/admin/student", model);
+		
+	}
+	//TRANG CHỦ ADMIN
+	@RequestMapping("testtrang")
+	public String Main1(ModelMap model) {
+		return "admin/AccountManagement/SinhVien/list";
+	}
+	//Theem tai khoan
+	@RequestMapping("addacount")
+	public String addacount (ModelMap model) {
+		return "admin/AddTaiKhoan/Home";
+	}
 	//TRANG CHỦ ADMIN
 	@RequestMapping("trangchu")
 	public String Main(ModelMap model) {
@@ -40,7 +183,6 @@ public class AdminController {
 		model.addAttribute("notification", list);
 		return "Home/admin";
 	}
-	
 	//IN TẤT CẢ ADMIN
 	//admin
 	@RequestMapping("")
@@ -71,16 +213,13 @@ public class AdminController {
 		Admin entity = new Admin();
 		// đổ dữ liệu từ cate qua bên entity
 		BeanUtils.copyProperties(admin, entity);
-
 		adminService.save(entity);
-
 		String message = "";
 		if (admin.getIsEdit() == true) {
 			message = "Admin Update succesfull !";
 		} else {
 			message = "Admin Create Successfull !";
 		}
-
 		model.addAttribute("message", message);
 		//điều hướng vào link  để in danh sách có message
 		return new ModelAndView("forward:/admin", model);

@@ -34,8 +34,6 @@ public class LeaderLecture  implements Serializable{
 
 	private Boolean isactive;
 	
-
-	private boolean is_active;
 	public int getId() {
 		return id;
 	}
@@ -72,12 +70,7 @@ public class LeaderLecture  implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public boolean isIs_active() {
-		return is_active;
-	}
-	public void setIs_active(boolean is_active) {
-		this.is_active = is_active;
-	}
+
 
 
 

@@ -14,40 +14,28 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
-
 @SuppressWarnings("serial")
-@NoArgsConstructor 
-@AllArgsConstructor
+
+
 @Data
 @Entity
 @Builder
-@Table(name = "timeresgiter")
+@Table
+@NoArgsConstructor
+@AllArgsConstructor
 public class Timeresgiter implements Serializable {
-	@Id
-	private Long id;
-	private Date createat;
-	private Date finishat;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private Date create_at;
+	private Date finish_at;
+	
 	/*
 	 * public Timeresgiter() { super(); }
 	 * 
 	 * public Timeresgiter(Date create_at, Date finish_at) { super(); this.create_at
 	 * = create_at; this.finish_at = finish_at; }
-	 * 
-	 * @Id
-	 * 
-	 * @GeneratedValue(strategy = GenerationType.IDENTITY) private long id; private
-	 * Date create_at; private Date finish_at;
-	 * 
-	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "id", insertable = false, updatable = false,
-	 * referencedColumnName = "id_timeResgiter")
-	 * 
-	 * @JsonBackReference private Admin admin;
-	 * 
 	 * 
 	 * public long getId() { return id; }
 	 * 

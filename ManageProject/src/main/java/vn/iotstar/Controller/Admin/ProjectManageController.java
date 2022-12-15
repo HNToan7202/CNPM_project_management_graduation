@@ -51,8 +51,8 @@ public class ProjectManageController {
 			if (opt.isPresent()) {
 				Timeresgiter entity = opt.get();
 				
-				entity.setCreateat(createAt);
-				entity.setFinishat(finishAt);
+				entity.setCreate_at(createAt);
+				entity.setFinish_at(finishAt);
 				timeResgiterService.save(entity);
 			}
 		}
@@ -73,8 +73,8 @@ public class ProjectManageController {
 			Timeresgiter entity = opt.get();
 			BeanUtils.copyProperties(entity, time);
 			time.setIsEdit(true);
-			model.addAttribute("create_at", time.getCreateat());
-			model.addAttribute("finish_at", time.getFinishat());
+			model.addAttribute("create_at", time.getCreate_at());
+			model.addAttribute("finish_at", time.getFinish_at());
 			model.addAttribute("id", time.getId());
 			return new ModelAndView("admin/project/addOrUpdate", model);
 		}

@@ -1,5 +1,8 @@
 package vn.iotstar.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,5 +23,9 @@ public interface LeaderLectureRepository extends JpaRepository<LeaderLecture, In
 	// Tìm kiếm và Phân trang
 
 	Page<LeaderLecture> findByNameContaining(String name, Pageable pageable);
+
+	
+
+
 
 }

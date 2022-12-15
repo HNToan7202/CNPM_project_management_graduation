@@ -11,29 +11,7 @@ import vn.iotstar.Entity.Student;
 
 public interface IStudentService {
 
-	void deleteAll();
-
-	Student getById(Long id);
-
-	void delete(Student entity);
-
-	void deleteById(Long id);
-
-	long count();
-
-	Optional<Student> findById(Long id);
-
-	<S extends Student> Page<S> findAll(Example<S> example, Pageable pageable);
-
-	<S extends Student> S saveAndFlush(S entity);
-
-	void flush();
-
-	Page<Student> findAll(Pageable pageable);
-
-	List<Student> findAll();
-
-	<S extends Student> S save(S entity);
+	
 	
 	List<Student> findByNameContaining (String name);
 	Page<Student> findByNameContaining (String name,Pageable pageable);
@@ -41,4 +19,14 @@ public interface IStudentService {
 	Student findByEmailContaining(String email);
 
 	List<Student> findByIdproject(Integer idproject);
+	Student getById(Integer id);
+	void delete(Student entity);
+	void deleteById(Integer id);
+	long count();
+	List<Student> findAllById(Iterable<Integer> ids);
+	List<Student> findAll();
+	<S extends Student> S save(S entity);
+	Optional<Student> findById(Integer id);
+
+	
 }
