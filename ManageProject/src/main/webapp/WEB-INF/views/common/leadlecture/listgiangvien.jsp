@@ -55,12 +55,10 @@
 						<thead class="thead-inverse">
 
 							<tr>
-								<th>Name</th>
-								<th>Image</th>
-								<th>Date of Birth</th>
-								<th>Address</th>
+								<th>Ảnh</th>
+								<th>Tên Giảng Viên</th>
 								<th>Email</th>
-								<th>Trạng thái</th>
+								<th>Mã Hội Đồng</th>
 								<th>Hành động</th>
 
 
@@ -72,27 +70,23 @@
 							<c:forEach items="${lecture}" var="item">
 
 								<tr>
-
-									<td>${item.name}</td>
 									<td>${item.image}</td>
-									<td>${item.dateofbirth}</td>
-									<td>${item.address}</td>
+									<td>${item.name}</td>
 									<td>${item.email}</td>
-									<td>${item.isactive ? 'Actived' : 'Not Active'}</td>
-
-									<td><a href="/admin/lecture/view/${item.id}"
+									<td>${item.idhoidong == 0 ? 'Chưa Tham Gia' : item.idhoidong }</td>
+									<td><a href="/leadlecture/dsgiangvien/view/${item.id}"
 										class="btn btn-outline-info"><i class="fa fa-info"></i></a> <a
-										href="/admin/lecture/edit/${item.id}"
-										class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
-										<a href="/admin/lecture/delete/${item.id}"
-										class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
-
+										href="/leadlecture/dsgiangvien/edit/${item.id}"
+										class="btn btn-outline-warning"><i class="fa fa-edit"></i>Thêm
+											Vào Hội Đồng</a></td>
 								</tr>
 
 							</c:forEach>
 						</tbody>
 
 					</table>
+
+
 
 				</div>
 

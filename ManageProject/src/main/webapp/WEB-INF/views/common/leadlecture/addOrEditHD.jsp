@@ -24,10 +24,21 @@
 		</div>
 
 		<div class="mb-3">
+			<label for="storeid" class="form-lablel"> Mã Đề Tài:</label> <br>
+			<select class="form-select" name="idproject" aria-label="idproject">
+				<c:forEach items="${projects}" var="item">
+					<option value="${item.id}"
+						selected="${item.id == council.idproject ? 'selected':'' }">${item.name}</option>
+				</c:forEach>
+
+			</select>
+		</div>
+
+	<%-- 	<div class="mb-3">
 			<label for="categoryname" class="form-lablel">Mã Đề Tài:</label> <input
 				type="text" value="${council.idproject}" id="idproject"
 				name="idproject" aria-describedby="idprojectid">
-		</div>
+		</div> --%>
 
 		<div class="mb-3">
 			<label for="muctieu" class="form-lablel">Mã Trưởng Bộ Môn:</label> <input
@@ -44,7 +55,7 @@
 					Active</option>
 			</select>
 		</div>
-		
+
 		<button class="btn btn-primary" type="submit">
 			<i class="fas fa-save"></i>
 			<c:if test="${project.isEdit}">

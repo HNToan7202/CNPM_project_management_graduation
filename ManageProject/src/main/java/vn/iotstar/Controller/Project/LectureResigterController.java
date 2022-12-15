@@ -137,6 +137,23 @@ public class LectureResigterController {
 		projectService.save(entity);
 		return new ModelAndView("redirect:/lecture/project", model);
 	}
+	
+	@PostMapping("saveRate")
+	public ModelAndView saveRate(ModelMap model, @Valid @ModelAttribute("project") ProjectModel project,
+			BindingResult result) {
+
+		long count = lectureService.count() + studentService.count() + leaderLectureService.count();
+		model.addAttribute("count", count);
+		Project entity = new Project();
+		if (result.hasErrors()) {
+			model.addAttribute("message", "Có lỗi");
+			return new ModelAndView("common/lecproject/addOrEdit");
+		}
+		BeanUtils.copyProperties(project, entity);
+		projectService.save(entity);
+		model.addAttribute("message", "Đã đánh giá xong");
+		return new ModelAndView("redirect:/lecture/project/rate", model);
+	}
 
 	@GetMapping("search")
 	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name,
@@ -186,7 +203,7 @@ public class LectureResigterController {
 		return new ModelAndView("redirect:/lecture/project", model);
 	}
 
-	@GetMapping("/danhGia/{id}")
+	@GetMapping("/rate/{id}")
 	public ModelAndView edit1(ModelMap model, @PathVariable("id") Long id) throws IOException {
 		long count = lectureService.count() + studentService.count() + leaderLectureService.count();
 		model.addAttribute("count", count);
@@ -198,7 +215,7 @@ public class LectureResigterController {
 			BeanUtils.copyProperties(entity, project);
 			project.setIsEdit(true);
 			model.addAttribute("project", project);
-			return new ModelAndView("common/lecproject/addOrEdit", model);
+			return new ModelAndView("common/lecproject/RateUpdate", model);
 		}
 		model.addAttribute("message", "project không tồn tại");
 		return new ModelAndView("redirect:/lecutre/project/rate", model);

@@ -18,33 +18,46 @@
 				<thead class="thead-inverse">
 
 					<tr>
-						<th>Name</th>
-						<th>point</th>
-						<th>create_at</th>
-						<th>is_active</th>
+						<th>Tên Đề Tài</th>
+						<th>Chuyên Ngành</th>
+						<th>Ngày Tạo</th>
+						<th>Trạng Thái</th>
 						<th>Action</th>
 					</tr>
 
 
 
 				</thead>
-				
+
 				<tbody>
 
 					<c:forEach items="${project}" var="item">
 
 						<tr>
-							<td scope="row">${item.name}</td>			
-							<td>${item.point}</td>
+							<td scope="row">${item.name}</td>
+							<td>${item.faculty}</td>
 							<td>${item.create_at}</td>
-							<td>${item.is_active ? 'Đã Duyệt' : 'Chưa Duyệt'}</td>
+
+							<c:if test="${item.is_active == 1}">
+								<td><span class="badge bg-success">Đã Duyệt</span></td>
+							</c:if>
+
+
+							<c:if test="${item.is_active == 0}">
+								<td><span class="badge bg-warning">Chưa Duyệt</span></td>
+							</c:if>
+
+							<c:if test="${item.is_active == 2}">
+								<td><span class="badge bg-danger">Không được duyệt</span></td>
+							</c:if>
 
 							<td><a href="/leadlecture/project/view/${item.id}"
-								class="btn btn-outline-info"><i class="fa fa-info"></i>Detail</a> <a
-								href="/leadlecture/project/edit/${item.id}"
+								class="btn btn-outline-info"><i class="fa fa-info"></i>Detail</a>
+								<a href="/leadlecture/project/edit/${item.id}"
 								class="btn btn-outline-warning"><i class="fa fa-edit"></i>Duyệt</a>
-								<a href="/leadlecture/project/delete/${item.id}"
-								class="btn btn-outline-danger"><i class="fa fa-trash"></i>Delete</a></td>
+								<a href="/leadlecture/project/reject/${item.id}"
+								class="btn btn-outline-danger"><i class="fa fa-trash"></i>Không
+									Duyệt</a></td>
 
 						</tr>
 

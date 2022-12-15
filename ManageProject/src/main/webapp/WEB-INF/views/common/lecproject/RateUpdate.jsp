@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
-<form action=<c:url value = "/leadlecture/project/saveOrUpdate"/>
+<form action=<c:url value = "/lecture/project/saveRate"/>
 	method=POST>
 	<div class="card-body">
 		<h3 class="box-title mt-5">Thông tin đề tài</h3>
@@ -97,8 +97,9 @@
 			</div>
 
 			<div class="mb-3">
-				<input type="text" value="${project.point}" id="point" name="point"
-					hidden="" aria-describedby="pointid">
+				<label for="categoryname" class="form-lablel">Nhập Điểm :</label> <input
+					type="text" value="${project.point}" id="point" name="point"
+					aria-describedby="pointid">
 			</div>
 
 			<div class="mb-3">
@@ -118,14 +119,10 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="Satus" class="form-lablel">Status:</label> <select
-					class="form-select" name="is_active" aria-describedby="is_activeid"
-					id="is_active">
-					<option ${project.is_active == 1 ? 'selected':'' } value="1">
-						Duyệt</option>
-					<option ${project.is_active == 2 ? 'selected':'' } value="2">
-						Từ Chối Đề Tài</option>
-				</select>
+
+				<input type="text" value="${project.is_active}" id="is_active"
+					name="is_active" hidden="" aria-describedby="is_active">
+
 			</div>
 
 
@@ -143,8 +140,6 @@
 
 		</div>
 </form>
-
-
 
 
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,8 +21,18 @@ public class CouncilServiecImpl implements ICouncilService{
 	CouncilRepository councilRepository;
 
 	@Override
+	public Page<Council> findByIdContaining(Integer id, Pageable pageable) {
+		return councilRepository.findByIdContaining(id, pageable);
+	}
+
+	@Override
 	public <S extends Council> S save(S entity) {
 		return councilRepository.save(entity);
+	}
+
+	@Override
+	public <S extends Council> Optional<S> findOne(Example<S> example) {
+		return councilRepository.findOne(example);
 	}
 
 	@Override
@@ -30,17 +41,12 @@ public class CouncilServiecImpl implements ICouncilService{
 	}
 
 	@Override
-	public Page<Council> findAll(Pageable pageable) {
-		return councilRepository.findAll(pageable);
+	public List<Council> findAllById(Iterable<Integer> ids) {
+		return councilRepository.findAllById(ids);
 	}
 
 	@Override
-	public List<Council> findAll(Sort sort) {
-		return councilRepository.findAll(sort);
-	}
-
-	@Override
-	public Optional<Council> findById(Long id) {
+	public Optional<Council> findById(Integer id) {
 		return councilRepository.findById(id);
 	}
 
@@ -50,8 +56,13 @@ public class CouncilServiecImpl implements ICouncilService{
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		councilRepository.deleteById(id);
+	}
+
+	@Override
+	public Council getOne(Integer id) {
+		return councilRepository.getOne(id);
 	}
 
 	@Override
@@ -60,7 +71,7 @@ public class CouncilServiecImpl implements ICouncilService{
 	}
 
 	@Override
-	public Council getById(Long id) {
+	public Council getById(Integer id) {
 		return councilRepository.getById(id);
 	}
 
@@ -69,19 +80,7 @@ public class CouncilServiecImpl implements ICouncilService{
 		councilRepository.deleteAll();
 	}
 
-	@Override
-	public Page<Council> findByIdContaining(Long id, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return councilRepository.findByIdContaining(id, pageable);
-	}
 
-
-	@Override
-	public List<Project> findByIdContaining(Long id) {
-		// TODO Auto-generated method stub
-		return councilRepository.findByIdContaining(id);
-	}
-	
 	
 
 }

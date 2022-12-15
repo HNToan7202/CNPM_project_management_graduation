@@ -41,6 +41,7 @@ public class LeaderLectureController {
 		return "admin/leaderLecture/list";
 	}
 
+	
 
 	//TẠO TRƯỞNG BỘ MÔN
 	//admin

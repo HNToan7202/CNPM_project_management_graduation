@@ -56,7 +56,9 @@
 				<h6 class="collapse-header">Xem</h6>
 				<a class="collapse-item" href="/leadlecture/dshoidong">Danh Sách
 					Hội Đồng </a> <a class="collapse-item"
-					href="/leadlecture/dshoidong/add">Thêm Hội Đồng</a>
+					href="/leadlecture/dshoidong/add">Thêm Hội Đồng</a> <a
+					class="collapse-item" href="/leadlecture/dsgiangvien"> Danh
+					Sách Giảng Viên</a>
 			</div>
 		</div></li>
 	<!-- Nav Item - Charts -->

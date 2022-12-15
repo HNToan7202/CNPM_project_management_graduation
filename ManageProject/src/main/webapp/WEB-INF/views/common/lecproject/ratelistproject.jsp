@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
+<h6>${message}</h6>
+
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
 		<h6 class="m-0 font-weight-bold text-primary">Xem Danh sách</h6>
 
 	</div>
-
-
 
 	<div class="card-body">
 		<div class="table-responsive">
@@ -40,7 +40,7 @@
 								<td>${item.create_at}</td>
 								<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
 
-								<td><a href="/lecture/project/danhGia/${item.id}"
+								<td><a href="/lecture/project/rate/${item.id}"
 									class="btn btn-outline-primary"><i class="fa fa-edit"></i>Đánh
 										Giá</a></td>
 

@@ -12,14 +12,11 @@ import vn.iotstar.Entity.Council;
 import vn.iotstar.Entity.Project;
 
 @Repository
-public interface CouncilRepository extends JpaRepository<Council, Long >{
-	
+public interface CouncilRepository extends JpaRepository<Council, Integer> {
+
 	List<Project> findByIdContaining(Long id);
-	
-	
+
 	// Tìm kiếm và phân trang
-	Page<Council> findByIdContaining(Long id, Pageable pageable);
-	
-	Optional<Council> findById (Long id);
+	Page<Council> findByIdContaining(Integer id, Pageable pageable);
 
 }
