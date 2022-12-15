@@ -85,18 +85,18 @@ public class LectureManageController {
 		 * ModelAndView("admin/student/addOrEdit"); }
 		 */
 		
-		if (!lecture.getImageFile().isEmpty()) {
-			String path = application.getRealPath("/");
-
-			try {
-				lecture.setImage(lecture.getImageFile().getOriginalFilename());
-				String filePath = path + "/resources/images/" + lecture.getImage();
-				lecture.getImageFile().transferTo(Path.of(filePath));
-				lecture.setImageFile(null);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+//		if (!lecture.getImageFile().isEmpty()) {
+//			String path = application.getRealPath("/");
+//
+//			try {
+//				lecture.setImage(lecture.getImageFile().getOriginalFilename());
+//				String filePath = path + "/resources/images/" + lecture.getImage();
+//				lecture.getImageFile().transferTo(Path.of(filePath));
+//				lecture.setImageFile(null);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		BeanUtils.copyProperties(lecture, entity);
 		lectureSerivce.save(entity);
 		return new ModelAndView("redirect:/admin/addAccount/"+lecture.getId()+"/1", model);

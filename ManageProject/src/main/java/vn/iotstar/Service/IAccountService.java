@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import vn.iotstar.Entity.Account;
-import vn.iotstar.Entity.Student;
+import vn.iotstar.Service.Impl.UserNotFoundException;
 
 public interface IAccountService {
 
@@ -39,7 +39,11 @@ public interface IAccountService {
 
 	Account login(String email, String password);
 	Account findOneByemail(String email);
-
-
 	
+	void updatePassword(Account customer, String newPassword);
+
+	Account getByResetPasswordToken(String token);
+
+	void updateResetPasswordToken(String token, String email) throws UserNotFoundException;
+
 }

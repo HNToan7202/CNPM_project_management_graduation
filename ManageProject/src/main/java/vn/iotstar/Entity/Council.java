@@ -16,11 +16,11 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "hoidong")
-public class Council implements Serializable{
+public class Council implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	private Long id;
+	private Integer id;
 
 	private int soluongtv;
 
@@ -29,46 +29,5 @@ public class Council implements Serializable{
 	private int idheadlecture;
 
 	private boolean isactive;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public int getSoluongtv() {
-		return soluongtv;
-	}
-
-	public void setSoluongtv(int soluongtv) {
-		this.soluongtv = soluongtv;
-	}
-
-	public int getIdproject() {
-		return idproject;
-	}
-
-	public void setIdproject(int idproject) {
-		this.idproject = idproject;
-	}
-
-	public int getIdheadlecture() {
-		return idheadlecture;
-	}
-
-	public void setIdheadlecture(int idheadlecture) {
-		this.idheadlecture = idheadlecture;
-	}
-
-	public boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(boolean isactive) {
-		this.isactive = isactive;
-	}
-
 
 }

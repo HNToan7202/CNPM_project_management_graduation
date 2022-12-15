@@ -28,26 +28,21 @@
 
 
 				</thead>
-				
+
 				<tbody>
 
 					<c:forEach items="${project}" var="item">
 
 						<tr>
-							<td scope="row">${item.name}</td>			
+							<td scope="row">${item.name}</td>
 							<td>${item.point}</td>
 							<td>${item.create_at}</td>
-							
-							
-							<td>${item.is_active ? 'Đã Duyệt' : 'Chưa Duyệt'}</td>
-
-
-
+							<td>${item.is_active  == 1? 'Đã Duyệt' : 'Chưa Duyệt'}</td>
 							<td><a href="/lecture/project/view/${item.id}"
-								class="btn btn-outline-info"><i class="fa fa-info"></i>Detail</a> <a
-								href="/lecture/project/edit/${item.id}"
+								class="btn btn-outline-info"><i class="fa fa-info"></i>Detail</a>
+								<a href="/lecture/project/edit/${item.id}"
 								class="btn btn-outline-warning"><i class="fa fa-edit"></i>Edit</a>
-								<a href="/lecture/project/delete/${item.id}"
+								<a href="/leadlecture/project/delete/${item.id}"
 								class="btn btn-outline-danger"><i class="fa fa-trash"></i>Delete</a></td>
 
 						</tr>

@@ -36,8 +36,10 @@ public class Student implements Serializable {
 	private Long idproject;
 	private Boolean isleader;
 	private Boolean is_active;
+
 	private Long waitproject;// thuộc tính thể hiện sinh viên đăng ký đề tài:						// 1: đã được duyệt vào đề tài: 0 Chưa được duyệt vào đề tài
 	private Long xoaproject; // thuộc tính thể hiện sinh viên đang chờ giảng viên xóa khỏi đề tài do nhóm
 								// trưởng yêu cầu:
 								// 1: Nhóm trưởng muốn xóa. 0: nhóm trưởng ko yêu cầu xóa
+
 }

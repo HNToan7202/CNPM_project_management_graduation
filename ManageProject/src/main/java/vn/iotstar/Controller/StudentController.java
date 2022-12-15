@@ -78,6 +78,7 @@ public class StudentController {
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(studententity, student);
 		model.addAttribute("user", student);
+		
 		List<Notification> notifies = notificationService.findAll();
 		model.addAttribute("notifies", notifies);
 		return new ModelAndView("student/home", model);

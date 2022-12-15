@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
+<h6>${message}</h6>
+
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
 		<h6 class="m-0 font-weight-bold text-primary">Xem Danh sách</h6>
 
 	</div>
-
-
 
 	<div class="card-body">
 		<div class="table-responsive">
@@ -18,10 +18,10 @@
 				<thead class="thead-inverse">
 
 					<tr>
-						<th>Name</th>
-						<th>point</th>
-						<th>create_at</th>
-						<th>is_active</th>
+						<th>Tên Đề Tài</th>
+						<th>Điểm</th>
+						<th>Ngày Tạo</th>
+						<th>Trạng Thái</th>
 						<th>Action</th>
 					</tr>
 
@@ -32,20 +32,20 @@
 				<tbody>
 
 					<c:forEach items="${project}" var="item">
+						<c:if test="${item.is_active == true }">
 
-						<tr>
-							<td scope="row">${item.name}</td>
-							<td>${item.point}</td>
-							<td>${item.create_at}</td>
-							<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+							<tr>
+								<td scope="row">${item.name}</td>
+								<td>${item.point}</td>
+								<td>${item.create_at}</td>
+								<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
 
+								<td><a href="/lecture/project/rate/${item.id}"
+									class="btn btn-outline-primary"><i class="fa fa-edit"></i>Đánh
+										Giá</a></td>
 
-
-							<td><a href="/lecture/project/danhGia/${item.id}"
-								class="btn btn-outline-primary"><i class="fa fa-edit"></i>Đánh
-									Giá</a></td>
-
-						</tr>
+							</tr>
+						</c:if>
 
 					</c:forEach>
 

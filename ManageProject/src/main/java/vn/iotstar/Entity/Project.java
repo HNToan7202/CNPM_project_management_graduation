@@ -25,7 +25,6 @@ public class Project implements Serializable {
 
 	@Id
 	private Long id;
-
 	private String name;
 	private String desciption;
 	private String muctieu;
@@ -38,8 +37,7 @@ public class Project implements Serializable {
 	private int idtimeproject;
 	private Date create_at;
 	private Date update_at;
-	private Long idlecture;
-
-	private Boolean is_active;
+	private Integer idlecture;
+	private Integer is_active;
 
 }

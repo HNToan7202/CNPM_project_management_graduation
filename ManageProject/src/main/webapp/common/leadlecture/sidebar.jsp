@@ -17,7 +17,7 @@
 			<i class="fas fa-laugh-wink"></i>
 		</div>
 		<div class="sidebar-brand-text mx-3">
-			Trang Admin <sup></sup>
+			Trưởng Bộ Môn <sup></sup>
 		</div>
 	</a>
 
@@ -56,7 +56,9 @@
 				<h6 class="collapse-header">Xem</h6>
 				<a class="collapse-item" href="/leadlecture/dshoidong">Danh Sách
 					Hội Đồng </a> <a class="collapse-item"
-					href="/leadlecture/dshoidong/add">Thêm Hội Đồng</a>
+					href="/leadlecture/dshoidong/add">Thêm Hội Đồng</a> <a
+					class="collapse-item" href="/leadlecture/dsgiangvien"> Danh
+					Sách Giảng Viên</a>
 			</div>
 		</div></li>
 	<!-- Nav Item - Charts -->
@@ -68,13 +70,7 @@
 			<i class="fas fa-fw fa-chart-area"></i> <span>Duyệt Đề Tài</span>
 	</a></li>
 
-	<!-- Divider -->
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">Hội Đồng</div>
-	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts.html"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Đánh giá</span>
-	</a></li>
+
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 

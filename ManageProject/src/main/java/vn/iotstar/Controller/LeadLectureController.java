@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.iotstar.Entity.Council;
@@ -28,7 +29,6 @@ import vn.iotstar.Model.CouncilModel;
 import vn.iotstar.Model.LectureModel;
 import vn.iotstar.Model.NotificationModel;
 import vn.iotstar.Model.ProjectModel;
-import vn.iotstar.Repository.IProjectRepository;
 import vn.iotstar.Service.ICouncilService;
 import vn.iotstar.Service.ILeaderLectureService;
 import vn.iotstar.Service.ILectureService;
@@ -51,9 +51,27 @@ public class LeadLectureController {
 
 	@Autowired
 	ILectureService lectureService;
-	
-	@Autowired 
+
+	@Autowired
 	INotificationService notificationService;
+
+	@ModelAttribute("projects")
+	public List<ProjectModel> getProject() {
+		return projectService.findAll().stream().map(item -> {
+			ProjectModel cate = new ProjectModel();
+			BeanUtils.copyProperties(item, cate);
+			return cate;
+		}).toList();
+	}
+
+	@ModelAttribute("dshoidong")
+	public List<CouncilModel> getHoiDong() {
+		return councilService.findAll().stream().map(item -> {
+			CouncilModel cate = new CouncilModel();
+			BeanUtils.copyProperties(item, cate);
+			return cate;
+		}).toList();
+	}
 
 	@RequestMapping("profile")
 	public String profile(ModelMap model, HttpSession sesson) {
@@ -99,7 +117,7 @@ public class LeadLectureController {
 		List<Lecture> lecture = lectureService.findAll();
 		model.addAttribute("lecture", lecture);
 		model.addAttribute("id", id);
-		return new ModelAndView("common/leadlecture/listlecture", model);
+		return new ModelAndView("common/leadlecture/listlectureadd", model);
 	}
 
 	@GetMapping("list")
@@ -107,6 +125,14 @@ public class LeadLectureController {
 		List<Project> project = projectService.findAll();
 		model.addAttribute("project", project);
 		return new ModelAndView("common/leadlecture/listproject", model);
+	}
+
+	@GetMapping("dsgiangvien")
+	public ModelAndView dsGiangVien(ModelMap model) {
+		List<Lecture> lecture = lectureService.findAll();
+
+		model.addAttribute("lecture", lecture);
+		return new ModelAndView("common/leadlecture/listgiangvien", model);
 	}
 
 	@PostMapping("/dshoidong/saveOrUpdate")
@@ -135,6 +161,38 @@ public class LeadLectureController {
 		return new ModelAndView("redirect:/leadlecture/list", model);
 	}
 
+	@PostMapping("/dsgiangvien/saveofUpdate")
+	public ModelAndView saveOrUpdateGV(ModelMap model, @Valid @ModelAttribute("lecture") LectureModel lecture,
+			@RequestParam("idhoidong") Integer id, BindingResult result) {
+		Lecture entity = new Lecture();
+
+		if (result.hasErrors()) {
+			model.addAttribute("message", "Có lỗi");
+			return new ModelAndView("common/leadlecture/addOrEditGV");
+		}
+
+		BeanUtils.copyProperties(lecture, entity);
+
+		Integer idhoidong = entity.getIdhoidong();
+
+		List<Lecture> lectures = lectureService.findByIdhoidongContaining(idhoidong);
+
+		Optional<Council> council = councilService.findById(id);
+		if (council.get() != null) {
+
+			if (council.get().getSoluongtv() == lectures.size() && entity.getIdhoidong() != 0) {
+
+				model.addAttribute("message", "Hội Đồng đã đủ thành viên hoặc đang trong hội đồng khác.");
+
+				return new ModelAndView("common/leadlecture/listgiangvien");
+			}
+		}
+
+		lectureService.save(entity);
+		model.addAttribute("message", "Thêm thành công.");
+		return new ModelAndView("redirect:/leadlecture/dsgiangvien", model);
+	}
+
 	@GetMapping("/project/edit/{id}")
 	public ModelAndView edit(ModelMap model, @PathVariable("id") Long id) throws IOException {
 		Optional<Project> opt = projectService.findById(id);
@@ -145,6 +203,21 @@ public class LeadLectureController {
 			project.setIsEdit(true);
 			model.addAttribute("project", project);
 			return new ModelAndView("common/leadlecture/addOrEdit", model);
+		}
+		model.addAttribute("message", "project không tồn tại");
+		return new ModelAndView("redirect:/leadlecture/list", model);
+	}
+
+	@GetMapping("dsgiangvien/edit/{id}")
+	public ModelAndView themHD(ModelMap model, @PathVariable("id") Long id) throws IOException {
+		Optional<Lecture> opt = lectureService.findById(id);
+		LectureModel project = new LectureModel();
+		if (opt.isPresent()) {
+			Lecture entity = opt.get();
+			BeanUtils.copyProperties(entity, project);
+			project.setIsEdit(true);
+			model.addAttribute("lecture", project);
+			return new ModelAndView("common/leadlecture/addOrEditGV", model);
 		}
 		model.addAttribute("message", "project không tồn tại");
 		return new ModelAndView("redirect:/leadlecture/list", model);
@@ -174,7 +247,7 @@ public class LeadLectureController {
 		List<Lecture> lecture = lectureService.findAll();
 		model.addAttribute("lecture", lecture);
 		model.addAttribute("id", id);
-		return new ModelAndView("common/leadlecture/listlecture", model);
+		return new ModelAndView("common/leadlecture/listlecturedetail", model);
 	}
 
 	@GetMapping("/home")
@@ -206,5 +279,18 @@ public class LeadLectureController {
 		model.addAttribute("notify", notify);
 		return "lecture/notify";
 
+	}
+
+	@GetMapping("project/reject/{id}")
+	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id) {
+		Optional<Project> proj = projectService.findById(id);
+
+		Project pro = proj.get();
+
+		pro.setIs_active(2);
+
+		projectService.save(pro);
+
+		return new ModelAndView("redirect:/leadlecture/list", model);
 	}
 }

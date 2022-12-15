@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class ProjectModel {
-
 	private Long id;
-
 	private String name;
 	private String desciption;
 	private String muctieu;
@@ -25,15 +23,9 @@ public class ProjectModel {
 	private int idtimeproject;
 	private Date create_at;
 	private Date update_at;
-	private boolean is_active;
-	private Long idlecture;
+	private Integer is_active;
+	private Integer idlecture;
 
-//	public Long getId_lecture() {
-//		return id_lecture;
-//	}
-//	public void setId_lecture(Long id_lecture) {
-//		this.id_lecture = id_lecture;
-//	}
 	private Boolean IsEdit = false;
 
 }

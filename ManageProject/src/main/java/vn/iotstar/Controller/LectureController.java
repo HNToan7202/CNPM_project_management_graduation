@@ -43,6 +43,10 @@ public class LectureController {
 
 	@RequestMapping("profile")
 	public String profile(ModelMap model, HttpSession sesson) {
+		
+		long count = lectureService.count() + studentService.count() + leaderLectureService.count();
+		model.addAttribute("count", count);
+		
 		String email = (String) sesson.getValue("email");
 		Lecture lecture = (Lecture) lectureService.findByEmailContaining(email);
 		model.addAttribute("user", lecture);
@@ -51,6 +55,7 @@ public class LectureController {
 
 	@GetMapping("/home")
 	public ModelAndView List(ModelMap model, HttpSession sesson) {
+		
 		String email = (String) sesson.getValue("email");
 		Lecture studententity = lectureService.findByEmailContaining(email);
 		LectureModel student = new LectureModel();
@@ -68,6 +73,10 @@ public class LectureController {
 
 	@GetMapping("/notify/{id}")
 	public String seachnotify(ModelMap model, @PathVariable("id") Long id, HttpSession sesson) {
+		
+		long count = lectureService.count() + studentService.count() + leaderLectureService.count();
+		model.addAttribute("count", count);
+		
 		String email = (String) sesson.getValue("email");
 		Lecture studententity = lectureService.findByEmailContaining(email);
 		LectureModel student = new LectureModel();
@@ -82,6 +91,8 @@ public class LectureController {
 		}
 		model.addAttribute("notify", notify);
 		return "lecture/notify";
+		
+		
 
 	}
 

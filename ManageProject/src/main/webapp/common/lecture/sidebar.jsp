@@ -17,11 +17,9 @@
 			<i class="fas fa-laugh-wink"></i>
 		</div>
 		<div class="sidebar-brand-text mx-3">
-			Trang Admin <sup></sup>
+			Trang Giảng Viên <sup></sup>
 		</div>
 	</a>
-
-
 
 	<!-- Divider -->
 	<hr class="sidebar-divider">
@@ -70,19 +68,27 @@
 			<span>Đánh giá</span>
 	</a></li>
 
+	<!-- Divider -->
+	<hr class="sidebar-divider">
+	<div class="sidebar-heading">Thông Báo </div>
+	<!-- Nav Item - Charts -->
+	<li class="nav-item"><a class="nav-link"
+		href="/notification/admin"> <i class="fas fa-fw fa-chart-area"></i>
+			<span>Quản Lý Thông Báo</span>
+	</a></li>
+
 
 	<hr class="sidebar-divider">
 	<div class="sidebar-heading">Thống Kê</div>
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link"
-		href="/lecture/project/rate"> <i class="fas fa-fw fa-chart-area"></i>
-			<span>Đang online : 1</span>
+	<li class="nav-item"><a class="nav-link"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>Đang online : 1</span>
 
 	</a></li>
 
-	<li class="nav-item"><a class="nav-link"
-		href="/lecture/project/rate"> <i class="fas fa-fw fa-chart-area"></i>
-			<span>Lượt truy cập : ${count}</span>
+	<li class="nav-item"><a class="nav-link"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>Lượt truy cập :
+				${count}</span>
 
 	</a></li>
 
