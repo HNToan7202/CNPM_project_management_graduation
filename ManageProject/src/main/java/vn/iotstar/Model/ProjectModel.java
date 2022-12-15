@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class ProjectModel {
-
 	private Long id;
 	private String name;
 	private String desciption;
@@ -26,6 +25,7 @@ public class ProjectModel {
 	private Date update_at;
 	private Integer is_active;
 	private Integer idlecture;
+
 	private Boolean IsEdit = false;
 
 }

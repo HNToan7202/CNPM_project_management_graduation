@@ -33,23 +33,24 @@ public class ProjectManageController {
 		return "admin/project/addOrUpdate";
 	}
 
-	@GetMapping("")
+	@GetMapping("list")
 	public String list(ModelMap model) {
 		List<Timeresgiter> times = timeResgiterService.findAll();
 		model.addAttribute("timeresgiter", times);
-		return "admin/project/list";
+		return "admin/timeResgiter/list";
 	}
 
 	@PostMapping("saveOrUpdate")
 	public ModelAndView saveOrUpdate(ModelMap model, @RequestParam("create_at") Date createAt,
 			@RequestParam("finish_at") Date finishAt, @RequestParam(value = "id", required = false) Long id) {
 		if (id == null) {
-			Timeresgiter entity = new Timeresgiter(createAt, finishAt);
+			Timeresgiter entity = new Timeresgiter( id,createAt, finishAt);
 			timeResgiterService.save(entity);
 		} else {
 			Optional<Timeresgiter> opt = timeResgiterService.findById(id);
 			if (opt.isPresent()) {
 				Timeresgiter entity = opt.get();
+				
 				entity.setCreate_at(createAt);
 				entity.setFinish_at(finishAt);
 				timeResgiterService.save(entity);

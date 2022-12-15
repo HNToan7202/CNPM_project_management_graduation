@@ -27,6 +27,7 @@ import vn.iotstar.Model.LectureModel;
 import vn.iotstar.Model.ProjectModel;
 import vn.iotstar.Model.StudentModel;
 import vn.iotstar.Service.ILectureService;
+import vn.iotstar.Service.IStudentService;
 
 
 @Controller
@@ -38,12 +39,15 @@ public class LectureManageController {
 	ILectureService lectureSerivce;
 	@Autowired
 	ServletContext application;
+	@Autowired
+	IStudentService studentService;
+	
 	
 	@GetMapping("")
 	public String list(ModelMap model) {
 		List<Lecture> lecture = lectureSerivce.findAll();
 		model.addAttribute("lecture", lecture);
-		return "admin/lecture/list_admin";
+		return "admin/AccountManagement/GiangVien/list";
 	}
 	
 	@GetMapping("add")
@@ -51,8 +55,7 @@ public class LectureManageController {
 		LectureModel lecture = new LectureModel();
 		lecture.setIsEdit(false);
 		model.addAttribute("lecture", lecture);
-
-		return "admin/lecture/addOrEdit";
+		return "admin/AddTaiKhoan/GiangVien/GiangVien";
 
 	}
 	@GetMapping("edit/{id}")
@@ -64,7 +67,7 @@ public class LectureManageController {
 			BeanUtils.copyProperties(entity, Lecture);
 			Lecture.setIsEdit(true);
 			model.addAttribute("lecture", Lecture);
-			return new ModelAndView("admin/lecture/addOrEdit", model);
+			return new ModelAndView("admin/AccountManagement/GiangVien/edit", model);
 		}
 		model.addAttribute("message", "Lecture không tồn tại");
 		return new ModelAndView("forward:/admin/lecture", model);
@@ -96,13 +99,41 @@ public class LectureManageController {
 //		}
 		BeanUtils.copyProperties(lecture, entity);
 		lectureSerivce.save(entity);
+		return new ModelAndView("redirect:/admin/addAccount/"+lecture.getId()+"/1", model);
+	}
+	@PostMapping("saveofUpdate2")
+	public ModelAndView saveOrUpdate2(ModelMap model, @Valid @ModelAttribute("lecture") LectureModel lecture,
+			BindingResult result) {
+		Lecture entity = new Lecture();
+
+		/*
+		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
+		 * ModelAndView("admin/student/addOrEdit"); }
+		 */
+		
+		if (!lecture.getImageFile().isEmpty()) {
+			String path = application.getRealPath("/");
+
+			try {
+				lecture.setImage(lecture.getImageFile().getOriginalFilename());
+				String filePath = path + "/resources/images/" + lecture.getImage();
+				lecture.getImageFile().transferTo(Path.of(filePath));
+				lecture.setImageFile(null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		BeanUtils.copyProperties(lecture, entity);
+		lectureSerivce.save(entity);
 		return new ModelAndView("redirect:/admin/lecture", model);
 	}
 
 	
+	
 	@GetMapping("delete/{id}")
 	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id) {
 		lectureSerivce.deleteById(id);
+		model.addAttribute("message", "Đã xóa giảng viên này");
 		return new ModelAndView("redirect:/admin/lecture", model);
 	}
 }

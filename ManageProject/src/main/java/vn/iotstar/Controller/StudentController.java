@@ -315,8 +315,8 @@ public class StudentController {
 		Optional<Timeresgiter> opt = timeResgiterService.findById((long) 1);
 		if (opt.isPresent()) {
 			Timeresgiter time = opt.get();
-			Date create = time.getCreate_at();
-			Date finish = time.getFinish_at();
+			Date create = time.getCreateat();
+			Date finish = time.getFinishat();
 			Date getDate = new Date();
 			model.addAttribute("create_date", create);
 			model.addAttribute("finish_date", finish);

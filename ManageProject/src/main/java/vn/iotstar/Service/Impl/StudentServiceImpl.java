@@ -26,68 +26,9 @@ public class StudentServiceImpl implements IStudentService {
 	@Autowired
 	IStudentReposiotory studentRepo;
 
-	@Override
-	public <S extends Student> S save(S entity) {
-		return studentRepo.save(entity);
-	}
+	
+	
 
-	@Override
-	public List<Student> findAll() {
-		return studentRepo.findAll();
-	}
-
-	@Override
-	public Page<Student> findAll(Pageable pageable) {
-		return studentRepo.findAll(pageable);
-	}
-
-	@Override
-	public void flush() {
-		studentRepo.flush();
-	}
-
-	@Override
-	public <S extends Student> S saveAndFlush(S entity) {
-		return studentRepo.saveAndFlush(entity);
-	}
-
-	@Override
-	public <S extends Student> Page<S> findAll(Example<S> example, Pageable pageable) {
-		return studentRepo.findAll(example, pageable);
-	}
-
-	@Override
-	public Optional<Student> findById(Long id) {
-		return studentRepo.findById(id);
-	}
-
-	@Override
-	public long count() {
-		return studentRepo.count();
-	}
-
-	@Override
-	public void deleteById(Long id) {
-		studentRepo.deleteById(id);
-	}
-
-	@Override
-	public void delete(Student entity) {
-		studentRepo.delete(entity);
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public Student getById(Long id) {
-		return studentRepo.getById(id);
-	}
-
-	@Override
-	public void deleteAll() {
-		studentRepo.deleteAll();
-	}
-
-	@Override
 	public List<Student> findByNameContaining(String name) {
 		// TODO Auto-generated method stub
 		return studentRepo.findByNameContaining(name);
@@ -106,6 +47,46 @@ public class StudentServiceImpl implements IStudentService {
 	public Student findByEmailContaining(String email) {
 		// TODO Auto-generated method stub
 		return studentRepo.findByEmailContaining(email);
+	}
+
+	@Override
+	public <S extends Student> S save(S entity) {
+		return studentRepo.save(entity);
+	}
+
+	@Override
+	public List<Student> findAll() {
+		return studentRepo.findAll();
+	}
+
+	@Override
+	public List<Student> findAllById(Iterable<Integer> ids) {
+		return studentRepo.findAllById(ids);
+	}
+
+	@Override
+	public long count() {
+		return studentRepo.count();
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		studentRepo.deleteById(id);
+	}
+
+	@Override
+	public void delete(Student entity) {
+		studentRepo.delete(entity);
+	}
+
+	@Override
+	public Student getById(Integer id) {
+		return studentRepo.getById(id);
+	}
+
+	@Override
+	public Optional<Student> findById(Integer id) {
+		return studentRepo.findById(id);
 	}
 
 }

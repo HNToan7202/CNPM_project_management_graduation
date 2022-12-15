@@ -1,9 +1,8 @@
 package vn.iotstar.Entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,64 +21,26 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "notification")
-public class Notification implements Serializable{
+public class Notification implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//@Column(name="name",length = 50, columnDefinition = "nvarchar(50) not null")
+	// @Column(name="name",length = 50, columnDefinition = "nvarchar(50) not null")
 	private String name;
-	//@Column(name="create_at")
+	// @Column(name="create_at")
 	private Date create_at;
-	//@Column(name="update_at")
+	// @Column(name="update_at")
 	private Date update_at;
-	//@Column(name="desciption",length = 50, columnDefinition = "nvarchar(50) not null")
-	private String desciption;
-	//@Column(name="for_student")
-	private boolean for_student;
-	//@Column(name="isactive")
-	private boolean is_active;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Date getCreate_at() {
-		return create_at;
-	}
-	public void setCreate_at(Date create_at) {
-		this.create_at = create_at;
-	}
-	public Date getUpdate_at() {
-		return update_at;
-	}
-	public void setUpdate_at(Date update_at) {
-		this.update_at = update_at;
-	}
-	public String getDesciption() {
-		return desciption;
-	}
-	public void setDesciption(String desciption) {
-		this.desciption = desciption;
-	}
-	public boolean isFor_student() {
-		return for_student;
-	}
-	public void setFor_student(boolean for_student) {
-		this.for_student = for_student;
-	}
-	public boolean isIs_active() {
-		return is_active;
-	}
-	public void setIs_active(boolean is_active) {
-		this.is_active = is_active;
-	}
 
-	
+	// @Column(name="desciption",length = 50, columnDefinition = "nvarchar(50) not
+	// null")
+	private String desciption;
+	// @Column(name="for_student")
+	private boolean chosv;
+	// @Column(name="isactive")
+	private boolean is_active;
+
+	private Long idstudent;
+	private Long idlecture;
+	private boolean student;
 }

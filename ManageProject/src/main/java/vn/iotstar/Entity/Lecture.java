@@ -33,4 +33,6 @@ public class Lecture implements Serializable {
 	private Integer idhoidong;
 	private Boolean isactive;
 
+
+
 }

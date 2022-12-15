@@ -10,7 +10,7 @@ public class CustomSiteMeshFileter extends ConfigurableSiteMeshFilter {
 	@Override
 	protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
 		builder.addDecoratorPath("/leaderLecture/*", "/decorators/admin.jsp")
-		.addDecoratorPath("/admin/*", "/decorators/admin.jsp")
+		.addDecoratorPath("/admin/*", "/decorators/AD.jsp")
 				.addDecoratorPath("/student/*", "/decorators/student.jsp")
 
 				.addDecoratorPath("/Home/*", "/decorators/admin.jsp")
@@ -22,7 +22,7 @@ public class CustomSiteMeshFileter extends ConfigurableSiteMeshFilter {
 				.addDecoratorPath("/notification/*", "/decorators/admin.jsp")
 
 				.addDecoratorPath("/account/*", "/decorators/admin.jsp")
-
+				.addDecoratorPath("/admin/testtrang", "/decorators/AD.jsp")
 				.addExcludedPath("/login*");
 	}
 }

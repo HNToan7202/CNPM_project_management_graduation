@@ -37,8 +37,7 @@ public class Project implements Serializable {
 	private int idtimeproject;
 	private Date create_at;
 	private Date update_at;
-
 	private Integer idlecture;
 	private Integer is_active;
-	
+
 }
