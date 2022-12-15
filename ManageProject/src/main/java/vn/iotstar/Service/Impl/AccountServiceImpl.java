@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import vn.iotstar.Entity.Account;
-import vn.iotstar.Entity.Student;
 import vn.iotstar.Repository.IAccountRepository;
 import vn.iotstar.Service.IAccountService;
 
@@ -32,7 +31,7 @@ public class AccountServiceImpl implements IAccountService {
 
 	@Override
 	public <S extends Account> S save(S entity) {
-		//entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));
+		// entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));
 
 		return accountRepository.save(entity);
 	}
@@ -91,9 +90,7 @@ public class AccountServiceImpl implements IAccountService {
 	public Account login(String email, String password) {
 		Optional<Account> optExist = findById(email);
 
-
 		if (optExist.isPresent() /* && bCryptPasswordEncoder.matches(password, optExist.get().getPassword()) */) {
-
 
 			return optExist.get();
 		}
@@ -105,5 +102,31 @@ public class AccountServiceImpl implements IAccountService {
 		// TODO Auto-generated method stub
 		return accountRepository.findOneByemail(email);
 	}
-	
+
+	@Override
+	public void updateResetPasswordToken(String token, String email) throws UserNotFoundException {
+		Account customer = accountRepository.findByEmail(email);
+		if (customer != null) {
+			customer.setResetpasswordtoken(token);
+			accountRepository.save(customer);
+		} else {
+			throw new UserNotFoundException("Could not find any customer with the email " + email);
+		}
+	}
+
+	@Override
+	public Account getByResetPasswordToken(String token) {
+		return accountRepository.findByResetpasswordtoken(token);
+	}
+
+	@Override
+	public void updatePassword(Account customer, String newPassword) {
+		// BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		// String encodedPassword = passwordEncoder.encode(newPassword);
+		customer.setPassword(newPassword);
+
+		customer.setResetpasswordtoken(null);
+		accountRepository.save(customer);
+	}
+
 }

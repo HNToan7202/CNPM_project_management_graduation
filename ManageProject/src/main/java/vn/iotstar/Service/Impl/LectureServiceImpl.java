@@ -101,6 +101,8 @@ public class LectureServiceImpl implements ILectureService{
 		return lectureRepo.findByIdhoidongContaining(idhoidong);
 	}
 
+	
+	
 
 
 	
