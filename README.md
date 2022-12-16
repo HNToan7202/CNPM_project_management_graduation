@@ -1,20 +1,20 @@
-### Công Nghệ Phần Mềm
+# Công Nghệ Phần Mềm
 
- ##### Nhóm 15
+ ## Nhóm 15
 
  ###### Thành viên nhóm:
 * Nguyễn Hoàng Toàn 20110739
 * Ngô Diệp Quang Huy 20110650
 * Nguyễn Công Thành 20110267
 
-### Xây dựng website quản lý đề tài
+## Xây dựng website quản lý đề tài
 
  ##  Sprint 1:
-* Link video nhóm thảo luận về bài tập: https://drive.google.com/drive/u/1/folders/1XlZHW8j17rynvLRTgyc0swvbiGf28hYx
-* Link tài liệu Product Backlog: https://docs.google.com/document/d/1pn9dKz1cTAzO2JbVSWhFWlT4EAVtDi0e59BdFyw4a50/edit#heading=h.7k88exg8x3qs
-* Link tài liệu Sprint Backlog: https://docs.google.com/spreadsheets/d/1zqR_vJOemh6xisWgTfQaM8e8n0MZs185/edit#gid=1118561176
-* Link ghi nhận Daily Scrum Meeting: https://docs.google.com/document/d/1zmuYVcLduqbLgXLfC-vfg7Mn5A9P8i6x_Lvl6jFV-_s/edit
-* Link demo kết quả làm được: https://www.youtube.com/watch?v=w5GJOjhhN-A&t=1s
+* Link video nhóm thảo luận về bài tập: https://drive.google.com/file/d/1PgU4hQ2zO5YqY0Pnkld_CQ_JJyLSpQLz/view?usp=sharing
+* Link tài liệu Product Backlog: https://docs.google.com/document/d/1colfwoLPLlKd5NWSGTlcTXXvxB2kw-P5jIh8UT5i6jQ/edit?usp=sharing
+* Link tài liệu Sprint Backlog: https://docs.google.com/spreadsheets/d/17AyQyw4WTHyoRx4uNVJbEtCz_bNEImFu/edit?usp=sharing&ouid=101827698616831902226&rtpof=true&sd=true
+* Link ghi nhận Daily Scrum Meeting: https://docs.google.com/document/d/1ILVmjhgapOaguHy8ejNCjPk4hlpL269yVKjHLhGORlo/edit?usp=sharing
+* Link demo kết quả làm được: https://drive.google.com/file/d/16QHpltyZe5UX0acGvwV2ptXaAE_1ORvw/view?usp=sharing
 ### Kết quả đạt được:
 * Đăng nhập
 * Đăng xuất
@@ -36,14 +36,20 @@
 * Tìm kiếm giảng viên
 * Xem và chỉnh sửa thông tin cá nhân
 ## Sprint 2:
-* Link video nhóm thảo luận về bài tập:
-* Link tài liệu Product Backlog:
-* Link tài liệu Sprint Backlog:
-* Link ghi nhận Daily Scrum Meeting:
-* Link demo kết quả làm được:
+* Link video nhóm thảo luận về bài tập:https://drive.google.com/file/d/1738KMb8kUWscsrNSC4ItMLy6oQxdii3l/view?usp=share_link
+* Link tài liệu Product Backlog:https://docs.google.com/document/d/103CVOTW_-CPCitTEoHAw1cW2K3e1UOMn27y64nj2Qx0/edit?usp=sharing
+* Link tài liệu Sprint Backlog:https://docs.google.com/document/d/1Ah9xUd7Ace-M-PZOqDICRVCQnhebhYMMl7rpt5utbWs/edit?usp=sharing
+* Link ghi nhận Daily Scrum Meeting:https://docs.google.com/document/d/1Jj6oGtE-tixKv-xQ7wxBryWdQrIRIFhVaHViEdC3gRA/edit?usp=sharing
+* Link kết quả thực hiện (gihub + Readme): https://github.com/meowmilk7202/Sprint-1.git
+* Link thiết kế giao diện figma: https://www.figma.com/file/OeSejwnz1Z10ZqFUya6wq3/Sprint-2-Nhom-15?node-id=0%3A1&t=O1OswqPr8U0OfjNF-1
+* Link giải thích giao diện figma: Phân tích giao diện figma.docx
+* Link video demo kết quả làm được: https://drive.google.com/drive/folders/1VzeO9pQ7wq81CQcpVRP6RMRVTGXw8Qq2?usp=share_link
+* Link dự phòng video demo kết quả làm được:
+https://drive.google.com/drive/folders/1kOYwJG6NqRUQ8A1RyjCf7y1wi0mQO0yT?usp=share_link
+
 ### Kết quả đạt được
 * Giao diện hoàn chỉnh cho user, seller, admin
-* Tùy chỉnh tạo đăng ký, mở đăng ký cho sinh viên, admin
+* Tùy chỉnh tạo đăng ký, mở đăng ký cho sinh viên, giảng viên
 * Thêm chức năng Admin cập nhật, cấp lại tài khoản cho sinh viên, giảng viên, trưởng bộ môn.
 * Thêm chức năng sinh viên, giảng viên, trưởng bộ môn tự đổi mật khẩu bằng hình thức nhận mail gửi về 
 * Thêm chức năng quản lý nhóm dành cho trưởng nhóm
