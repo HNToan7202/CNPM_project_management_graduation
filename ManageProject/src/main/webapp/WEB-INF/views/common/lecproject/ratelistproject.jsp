@@ -32,7 +32,7 @@
 				<tbody>
 
 					<c:forEach items="${project}" var="item">
-						<c:if test="${item.is_active == true }">
+						<c:if test="${item.is_active.equals(1) }">
 
 							<tr>
 								<td scope="row">${item.name}</td>

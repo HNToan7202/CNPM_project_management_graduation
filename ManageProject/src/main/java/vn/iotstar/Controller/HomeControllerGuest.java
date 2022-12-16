@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import vn.iotstar.Entity.Lecture;
 import vn.iotstar.Entity.Notification;
@@ -38,6 +39,14 @@ public class HomeControllerGuest {
 		List<Notification> notifications = noticationService.findByChosv(true);
 		model.addAttribute("notifications", notifications);
 		return "/common/home";
+	}
+
+	// Giảng Viên
+	@RequestMapping("lecture/notification")
+	public String Lecture(ModelMap model) {
+		List<Notification> list = noticationService.findAll();
+		model.addAttribute("notification", list);
+		return "lecture/notification/list";
 	}
 
 	@GetMapping("/notify/{id}")
