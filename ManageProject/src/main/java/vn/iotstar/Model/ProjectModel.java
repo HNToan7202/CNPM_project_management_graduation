@@ -23,7 +23,7 @@ public class ProjectModel {
 	private int idtimeproject;
 	private Date create_at;
 	private Date update_at;
-	private Integer is_active;
+	private Long is_active;
 	private Integer idlecture;
 
 	private Boolean IsEdit = false;

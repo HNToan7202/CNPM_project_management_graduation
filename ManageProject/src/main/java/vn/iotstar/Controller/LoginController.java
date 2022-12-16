@@ -46,11 +46,7 @@ public class LoginController {
 		return "/common/demologin";
 	}
 
-	@GetMapping("")
-	public String home(ModelMap model) {
-		model.addAttribute("account", new AdminLoginModel());
-		return "/common/demologin";
-	}
+
 
 	@PostMapping("login")
 	public ModelAndView login(ModelMap model, @Valid @ModelAttribute("account") AdminLoginModel loginmodel,

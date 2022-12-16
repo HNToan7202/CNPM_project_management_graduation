@@ -80,7 +80,7 @@
 									<td>${item.muctieu}</td>
 									<td>${item.soluongsv}</td>
 									<td>${item.nienkhoa}</td>
-									<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+									<td>${item.is_active==1 ? 'Actived' : 'Not Active'}</td>
 								</tr>
 
 							</c:forEach>

@@ -27,6 +27,11 @@ public class ProjectServiceImpl implements IProjectService{
 	}
 
 	@Override
+	public List<Project> findByIdlecture(Long id) {
+		return projectRepository.findByIdlecture(id);
+	}
+
+	@Override
 	public Page<Project> findByIdContaining(Long id, Pageable pageable) {
 		return projectRepository.findByIdContaining(id, pageable);
 	}

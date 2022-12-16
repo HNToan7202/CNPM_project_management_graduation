@@ -12,16 +12,17 @@ import vn.iotstar.Entity.Project;
 
 @Repository
 public interface IProjectRepository extends JpaRepository<Project, Long> {
-	//Tim kiem noi dung ten from account where email
-	
+	// Tim kiem noi dung ten from account where email
+
 	List<Project> findByIdContaining(Long id);
-	
-	
+
 	// Tìm kiếm và phân trang
 	Page<Project> findByIdContaining(Long id, Pageable pageable);
-	
+
 	Page<Project> findByNameContaining(String name, Pageable pageable);
-	
-	Optional<Project> findById (Long id);
+
+	Optional<Project> findById(Long id);
+
+	List<Project> findByIdlecture(Long id);
 
 }

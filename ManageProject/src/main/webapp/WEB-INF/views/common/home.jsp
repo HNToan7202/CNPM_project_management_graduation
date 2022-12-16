@@ -25,18 +25,10 @@
 					<c:forEach var="item" items="${notifications}">
 						<tr>
 							<td>${item.id}</td>
-							<td><a href="/student/notify/${item.id}"
+							<td><a href="/notify/${item.id}"
 								style="color: rgb(68, 68, 68) !important;">${item.create_at}|${item.name}</a></td>
 						</tr>
 					</c:forEach>
-					<c:forEach var="item" items="${notifies}">
-						<tr>
-							<td>${item.id}</td>
-							<td><a href="/student/notify/${item.id}"
-								style="color: rgb(68, 68, 68) !important;">${item.create_at}|${item.name}</a></td>
-						</tr>
-					</c:forEach>
-
 				</tbody>
 			</table>
 		</div>

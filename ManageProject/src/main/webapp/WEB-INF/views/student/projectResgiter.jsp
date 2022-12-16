@@ -30,7 +30,7 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${projects}" var="item" varStatus="STT">
-							<c:if test="${item.is_active}">
+							<c:if test="${item.is_active==1}">
 								<tr>
 									<td scope="row">${STT.index+1 }</td>
 									<td>${item.name}</td>

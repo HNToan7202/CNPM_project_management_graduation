@@ -1,12 +1,14 @@
 package vn.iotstar.Controller.Project;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -28,11 +30,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.iotstar.Entity.Lecture;
+import vn.iotstar.Entity.Notification;
 import vn.iotstar.Entity.Project;
+import vn.iotstar.Entity.Student;
 import vn.iotstar.Entity.Timeresgiter;
 import vn.iotstar.Model.ProjectModel;
 import vn.iotstar.Service.ILeaderLectureService;
 import vn.iotstar.Service.ILectureService;
+import vn.iotstar.Service.INotificationService;
 import vn.iotstar.Service.IProjectService;
 import vn.iotstar.Service.IStudentService;
 import vn.iotstar.Service.ITimeResgiterSerivce;
@@ -55,6 +61,12 @@ public class LectureResigterController {
 
 	@Autowired
 	ILeaderLectureService leaderLectureService;
+
+	@Autowired
+	INotificationService notificationService;
+
+	@Autowired
+	HttpSession session;
 
 	@GetMapping("")
 	public ModelAndView List(ModelMap model) {
@@ -137,7 +149,7 @@ public class LectureResigterController {
 		projectService.save(entity);
 		return new ModelAndView("redirect:/lecture/project", model);
 	}
-	
+
 	@PostMapping("saveRate")
 	public ModelAndView saveRate(ModelMap model, @Valid @ModelAttribute("project") ProjectModel project,
 			BindingResult result) {
@@ -220,6 +232,7 @@ public class LectureResigterController {
 		model.addAttribute("message", "project không tồn tại");
 		return new ModelAndView("redirect:/lecutre/project/rate", model);
 	}
+
 	@GetMapping("rate")
 	public ModelAndView rate(ModelMap model) {
 		long count = lectureService.count() + studentService.count() + leaderLectureService.count();
@@ -229,4 +242,84 @@ public class LectureResigterController {
 		return new ModelAndView("common/lecproject/ratelistproject", model);
 	}
 
+	@GetMapping("/manager")
+	public String manageStudent(ModelMap model) {
+
+		String email = (String) session.getAttribute("email");
+
+		model.addAttribute("message", session.getAttribute("message"));
+		session.removeAttribute("message");
+		Lecture lecture = lectureService.findByEmailContaining(email);
+		List<Project> projects = projectService.findByIdlecture(lecture.getId());
+		List<Student> students = new ArrayList<Student>();
+		for (Project project : projects) {
+
+			students = studentService.findByXoaproject(project.getId());
+
+		}
+		model.addAttribute("projects", projects);
+		model.addAttribute("students", students);
+		return "common/lecproject/manager";
+
+	}
+
+	@GetMapping("/student")
+	public String studentEdit(ModelMap model) {
+
+		String email = (String) session.getAttribute("email");
+
+		Lecture lecture = lectureService.findByEmailContaining(email);
+		List<Project> projects = projectService.findByIdlecture((long) lecture.getId());
+		List<Student> students = new ArrayList<Student>();
+		for (Project project : projects) {
+
+			students = studentService.findByXoaproject(project.getId());
+
+		}
+		model.addAttribute("projects", projects);
+		model.addAttribute("students", students);
+		return "common/lecproject/studentedit";
+
+	}
+
+	@GetMapping("student/motify/{id}")
+	public ModelAndView studentaccpet(ModelMap model, @PathVariable("id") Integer id) {
+
+		Student student = studentService.getById(id);
+		Project pro = projectService.getById((long) student.getXoaproject());
+		session.setAttribute("message", "Đã xóa thành viên trong đề tài " + pro.getName());
+		student.setXoaproject(0L);
+		student.setIdproject(0L);
+		studentService.save(student);
+
+		// tạo thông báo gửi đến giáo viên hướng dẫn
+		Notification notify = new Notification();
+		notify.setDesciption("Hãy truy cập vào đề tài để xem thông tin chi tiết");
+		notify.setChosv(false);
+		notify.setIdstudent((long) student.getMssv());
+		notify.setIdlecture(0L);
+		notify.set_active(true);
+
+		long millis = System.currentTimeMillis();
+		Date date = new Date(millis);
+		notify.setCreate_at(date);
+		notify.setUpdate_at(date);
+		notify.setName("Bạn đã bị loại khỏi đề tài " + pro.getName());
+
+		notificationService.save(notify);
+
+		String email = (String) session.getAttribute("email");
+
+		Lecture lecture = lectureService.findByEmailContaining(email);
+		List<Project> projects = projectService.findByIdlecture(lecture.getId());
+		List<Student> students = new ArrayList<Student>();
+		for (Project project : projects) {
+
+			students = studentService.findByXoaproject(project.getId());
+
+		}
+		model.addAttribute("projects", projects);
+		model.addAttribute("students", students);
+		return new ModelAndView("redirect:/lecture/project/manager", model);
+	}
 }
