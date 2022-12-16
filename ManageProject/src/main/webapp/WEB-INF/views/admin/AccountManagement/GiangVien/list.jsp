@@ -51,7 +51,7 @@
                             </button>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="/admin/lecture/edit/${lecture.id}"><i class="bx bx-edit-alt me-1"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chỉnh sửa</font></font></a>
-                               <a class="dropdown-item" href="/admin/editAccount/${lecture.id}/2"><i class="bx bxl-baidu mb-2"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cấp lại tài khoản</font></font></a>                           
+                               <a class="dropdown-item" href="/admin/editAccount/${lecture.id}/1"><i class="bx bxl-baidu mb-2"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cấp lại tài khoản</font></font></a>                           
                             </div>
                           </div>
                         </td>

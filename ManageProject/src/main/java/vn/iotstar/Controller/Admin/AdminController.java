@@ -87,7 +87,7 @@ public class AdminController {
 		
 
 	}// thêm tài khoản 
-	@GetMapping("editAccount/{id}/{loaitaikhoan}")
+	@RequestMapping("editAccount/{id}/{loaitaikhoan}")
 	public ModelAndView editAccount(ModelMap model, @PathVariable("id") int id, @PathVariable("loaitaikhoan") int loaitaikhoan) {
 		if(loaitaikhoan==1) {
 			Lecture giangvien = lectureSerivce.findById((long)id).get();
@@ -160,16 +160,16 @@ public class AdminController {
 		accountService.save(entity1);
 		//model.addAttribute("message", "Cập nhật tài khoản " +account.getEmail() + " thành công");
 		if (loaitaikhoan==1)
-			return new ModelAndView("/admin/student", model);
+			return new ModelAndView("redirect:/admin/lecture", model);
 		else if(loaitaikhoan==2)
-			return new ModelAndView("forward:/admin/student", model);
+			return new ModelAndView("redirect:/admin/student", model);
 		else return new ModelAndView("/admin/student", model);
 		
 	}
 	//TRANG CHỦ ADMIN
 	@RequestMapping("testtrang")
 	public String Main1(ModelMap model) {
-		return "admin/AccountManagement/SinhVien/list";
+		return "admin/notification/DSThongbao";
 	}
 	//Theem tai khoan
 	@RequestMapping("addacount")
@@ -181,7 +181,7 @@ public class AdminController {
 	public String Main(ModelMap model) {
 		List<Notification> list = notificationService.findAll();
 		model.addAttribute("notification", list);
-		return "Home/admin";
+		return "admin/List/Home";
 	}
 	//IN TẤT CẢ ADMIN
 	//admin

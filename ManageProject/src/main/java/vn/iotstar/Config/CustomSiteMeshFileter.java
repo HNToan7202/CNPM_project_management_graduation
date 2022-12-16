@@ -19,7 +19,7 @@ public class CustomSiteMeshFileter extends ConfigurableSiteMeshFilter {
 				
 				.addDecoratorPath("/leadlecture/*", "/decorators/leadlecture.jsp")
 
-				.addDecoratorPath("/notification/*", "/decorators/admin.jsp")
+				.addDecoratorPath("/notification/*", "/decorators/AD.jsp")
 
 				.addDecoratorPath("/account/*", "/decorators/admin.jsp")
 				.addDecoratorPath("/admin/testtrang", "/decorators/AD.jsp")

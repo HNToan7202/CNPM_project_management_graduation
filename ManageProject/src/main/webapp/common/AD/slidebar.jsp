@@ -68,12 +68,12 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="pages-account-settings-account.html" class="menu-link">
+                                <a href="/admin/project/time/DKGV" class="menu-link">
                                     <div data-i18n="Account">Cho giảng viên</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="pages-account-settings-notifications.html" class="menu-link">
+                                <a href="/admin/project/time" class="menu-link">
                                     <div data-i18n="Notifications">Cho sinh viên</div>
                                 </a>
                             </li>
@@ -84,7 +84,7 @@
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Quản lý thông báo</span></li>
                     <!-- Cards -->
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="/notification/admin" class="menu-link">
                             <i class="fas fa-bullhorn"></i>
                             <div data-i18n="Basic">Thông báo</div>
                         </a>
