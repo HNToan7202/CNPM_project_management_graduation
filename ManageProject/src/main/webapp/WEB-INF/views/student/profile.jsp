@@ -35,11 +35,28 @@
 						</div>
 						<div class="col-md-12">
 							<label class="labels">Email:</label><input type="text"
-								class="form-control" name="email" value="${user.email}">
+								class="form-control" name="email" value="${user.email}"
+								readonly="readonly">
 						</div>
 						<div class="col-md-12">
 							<input type="text" class="form-control" name="image"
 								value="${user.image}" hidden="hidden">
+						</div>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="idproject"
+								value="${user.idproject}" hidden="hidden">
+						</div>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="is_active"
+								value="${user.is_active}" hidden="hidden">
+						</div>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="waitproject"
+								value="${user.waitproject}" hidden="hidden">
+						</div>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name=xoaproject
+								value="${user.xoaproject}" hidden="hidden">
 						</div>
 						<div class="col-md-12">
 							<label class="labels">Hình ảnh:</label> <input type="file"
@@ -51,16 +68,8 @@
 								readonly="readonly">
 						</div>
 						<div class="col-md-12">
-							<label class="labels">Chức vụ trong dự án</label><input
-								type="text" class="form-control"
-								value="${user.isleader?'Nhóm trưởng':'Thành viên'} "
-								name="isleader" readonly="readonly">
-						</div>
-						<div class="col-md-12">
-							<label class="labels">Đề tài</label><input type="text"
-								class="form-control"
-								value="${user.idproject==0 ?'Chưa đăng ký':'Đã đăng ký'} "
-								name="idproject" readonly="readonly">
+							<input type="text" class="form-control" value="${user.isleader} "
+								name="isleader" hidden="true">
 						</div>
 						<div class="mt-5 text-center">
 							<input class="btn btn-primary profile-button" type="submit"

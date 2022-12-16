@@ -57,6 +57,10 @@
 					Kiếm Đề Tài</a>
 			</div>
 		</div></li>
+	<li class="nav-item"><a class="nav-link"
+		href="/lecture/project/manager"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>Quản lý đề tài</span>
+	</a></li>
 	<!-- Nav Item - Charts -->
 
 	<!-- Divider -->
@@ -70,7 +74,7 @@
 
 	<!-- Divider -->
 	<hr class="sidebar-divider">
-	<div class="sidebar-heading">Thông Báo </div>
+	<div class="sidebar-heading">Thông Báo</div>
 	<!-- Nav Item - Charts -->
 	<li class="nav-item"><a class="nav-link"
 		href="/notification/admin"> <i class="fas fa-fw fa-chart-area"></i>

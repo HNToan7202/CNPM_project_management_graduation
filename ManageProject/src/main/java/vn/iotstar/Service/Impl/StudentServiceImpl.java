@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import vn.iotstar.Entity.Student;
 import vn.iotstar.Repository.IStudentReposiotory;
 import vn.iotstar.Service.IStudentService;
@@ -26,29 +25,6 @@ public class StudentServiceImpl implements IStudentService {
 	@Autowired
 	IStudentReposiotory studentRepo;
 
-	
-	
-
-	public List<Student> findByNameContaining(String name) {
-		// TODO Auto-generated method stub
-		return studentRepo.findByNameContaining(name);
-	}
-
-	@Override
-	public Page<Student> findByNameContaining(String name, Pageable pageable) {
-		return studentRepo.findByNameContaining(name, pageable);
-	}
-
-	
-	public List<Student> findByIdproject(Integer idproject) {
-		return studentRepo.findByIdproject(idproject);
-	}
-
-	public Student findByEmailContaining(String email) {
-		// TODO Auto-generated method stub
-		return studentRepo.findByEmailContaining(email);
-	}
-
 	@Override
 	public <S extends Student> S save(S entity) {
 		return studentRepo.save(entity);
@@ -60,12 +36,32 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public List<Student> findAllById(Iterable<Integer> ids) {
-		return studentRepo.findAllById(ids);
+	public Page<Student> findAll(Pageable pageable) {
+		return studentRepo.findAll(pageable);
 	}
 
 	@Override
-	public long count() {
+	public void flush() {
+		studentRepo.flush();
+	}
+
+	@Override
+	public <S extends Student> S saveAndFlush(S entity) {
+		return studentRepo.saveAndFlush(entity);
+	}
+
+	@Override
+	public <S extends Student> Page<S> findAll(Example<S> example, Pageable pageable) {
+		return studentRepo.findAll(example, pageable);
+	}
+
+	@Override
+	public Optional<Student> findById(Integer id) {
+		return studentRepo.findById(id);
+	}
+
+	@Override
+	public Long count() {
 		return studentRepo.count();
 	}
 
@@ -79,14 +75,45 @@ public class StudentServiceImpl implements IStudentService {
 		studentRepo.delete(entity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Student getById(Integer id) {
 		return studentRepo.getById(id);
 	}
 
 	@Override
-	public Optional<Student> findById(Integer id) {
-		return studentRepo.findById(id);
+	public void deleteAll() {
+		studentRepo.deleteAll();
+	}
+
+	@Override
+	public List<Student> findByNameContaining(String name) {
+		// TODO Auto-generated method stub
+		return studentRepo.findByNameContaining(name);
+	}
+
+	@Override
+	public Page<Student> findByNameContaining(String name, Pageable pageable) {
+		return studentRepo.findByNameContaining(name, pageable);
+	}
+
+	public List<Student> findByIdproject(Long idproject) {
+		return studentRepo.findByIdproject(idproject);
+	}
+
+	public Student findByEmailContaining(String email) {
+		// TODO Auto-generated method stub
+		return studentRepo.findByEmailContaining(email);
+	}
+
+	@Override
+	public List<Student> findByWaitproject(Long idproject) {
+		return studentRepo.findByWaitproject(idproject);
+	}
+
+	@Override
+	public List<Student> findByXoaproject(Long xoaproject) {
+		return studentRepo.findByXoaproject(xoaproject);
 	}
 
 }

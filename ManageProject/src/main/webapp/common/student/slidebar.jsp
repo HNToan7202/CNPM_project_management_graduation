@@ -40,6 +40,7 @@
 			<i class="fas fa-fw fa-chart-area"></i> <span>Thông tin nhóm</span>
 	</a></li>
 	<!-- Nav Item - Pages Collapse Menu -->
+	<hr class="sidebar-divider">
 	<div class="sidebar-heading">Đề tài</div>
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapsePages"
@@ -56,6 +57,15 @@
 					tài</a>
 			</div>
 		</div></li>
+	<hr class="sidebar-divider">
+	<div class="sidebar-heading">Danh sách</div>
+	<li class="nav-item"><a class="nav-link" href="/student/list">
+			<i class="fas fa-fw fa-chart-area"></i> <span>Sinh viên</span>
+	</a></li>
+	<li class="nav-item "><a class="nav-link"
+		href="/student/listlecture"> <i class="fas fa-fw fa-table"></i> <span>Giảng
+				viên</span>
+	</a></li>
 	<!-- Divider -->
 	<hr class="sidebar-divider">
 	<div class="sidebar-heading">Quản lý tài khoản</div>
