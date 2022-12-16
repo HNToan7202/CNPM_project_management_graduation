@@ -26,6 +26,7 @@
 * Tạo hội đồng
 * Tìm kiếm đề tài
 * Xem và chỉnh sửa thông tin cá nhân
+* Tạo và quản lý thông báo
 ### Đối với giảng viên
 * Đăng ký đề tài với với admin
 * Tìm kiếm đề tài của hệ thống
