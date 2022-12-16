@@ -93,8 +93,8 @@
 									<td>${item.nienkhoa}</td>
 									<td>${item.point }</td>
 									<td>${item.create_at}</td>
-									
-									<td>${item.is_active ? 'Actived' : 'Not Active'}</td>
+
+									<td>${item.is_active.equals(1) ? 'Actived' : 'Not Active'}</td>
 
 									<td><a href="/lecture/project/edit/${item.id}"
 										class="btn btn-outline-warning"><i class="fa fa-edit"></i>Edit</a>
