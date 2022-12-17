@@ -62,5 +62,5 @@ https://drive.google.com/drive/folders/1kOYwJG6NqRUQ8A1RyjCf7y1wi0mQO0yT?usp=sha
 * Sinh viên xem chi tiết đề tài, sinh viên đăng ký, nhóm trưởng, được phép đăng ký hay không
 * Sinh viên xem điểm của đề tài mà mình tham gia
 ## Tài liệu tham khảo
-Những kiến thức và tài liệu học được từ môn Công nghệ phần mềm của GV Huỳnh Xuân Phụng
-Tài liệu xây dựng chức năng quên mật khẩu : https://www.codejava.net/frameworks/spring-boot/spring-security-forgot-password-tutorial
+* Những kiến thức và tài liệu học được từ môn Công nghệ phần mềm của GV Huỳnh Xuân Phụng
+* Tài liệu xây dựng chức năng quên mật khẩu : https://www.codejava.net/frameworks/spring-boot/spring-security-forgot-password-tutorial
