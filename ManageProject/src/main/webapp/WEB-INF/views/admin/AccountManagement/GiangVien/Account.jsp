@@ -34,7 +34,7 @@
 						  margin-top: 20px;
 						}
 						</style>
-                       <form action=<c:url value="/admin/saveoAccount2/1" /> method="GET" enctype="multipart/form-data">   
+                       <form action=<c:url value="/admin/saveoAccount2/1" /> method="POST" enctype="multipart/form-data">   
                         <div class="mb-3">
                           <label class="form-label" for="basic-default-email"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E-mail</font></font></label>
                           <div class="input-group input-group-merge">

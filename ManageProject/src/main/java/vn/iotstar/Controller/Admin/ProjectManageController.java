@@ -1,10 +1,10 @@
 package vn.iotstar.Controller.Admin;
 
 import java.io.IOException;
-import java.sql.Date;
-
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.web.bind.annotation.RequestParam;
+
+import vn.iotstar.Entity.Project;
 import vn.iotstar.Entity.Timeresgiter;
 import vn.iotstar.Model.TimeResgiterModel;
+import vn.iotstar.Service.IProjectService;
 import vn.iotstar.Service.ITimeResgiterSerivce;
 
 @Controller
@@ -27,10 +30,19 @@ public class ProjectManageController {
 
 	@Autowired
 	private ITimeResgiterSerivce timeResgiterService;
-
+	@Autowired
+	private IProjectService projectService;
+	@Autowired
+	private ITimeResgiterSerivce timeResgiterSerivce;
 	@GetMapping("add")
 	private String add() {
 		return "admin/project/addOrUpdate";
+	}
+	@GetMapping("")
+	public ModelAndView List(ModelMap model) {
+		List<Project> project = projectService.findAll();
+		model.addAttribute("project", project);
+		return new ModelAndView("admin/MoDK/list", model);
 	}
 
 	@GetMapping("list")
@@ -39,26 +51,34 @@ public class ProjectManageController {
 		model.addAttribute("timeresgiter", times);
 		return "admin/timeResgiter/list";
 	}
-
-	@PostMapping("saveOrUpdate")
-	public ModelAndView saveOrUpdate(ModelMap model, @RequestParam("create_at") Date createAt,
-			@RequestParam("finish_at") Date finishAt, @RequestParam(value = "id", required = false) Long id) {
-		if (id == null) {
-			Timeresgiter entity = new Timeresgiter( id,createAt, finishAt);
-			timeResgiterService.save(entity);
-		} else {
-			Optional<Timeresgiter> opt = timeResgiterService.findById(id);
-			if (opt.isPresent()) {
-				Timeresgiter entity = opt.get();
-				
-				entity.setCreate_at(createAt);
-				entity.setFinish_at(finishAt);
-				timeResgiterService.save(entity);
-			}
-		}
+	@GetMapping("MDK/{id}")
+	public ModelAndView Modksv(ModelMap model,@PathVariable("id") Long id) {
+		Project p =projectService.findById(id).get();
+		p.setIs_active(1);
+		projectService.save(p);
 		return new ModelAndView("redirect:/admin/project/time", model);
 	}
-
+	@GetMapping("DDK/{id}")
+	public ModelAndView Dongdksv(ModelMap model,@PathVariable("id") Long id) {
+		Project p =projectService.findById(id).get();
+		p.setIs_active(0);
+		projectService.save(p);
+		return new ModelAndView("redirect:/admin/project/time", model);
+	}
+	@RequestMapping("MDKk")
+	public ModelAndView Modksvgv(ModelMap model) {
+		model.addAttribute("message", "Đã mở");
+		return new ModelAndView("admin/MoDK/gv", model);
+	}
+	@RequestMapping("DDKk")
+	public ModelAndView Dongdksvgv(ModelMap model) {
+		model.addAttribute("message", "Đã đóng");
+		return new ModelAndView("admin/MoDK/gv", model);
+	}
+	@GetMapping("DKGV")
+	private String DKGV() {
+		return "admin/MoDK/gv";
+	}
 	@GetMapping("delete/{id}")
 	public ModelAndView delete(ModelMap model, @PathVariable("id") Long MSSV) {
 		timeResgiterService.deleteById(MSSV);

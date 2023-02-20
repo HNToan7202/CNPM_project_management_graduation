@@ -1,5 +1,6 @@
 package vn.iotstar.Controller.Notification;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class NotificationController {
 	public String Admin(ModelMap model) {
 		List<Notification> list = notificationService.findAll();
 		model.addAttribute("notification", list);
-		return "admin/notification/list";
+		return "admin/notification/DSThongbao";
 	}
 
 	// Giảng Viên
@@ -92,8 +93,18 @@ public class NotificationController {
 		Notification entity = new Notification();
 		// đổ dữ liệu từ cate qua bên entity
 		BeanUtils.copyProperties(notification, entity);
-
+		entity.set_active(false);
+		Date date = new Date();
+		if(notification.getIsEdit()==false) {
+			entity.setCreate_at(date);
+		entity.setUpdate_at(date);
+		}
+		else {
+			entity.setUpdate_at(date);
+		}
+		
 		notificationService.save(entity);
+		
 
 		String message = "";
 		if (notification.getIsEdit() == true) {
