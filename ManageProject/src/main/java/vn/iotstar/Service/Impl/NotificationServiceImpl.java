@@ -20,6 +20,15 @@ public class NotificationServiceImpl implements INotificationService {
 
 	INotificationRepository notificationRepository;
 
+	@Override
+	public List<Notification> findByIdstudent(Long idstudent) {
+		return notificationRepository.findByIdstudent(idstudent);
+	}
+
+	@Override
+	public List<Notification> findByChosv(Boolean check) {
+		return notificationRepository.findByChosv(check);
+	}
 
 	@Override
 	public <S extends Notification> S save(S entity) {
@@ -65,8 +74,5 @@ public class NotificationServiceImpl implements INotificationService {
 	public void deleteAll() {
 		notificationRepository.deleteAll();
 	}
-	
 
 }
-	
-

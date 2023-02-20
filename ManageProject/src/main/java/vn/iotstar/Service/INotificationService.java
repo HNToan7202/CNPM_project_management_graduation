@@ -29,5 +29,9 @@ public interface INotificationService {
 
 	<S extends Notification> S save(S entity);
 
+	List<Notification> findByIdstudent(Long idstudent);
+
+	List<Notification> findByChosv(Boolean check);
+
 
 }

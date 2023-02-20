@@ -4,18 +4,12 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -42,15 +36,17 @@ public class StudentManageController {
 
 	@Autowired
 	ServletContext application;
-	
+
 	@GetMapping("list")
 	public String ListDS() {
 		return "admin/add/Student";
 	}
+
 	@GetMapping("logintest")
 	public String login() {
 		return "common/login";
 	}
+
 	@GetMapping("add")
 	public String add(Model model) {
 		StudentModel student = new StudentModel();
@@ -80,13 +76,12 @@ public class StudentManageController {
 	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("student") StudentModel student,
 			BindingResult result) {
 		Student entity = new Student();
-		
 
 		/*
 		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
 		 * ModelAndView("admin/student/addOrEdit"); }
 		 */
-		
+
 		if (!student.getImageFile().isEmpty()) {
 			String path = application.getRealPath("/");
 
@@ -101,25 +96,24 @@ public class StudentManageController {
 		}
 		BeanUtils.copyProperties(student, entity);
 		entity.setMssv(student.getMssv());
-		entity.setIdproject((long) 0);
-		entity.setIsleader(false); 
-		entity.setWaitproject((long) 0);
-		entity.setXoaproject((long) 0);
+		entity.setIdproject(0L);
+		entity.setIsleader(false);
+		entity.setWaitproject(0L);
+		entity.setXoaproject(0L);
 		studentService.save(entity);
-		return new ModelAndView("redirect:/admin/addAccount/"+student.getMssv()+"/2", model);
+		return new ModelAndView("redirect:/admin/addAccount/" + student.getMssv() + "/2", model);
 	}
-	
+
 	@RequestMapping("saveofUpdate1")
 	public ModelAndView saveOrUpdate1(ModelMap model, @Valid @ModelAttribute("student") StudentModel student,
 			BindingResult result) {
 		Student entity = new Student();
-		
 
 		/*
 		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
 		 * ModelAndView("admin/student/addOrEdit"); }
 		 */
-		
+
 		if (!student.getImageFile().isEmpty()) {
 			String path = application.getRealPath("/");
 
@@ -134,12 +128,12 @@ public class StudentManageController {
 		}
 		BeanUtils.copyProperties(student, entity);
 		entity.setMssv(student.getMssv());
-		entity.setIdproject((long) 0);
-		entity.setIsleader(false); 
-		entity.setWaitproject((long) 0);
-		entity.setXoaproject((long) 0);
+		entity.setIdproject(0L);
+		entity.setIsleader(false);
+		entity.setWaitproject(0L);
+		entity.setXoaproject(0L);
 		studentService.save(entity);
-		model.addAttribute("message", "Cập nhật thông tài khoản " +student.getEmail() + " thành công");
+		model.addAttribute("message", "Cập nhật thông tài khoản " + student.getEmail() + " thành công");
 		return new ModelAndView("redirect:/admin/student", model);
 	}
 
@@ -153,7 +147,7 @@ public class StudentManageController {
 	public String list(ModelMap model) {
 		List<Student> page = studentService.findAll();
 		model.addAttribute("students", page);
-		
+
 		return "admin/AccountManagement/SinhVien/list";
 	}
 
@@ -168,8 +162,6 @@ public class StudentManageController {
 		model.addAttribute("students", list);
 		return "admin/student/search";
 	}
-
-	
 
 	@GetMapping("delete/{mssv}")
 	public ModelAndView delete(ModelMap model, @PathVariable("mssv") int MSSV) {

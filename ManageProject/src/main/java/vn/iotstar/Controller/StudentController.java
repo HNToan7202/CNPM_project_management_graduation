@@ -30,16 +30,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.iotstar.Entity.Account;
 import vn.iotstar.Entity.Lecture;
 import vn.iotstar.Entity.Notification;
 import vn.iotstar.Entity.Project;
 import vn.iotstar.Entity.Student;
 import vn.iotstar.Entity.Timeresgiter;
-import vn.iotstar.Entity.Account;
 import vn.iotstar.Model.NotificationModel;
 import vn.iotstar.Model.ProjectModel;
 import vn.iotstar.Model.StudentModel;
-import vn.iotstar.Model.TimeResgiterModel;
 import vn.iotstar.Service.IAccountService;
 import vn.iotstar.Service.ILectureService;
 import vn.iotstar.Service.INotificationService;
@@ -71,6 +70,9 @@ public class StudentController {
 	@Autowired
 	ITimeResgiterSerivce timeResgiterService;
 
+	@Autowired
+	HttpSession session;
+
 	@GetMapping("/home")
 	public ModelAndView List(ModelMap model, HttpSession sesson) {
 		String email = (String) sesson.getValue("email");
@@ -78,20 +80,23 @@ public class StudentController {
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(studententity, student);
 		model.addAttribute("user", student);
-		
-		List<Notification> notifies = notificationService.findAll();
+
+		List<Notification> notifies = notificationService.findByIdstudent((long) studententity.getMssv());
+		List<Notification> notifications = notificationService.findByChosv(true);
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("notifies", notifies);
+
 		return new ModelAndView("student/home", model);
 	}
 
 	@GetMapping("/notify/{id}")
-	public String seachnotify(ModelMap model, @PathVariable("id") Long id, HttpSession sesson) {
+	public String seachnotify(ModelMap model, @PathVariable("id") Integer id, HttpSession sesson) {
 		String email = (String) sesson.getValue("email");
 		Student studententity = studentService.findByEmailContaining(email);
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(studententity, student);
 		model.addAttribute("user", student);
-		Optional<Notification> opt = notificationService.findById((id));
+		Optional<Notification> opt = notificationService.findById(((long) id));
 		NotificationModel notify = new NotificationModel();
 		if (opt.isPresent()) {
 			Notification entity = opt.get();
@@ -105,7 +110,7 @@ public class StudentController {
 
 	@SuppressWarnings("deprecation")
 	@GetMapping("/detail/{mssv}")
-	public String Profile(ModelMap model, HttpSession sesson, @PathVariable("mssv") Long MSSV) {
+	public String Profile(ModelMap model, HttpSession sesson, @PathVariable("mssv") Integer MSSV) {
 		/*
 		 * String email = (String) sesson.getValue("email"); Student entity =
 		 * studentService.findByEmailContaining(email); StudentModel student = new
@@ -157,23 +162,113 @@ public class StudentController {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	@GetMapping("group")
 	public String Group(ModelMap model, HttpSession sesson) {
+		String email = (String) session.getAttribute("email");
+		Student entity = studentService.findByEmailContaining(email);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(entity, student);
+		model.addAttribute("user", student);
+
+		String message = (String) session.getAttribute("message");
+		session.removeAttribute("message");
+		Long idproject = entity.getIdproject();
+		if (idproject == 0) {
+			message = "Bạn chưa đăng ký đề tài";
+		} else {
+			List<Student> listwaitingproject = studentService.findByWaitproject(idproject);
+			model.addAttribute("listwaitingproject", listwaitingproject);
+			List<Student> list = studentService.findByIdproject(idproject);
+			model.addAttribute("list", list);
+			model.addAttribute("message", message);
+		}
+
+		return "student/group";
+	}
+
+	@SuppressWarnings("deprecation")
+	@GetMapping("/accept/{id}")
+	public ModelAndView AcceptStudent(ModelMap model, HttpSession sesson, @PathVariable("id") Integer id) {
 		String email = (String) sesson.getValue("email");
 		Student entity = studentService.findByEmailContaining(email);
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(entity, student);
 		model.addAttribute("user", student);
-		int idproject = entity.getIdproject();
-		if (idproject == 0) {
-			model.addAttribute("message", "Bạn chưa đăng ký đề tài");
-		} else {
-			List<Student> list = studentService.findByIdproject(idproject);
-			model.addAttribute("list", list);
-		}
 
-		return "student/group";
+		Long idproject = entity.getIdproject();
+
+		Student studentaccept = studentService.getById(id);
+
+		studentaccept.setWaitproject(0L);
+		studentaccept.setIsleader(false);
+		studentaccept.setIdproject(idproject);
+		studentService.save(studentaccept);
+
+		// tạo thông báo gửi đến giáo viên hướng dẫn
+		Notification notify = new Notification();
+		Project project = projectService.getById((long) entity.getIdproject());
+		notify.setDesciption("Hãy truy cập vào đề tài để xem thông tin chi tiết");
+		notify.setChosv(false);
+		notify.setIdstudent((long) studentaccept.getMssv());
+		notify.setIdlecture(0L);
+		notify.set_active(true);
+
+		Long millis = System.currentTimeMillis();
+		Date date = new Date(millis);
+		notify.setCreate_at(date);
+		notify.setUpdate_at(date);
+		notify.setName("Yêu cầu tham gia đề tài " + project.getName() + " đã được phê duyệt");
+
+		notificationService.save(notify);
+
+		List<Student> listwaitingproject = studentService.findByWaitproject(idproject);
+		model.addAttribute("listwaitingproject", listwaitingproject);
+		List<Student> list = studentService.findByIdproject(idproject);
+		model.addAttribute("list", list);
+		session.setAttribute("message", "Đã chấp nhận thành viên nhóm");
+		return new ModelAndView("redirect:/student/group", model);
+	}
+
+	@GetMapping("/noaccept/{id}")
+	public ModelAndView NoAcceptStudent(ModelMap model, HttpSession sesson, @PathVariable("id") Integer id) {
+		String email = (String) sesson.getValue("email");
+		Student entity = studentService.findByEmailContaining(email);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(entity, student);
+		model.addAttribute("user", student);
+
+		Long idproject = entity.getIdproject();
+
+		Student studentaccept = studentService.getById(id);
+
+		studentaccept.setWaitproject(0L);
+		studentaccept.setIsleader(false);
+		studentaccept.setIdproject(0L);
+		studentService.save(studentaccept);
+
+		// tạo thông báo gửi đến giáo viên hướng dẫn
+		Notification notify = new Notification();
+		Project project = projectService.getById((long) entity.getIdproject());
+		notify.setDesciption("Hãy truy cập vào đề tài để xem thông tin chi tiết");
+		notify.setChosv(false);
+		notify.setIdstudent((long) studentaccept.getMssv());
+		notify.setIdlecture(0L);
+		notify.set_active(true);
+
+		Long millis = System.currentTimeMillis();
+		Date date = new Date(millis);
+		notify.setCreate_at(date);
+		notify.setUpdate_at(date);
+		notify.setName("Yêu cầu tham gia đề tài " + project.getName() + " đã bị từ chối");
+
+		notificationService.save(notify);
+
+		List<Student> listwaitingproject = studentService.findByWaitproject(idproject);
+		model.addAttribute("listwaitingproject", listwaitingproject);
+		List<Student> list = studentService.findByIdproject(idproject);
+		model.addAttribute("list", list);
+		session.setAttribute("message", "Đã từ chối thành viên nhóm");
+		return new ModelAndView("redirect:/student/group", model);
 	}
 
 	@GetMapping("/project")
@@ -231,33 +326,42 @@ public class StudentController {
 		BeanUtils.copyProperties(entity, student);
 		model.addAttribute("user", student);
 
-		int id1 = id.intValue();
+		// lấy ra project muốn đăng ký
 		Project projectentity = projectService.getById(id);
 
-		List<Student> studentlist = studentService.findByIdproject(id1);
+		// kiểm tra số lượng sinh viên đã đăng ký
+		List<Student> studentlist = studentService.findByIdproject(id);
+		Long idproject = entity.getIdproject();
 
-		System.out.print(studentlist.size());
-		System.out.print(projectentity.getSoluongsv());
-		if (studentlist.size() < projectentity.getSoluongsv()) {
-
-			int idproject = entity.getIdproject();
-			if (idproject == 0) {
+		// kiểm tra sinh viên đó đã đăng ký chưa
+		if (idproject.equals(0L)) {
+			// chưa đăng ký
+			// nếu chưa đủ số lượng
+			if (studentlist.size() < projectentity.getSoluongsv()) {
+				// kiểm tra sinh viên có phải đăng ký đầu tiên ko
 				if (studentlist.size() == 0) {
 					entity.setIsleader(true);
-				} else {
-					entity.setIsleader(false);
+					entity.setIdproject(id);
+					sesson.setAttribute("message", "Đã đăng ký thành công");
 				}
-				entity.setIdproject((id1));
-				model.addAttribute("message", "Đã đăng ký thành công");
-			}else {
-				model.addAttribute("message", "Bạn đã đăng ký đề tài trước đó");
+				// nếu không là người đăng ký đầu
+				else {
+					entity.setIsleader(false);
+					entity.setWaitproject(id);
+					sesson.setAttribute("message", "Đã quan tâm đề tài.");
+				}
+				studentService.save(entity);
 			}
-		}else {
-
-			model.addAttribute("message", "Số lượng thành viên đã đủ");
+			// đã đủ số lượng sinh viên trong 1 đề tài
+			else {
+				sesson.setAttribute("message", "Số lượng thành viên đã đủ");
+			}
 		}
-
-		return new ModelAndView("forward:/student/project/resgiter", model);
+		// đã đăng ký đề tài rồi
+		else {
+			sesson.setAttribute("message", "Bạn đã đăng ký đề tài trước đó");
+		}
+		return new ModelAndView("redirect:/student/project/resgiter", model);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -269,13 +373,13 @@ public class StudentController {
 		BeanUtils.copyProperties(studententity, student);
 		model.addAttribute("user", student);
 
-		Optional<Project> opt = projectService.findById(id);
+		Optional<Project> opt = projectService.findById((long) id);
 		ProjectModel project = new ProjectModel();
 		if (opt.isPresent()) {
 			Project entity = opt.get();
 			BeanUtils.copyProperties(entity, project);
 			student.setIsEdit(false);
-			List<Student> studentlist = studentService.findByIdproject(id.intValue());
+			List<Student> studentlist = studentService.findByIdproject(id);
 			model.addAttribute("sldk", studentlist.size());
 			model.addAttribute("project", project);
 			return new ModelAndView("student/projectDetail", model);
@@ -284,14 +388,14 @@ public class StudentController {
 	}
 
 	@GetMapping("project/my/{id}")
-	public ModelAndView myProject(ModelMap model, HttpSession sesson, @PathVariable("id") Long id) {
+	public ModelAndView myProject(ModelMap model, HttpSession sesson, @PathVariable("id") Integer id) {
 		String email = (String) sesson.getValue("email");
 		Student studententity = studentService.findByEmailContaining(email);
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(studententity, student);
 		model.addAttribute("user", student);
 
-		Optional<Project> opt = projectService.findById(id);
+		Optional<Project> opt = projectService.findById((long) id);
 		ProjectModel project = new ProjectModel();
 		if (opt.isPresent()) {
 			Project entity = opt.get();
@@ -305,18 +409,21 @@ public class StudentController {
 	}
 
 	@GetMapping("project/resgiter")
-	public String ResgiterProje(ModelMap model, HttpSession sesson) {
+	public String XemTrangDangKy(ModelMap model, HttpSession sesson) {
 		String email = (String) sesson.getValue("email");
 		Student studententity = studentService.findByEmailContaining(email);
 		StudentModel student = new StudentModel();
 		BeanUtils.copyProperties(studententity, student);
 		model.addAttribute("user", student);
 
+		String message = (String) sesson.getAttribute("message");
+		model.addAttribute("message", message);
+		sesson.removeAttribute("message");
 		Optional<Timeresgiter> opt = timeResgiterService.findById((long) 1);
 		if (opt.isPresent()) {
 			Timeresgiter time = opt.get();
-			Date create = time.getCreateat();
-			Date finish = time.getFinishat();
+			Date create = time.getCreate_at();
+			Date finish = time.getFinish_at();
 			Date getDate = new Date();
 			model.addAttribute("create_date", create);
 			model.addAttribute("finish_date", finish);
@@ -358,17 +465,48 @@ public class StudentController {
 	}
 
 	@GetMapping("deletegroup/{mssv}")
-	public ModelAndView edit(ModelMap model, @PathVariable("mssv") Long MSSV) throws IOException {
+	public ModelAndView edit(ModelMap model, @PathVariable("mssv") Integer MSSV) throws IOException {
 		Optional<Student> opt = studentService.findById(MSSV);
 		if (opt.isPresent()) {
 			Student entity = opt.get();
-			entity.setIdproject(0);
+			entity.setXoaproject(entity.getIdproject());
 			studentService.save(entity);
-			model.addAttribute("message", "Xóa thành viên thành công");
-			return new ModelAndView("forward:/student/group", model);
-		}
-		model.addAttribute("message", "Thành viên này không thể xóa");
-		return new ModelAndView("forward:/student/group", model);
 
+			// tạo thông báo gửi đến giáo viên hướng dẫn
+			Notification notify = new Notification();
+			Project project = projectService.getById((long) entity.getIdproject());
+			notify.setDesciption("Hãy truy cập vào đề tài để xem thông tin chi tiết");
+			notify.setChosv(false);
+			notify.setIdlecture((long) project.getIdlecture());
+			notify.setIdstudent(0L);
+			notify.set_active(true);
+
+			Long millis = System.currentTimeMillis();
+			Date date = new Date(millis);
+			notify.setCreate_at(date);
+			notify.setUpdate_at(date);
+			notify.setName("Yêu cầu xóa thành viên từ nhóm trưởng đề tài " + project.getName());
+
+			notificationService.save(notify);
+			session.setAttribute("message", "Đã yêu cầu xóa thành viên ");
+			return new ModelAndView("redirect:/student/group", model);
+		}
+		session.setAttribute("message", "Thành viên này không thể xóa");
+		return new ModelAndView("redirect:/student/group", model);
+
+	}
+
+	@GetMapping("list")
+	public String list(ModelMap model) {
+		List<Student> students = studentService.findAll();
+		model.addAttribute("list", students);
+		return "student/list";
+	}
+
+	@GetMapping("listlecture")
+	public String listlecture(ModelMap model) {
+		List<Lecture> lectures = lectureService.findAll();
+		model.addAttribute("list", lectures);
+		return "student/listlecture";
 	}
 }

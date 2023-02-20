@@ -57,6 +57,10 @@
 					Kiếm Đề Tài</a>
 			</div>
 		</div></li>
+	<li class="nav-item"><a class="nav-link"
+		href="/lecture/project/manager"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>Quản lý đề tài</span>
+	</a></li>
 	<!-- Nav Item - Charts -->
 
 	<!-- Divider -->
@@ -68,12 +72,14 @@
 			<span>Đánh giá</span>
 	</a></li>
 
+
 	<!-- Divider -->
 	<hr class="sidebar-divider">
-	<div class="sidebar-heading">Thông Báo </div>
+
+	<div class="sidebar-heading">Thông Báo</div>
 	<!-- Nav Item - Charts -->
 	<li class="nav-item"><a class="nav-link"
-		href="/notification/admin"> <i class="fas fa-fw fa-chart-area"></i>
+		href="/lecture/notification"> <i class="fas fa-fw fa-chart-area"></i>
 			<span>Quản Lý Thông Báo</span>
 	</a></li>
 
@@ -91,7 +97,9 @@
 				${count}</span>
 
 	</a></li>
-
+	<li class="nav-item"><a class="nav-link" href="/logout"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>Đăng xuất</span>
+	</a></li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">

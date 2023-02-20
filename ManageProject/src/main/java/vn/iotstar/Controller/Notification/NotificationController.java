@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 
 import vn.iotstar.Entity.Notification;
 import vn.iotstar.Model.NotificationModel;
@@ -29,40 +27,44 @@ import vn.iotstar.Service.INotificationService;
 public class NotificationController {
 	@Autowired
 	INotificationService notificationService;
-	//IN TẤT CẢ THÔNG BÁO
-	//admin
+
+	// IN TẤT CẢ THÔNG BÁO
+	// admin
 	@RequestMapping("admin")
 	public String Admin(ModelMap model) {
 		List<Notification> list = notificationService.findAll();
 		model.addAttribute("notification", list);
 		return "admin/notification/DSThongbao";
 	}
-	//Giảng Viên
-	@RequestMapping("lecture")
+
+	// Giảng Viên
+	@RequestMapping("lecture/notification")
 	public String Lecture(ModelMap model) {
 		List<Notification> list = notificationService.findAll();
 		model.addAttribute("notification", list);
 		return "lecture/notification/list";
 	}
-	//Trưởng bộ môn
+
+	// Trưởng bộ môn
 	@RequestMapping("leaderLecture")
 	public String LeaderLecture(ModelMap model) {
 		List<Notification> list = notificationService.findAll();
 		model.addAttribute("notification", list);
 		return "leaderLecture/notification/list";
 	}
-	//Sinh viên
+
+	// Sinh viên
 	@RequestMapping("student")
 	public String Student(ModelMap model) {
 		List<Notification> list = notificationService.findAll();
 		model.addAttribute("notification", list);
 		return "leaderLecture/notification/list";
 	}
-	
-	//TẠO THÔNG BÁO
-	//admin, giảng viên, trưởng bộ môn
-	
-	//ADMIN
+
+	// TẠO THÔNG BÁO
+	// admin, giảng viên, trưởng bộ môn
+
+	// ADMIN
 	@GetMapping("addOrEditAdmin")
 	public String add1(ModelMap model) {
 		NotificationModel notificationModel = new NotificationModel();
@@ -71,12 +73,20 @@ public class NotificationController {
 		return "admin/notification/addOrEdit";
 
 	}
-	//ADMIN
+
+	// ADMIN
 	@PostMapping("saveOrUpdateAdmin")
-	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("notifications") NotificationModel notification,
-			BindingResult result) // lấy dữ liệu từ bên giao diện file addOrEdit đỗ dô model
+	public ModelAndView saveOrUpdate(ModelMap model,
+			@Valid @ModelAttribute("notifications") NotificationModel notification, BindingResult result) // lấy dữ liệu
+																											// từ bên
+																											// giao diện
+																											// file
+																											// addOrEdit
+																											// đỗ dô
+																											// model
 	{
-		//chưa có dữ liệu thêm vào, chuyển sang trang đó tiếp để người dùng tiến hành thêm vào
+		// chưa có dữ liệu thêm vào, chuyển sang trang đó tiếp để người dùng tiến hành
+		// thêm vào
 		if (result.hasErrors()) {
 			return new ModelAndView("admin/notification/addOrEdit");
 		}
@@ -104,11 +114,12 @@ public class NotificationController {
 		}
 
 		model.addAttribute("message", message);
-		//điều hướng vào link council/admin để in danh sách có message
+		// điều hướng vào link council/admin để in danh sách có message
 		return new ModelAndView("forward:/notification/admin", model);
 
 	}
-	//Giảng Viên
+
+	// Giảng Viên
 	@GetMapping("addOrEditLecture")
 	public String add2(ModelMap model) {
 		NotificationModel notificationModel = new NotificationModel();
@@ -117,11 +128,19 @@ public class NotificationController {
 		return "lecture/notification/addOrEdit";
 
 	}
+
 	@PostMapping("saveOrUpdateLecture")
-	public ModelAndView saveOrUpdateLecture(ModelMap model, @Valid @ModelAttribute("notifications") NotificationModel notification,
-			BindingResult result) // lấy dữ liệu từ bên giao diện file addOrEdit đỗ dô model
+	public ModelAndView saveOrUpdateLecture(ModelMap model,
+			@Valid @ModelAttribute("notifications") NotificationModel notification, BindingResult result) // lấy dữ liệu
+																											// từ bên
+																											// giao diện
+																											// file
+																											// addOrEdit
+																											// đỗ dô
+																											// model
 	{
-		//chưa có dữ liệu thêm vào, chuyển sang trang đó tiếp để người dùng tiến hành thêm vào
+		// chưa có dữ liệu thêm vào, chuyển sang trang đó tiếp để người dùng tiến hành
+		// thêm vào
 		if (result.hasErrors()) {
 			return new ModelAndView("lecture/notification/addOrEdit");
 		}
@@ -139,11 +158,12 @@ public class NotificationController {
 		}
 
 		model.addAttribute("message", message);
-		//điều hướng vào link council/admin để in danh sách có message
+		// điều hướng vào link council/admin để in danh sách có message
 		return new ModelAndView("forward:/notification/lecture", model);
 
 	}
-	//Trưởng bộ môn
+
+	// Trưởng bộ môn
 	@GetMapping("addOrEditLeaderLecture")
 	public String add3(ModelMap model) {
 		NotificationModel notificationModel = new NotificationModel();
@@ -152,11 +172,19 @@ public class NotificationController {
 		return "leaderLecture/notification/addOrEdit";
 
 	}
+
 	@PostMapping("saveOrUpdateLeaderLecture")
-	public ModelAndView saveOrUpdateLeaderLecture(ModelMap model, @Valid @ModelAttribute("notifications") NotificationModel notification,
-			BindingResult result) // lấy dữ liệu từ bên giao diện file addOrEdit đỗ dô model
+	public ModelAndView saveOrUpdateLeaderLecture(ModelMap model,
+			@Valid @ModelAttribute("notifications") NotificationModel notification, BindingResult result) // lấy dữ liệu
+																											// từ bên
+																											// giao diện
+																											// file
+																											// addOrEdit
+																											// đỗ dô
+																											// model
 	{
-		//chưa có dữ liệu thêm vào, chuyển sang trang đó tiếp để người dùng tiến hành thêm vào
+		// chưa có dữ liệu thêm vào, chuyển sang trang đó tiếp để người dùng tiến hành
+		// thêm vào
 		if (result.hasErrors()) {
 			return new ModelAndView("leaderLecture/notification/addOrEdit");
 		}
@@ -174,37 +202,38 @@ public class NotificationController {
 		}
 
 		model.addAttribute("message", message);
-		//điều hướng vào link council/admin để in danh sách có message
+		// điều hướng vào link council/admin để in danh sách có message
 		return new ModelAndView("forward:/notification/leaderLecture", model);
 
 	}
-	
-	//CHỈNH SỬA THÔNG BÁO
-	//admin
+
+	// CHỈNH SỬA THÔNG BÁO
+	// admin
 	@GetMapping("edit/{id}")
 	public ModelAndView edit(ModelMap model, @PathVariable("id") Long id) {
 		// @PathVariable("categoryId") Long categoryId): nhận biến từ trên form
-				// xet categoryId đó có ton tai hay chua coppoy du lieu tu entity => model
-				Optional<Notification> opt = notificationService.findById(id);
-				NotificationModel notification = new NotificationModel();
-				// Xét xem opt là Model đó có hiện diện không
-				if (opt.isPresent())
+		// xet categoryId đó có ton tai hay chua coppoy du lieu tu entity => model
+		Optional<Notification> opt = notificationService.findById(id);
+		NotificationModel notification = new NotificationModel();
+		// Xét xem opt là Model đó có hiện diện không
+		if (opt.isPresent())
 
-				{
-					// lấy otp đó chuyển sang model, etity sang model
-					Notification entity = opt.get();
-					BeanUtils.copyProperties(entity, notification);
-					notification.setIsEdit(true);// có nghĩa là edit, xử lý giao diện
-					model.addAttribute("notification", notification);// đưa lên query
-					//đưa lên giao diện để tiến hành chỉnh sửa
-					return new ModelAndView("/admin/notification/addOrEdit", model);
-				}
-				// nếu ko Id, eroll
-				model.addAttribute("message", "Notifications not vaild !!!");
-				// đẩy về list sau khi hoàn thành có message
-				return new ModelAndView("forward:/notification/admin", model);
+		{
+			// lấy otp đó chuyển sang model, etity sang model
+			Notification entity = opt.get();
+			BeanUtils.copyProperties(entity, notification);
+			notification.setIsEdit(true);// có nghĩa là edit, xử lý giao diện
+			model.addAttribute("notification", notification);// đưa lên query
+			// đưa lên giao diện để tiến hành chỉnh sửa
+			return new ModelAndView("/admin/notification/addOrEdit", model);
+		}
+		// nếu ko Id, eroll
+		model.addAttribute("message", "Notifications not vaild !!!");
+		// đẩy về list sau khi hoàn thành có message
+		return new ModelAndView("forward:/notification/admin", model);
 	}
-	//Giảng viên
+
+	// Giảng viên
 	@GetMapping("edit2/{id}")
 	public ModelAndView edit2(ModelMap model, @PathVariable("id") Long id) {
 		// @PathVariable("categoryId") Long categoryId): nhận biến từ trên form
@@ -220,7 +249,7 @@ public class NotificationController {
 			BeanUtils.copyProperties(entity, notification);
 			notification.setIsEdit(true);// có nghĩa là edit, xử lý giao diện
 			model.addAttribute("notification", notification);// đưa lên query
-			//đưa lên giao diện để tiến hành chỉnh sửa
+			// đưa lên giao diện để tiến hành chỉnh sửa
 			return new ModelAndView("/lecture/notification/addOrEdit", model);
 		}
 		// nếu ko Id, eroll
@@ -229,7 +258,8 @@ public class NotificationController {
 		return new ModelAndView("forward:/notifications/lecture", model);
 
 	}
-	//Trưởng bộ môn
+
+	// Trưởng bộ môn
 	@GetMapping("edit3/{id}")
 	public ModelAndView edit3(ModelMap model, @PathVariable("id") Long id) {
 		// @PathVariable("categoryId") Long categoryId): nhận biến từ trên form
@@ -245,7 +275,7 @@ public class NotificationController {
 			BeanUtils.copyProperties(entity, notification);
 			notification.setIsEdit(true);// có nghĩa là edit, xử lý giao diện
 			model.addAttribute("notification", notification);// đưa lên query
-			//đưa lên giao diện để tiến hành chỉnh sửa
+			// đưa lên giao diện để tiến hành chỉnh sửa
 			return new ModelAndView("/leaderLecture/notification/addOrEdit", model);
 		}
 		// nếu ko Id, eroll
@@ -254,17 +284,19 @@ public class NotificationController {
 		return new ModelAndView("forward:/notifications/leaderLecture", model);
 
 	}
-	
-	//XÓA THÔNG BÁO
+
+	// XÓA THÔNG BÁO
 	@GetMapping("delete/{id}/{co}")
-	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id,@PathVariable("co") int co) {
+	public ModelAndView delete(ModelMap model, @PathVariable("id") Long id, @PathVariable("co") int co) {
 		notificationService.deleteById(id);
 		model.addAttribute("message", "NotificationService Delete Succesfull !!!");
-		if(co==1)
-		return new ModelAndView("forward:/notification/admin", model);
-		else if(co==2) return new ModelAndView("forward:/notification/lecture", model);
-		else return new ModelAndView("forward:/notification/leaderLecture", model);
+		if (co == 1)
+			return new ModelAndView("forward:/notification/admin", model);
+		else if (co == 2)
+			return new ModelAndView("forward:/notification/lecture", model);
+		else
+			return new ModelAndView("forward:/notification/leaderLecture", model);
 
 	}
-	
+
 }
